@@ -1,30 +1,31 @@
-(title)
 # Final lp1 project
 
-(authors) 
-Ana dos Santos - a21801899
-Diana Levay - a21801515
+# Authors:
+**Ana dos Santos** - a21801899
+**Diana Levay** - a21801515
 
-(rep)
-https://github.com/nanilevay/projeto_lp1_segunda_epoca
+# Repository:
+link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
-(who did what)
-Ana dos Santos -
-Diana Levay -
+# Tasks by each group member:
+**Ana dos Santos -**
+**Diana Levay -**
 
-(solution description)
-which phases were implemented
-arquitecture of the solution, how it was organized and what data we used, algorithms implemented to draw the map etc.
+# Describing the Solution approach:
+- which phases were implemented
+- arquitecture of the solution, how it was organized and what data we used, algorithms implemented to - - draw the map etc.
 
-(UML Diagram)
-insert pic describing the classes' structure without indicating their members
+# UML Diagram of classes created:
+The following ".png" image contains the UML diagram of the classes implemented for this project.
+![UML Diagram](URL)
 
-(Fluxogram)
-showcasing the game loop
+# Fluxogram of the game loop:
+The following ".png" image contains the fluxogram showcasing the game loop of the project.
+![Fluxogram](URL)
 
-(conclusion and stuff we learned)
+# In summary / what we learned:
 
-(references)
+# References used for the development of this project:
 including idea exchanges, open code reused or based on (stack overflow, github, ...) and third party libraries, very detailed
 
 
