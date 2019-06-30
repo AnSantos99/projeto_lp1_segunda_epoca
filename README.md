@@ -1,6 +1,6 @@
 # Final lp1 project
 
-# Authors:
+### Authors:
 **Ana dos Santos** - a21801899
 **Diana Levay** - a21801515
 
