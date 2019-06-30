@@ -3,7 +3,6 @@
 ### Authors:
 **Ana dos Santos** - a21801899
 
-
 **Diana Levay** - a21801515
 
 ### Repository:
@@ -11,7 +10,6 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 ### Tasks by each group member:
 **Ana dos Santos -**
-
 
 **Diana Levay -**
 
