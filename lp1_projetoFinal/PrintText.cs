@@ -58,6 +58,15 @@ namespace lp1_projetoFinal
 
         }
 
-        
-    }
+        public void gameText()
+        {
+            Console.WriteLine("Select enemy to Attack:");
+            Console.WriteLine("------------");
+            Console.WriteLine("Go Back");
+            Console.WriteLine("Enemies");
+            
+        }
+
+
+        }
 }
