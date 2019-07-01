@@ -6,6 +6,7 @@ namespace lp1_projetoFinal
     {
         public void Menu()
         {
+            Console.Clear();
             GameLoop loop = new GameLoop();
             Console.WriteLine("Welcome to the game!");
             Console.WriteLine();
@@ -14,10 +15,11 @@ namespace lp1_projetoFinal
             Console.WriteLine("B. High Scores");
             Console.WriteLine("C. Credits");
             Console.WriteLine("D. Quit");
-            Console.WriteLine();
+            
 
             ConsoleKey answer;
             answer = Console.ReadKey().Key;
+            Console.WriteLine();
 
             switch (answer) {
                 case ConsoleKey.A:
