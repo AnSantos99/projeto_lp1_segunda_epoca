@@ -13,15 +13,21 @@ namespace lp1_projetoFinal
             int hp = 2;
             do
             {
+
                 Console.WriteLine();
                 Console.WriteLine("ingame wow!");
+
+                PrintText gameInfo = new PrintText();
+
+                gameInfo.gameText();
 
                 // Call board function from class GameBoard
                 drawBoard.Board();
 
+                answer = Console.ReadKey().Key;
                 hp--;
 
-                answer = Console.ReadKey().Key;
+                Console.Clear();
             }
             while (answer != ConsoleKey.Q && hp > 0);
         }

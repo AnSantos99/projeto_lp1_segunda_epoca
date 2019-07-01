@@ -6,18 +6,18 @@ namespace lp1_projetoFinal
     {
         public void Menu()
         {
+            Console.Clear();
             GameLoop loop = new GameLoop();
-            Console.WriteLine("Welcome to the game!");
-            Console.WriteLine();
-            Console.WriteLine("please select an option:");
-            Console.WriteLine("A. New Game");
-            Console.WriteLine("B. High Scores");
-            Console.WriteLine("C. Credits");
-            Console.WriteLine("D. Quit");
-            Console.WriteLine();
+
+
+            PrintText menuInfo = new PrintText();
+
+            menuInfo.menuText();
+            
 
             ConsoleKey answer;
             answer = Console.ReadKey().Key;
+            Console.WriteLine();
 
             switch (answer) {
                 case ConsoleKey.A:
