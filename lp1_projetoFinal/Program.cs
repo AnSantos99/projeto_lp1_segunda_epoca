@@ -6,7 +6,10 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            GameLoop loop = new GameLoop();
+
+            loop.Loop();
+
         }
     }
 }
