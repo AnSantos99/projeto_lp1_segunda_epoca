@@ -6,5 +6,9 @@ namespace lp1_projetoFinal
 {
     class Food : IItems
     {
+        public void Weight()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
