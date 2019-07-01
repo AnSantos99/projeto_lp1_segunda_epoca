@@ -123,5 +123,18 @@ namespace lp1_projetoFinal
             loop.Loop();
         }
 
+        public void InventoryText()
+        {
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("Select item to XXXX");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("Weapon (Name)");
+            Console.WriteLine("Food (Name)");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            loop.Loop();
+        }
+
     }
 }
