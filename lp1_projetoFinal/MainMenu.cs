@@ -16,14 +16,15 @@ namespace lp1_projetoFinal
             Console.WriteLine("D. Quit");
             Console.WriteLine();
 
-            string answer = Console.ReadLine().ToLower();
+            ConsoleKey answer;
+            answer = Console.ReadKey().Key;
 
             switch (answer) {
-                case "a":
+                case ConsoleKey.A:
                     loop.Loop();
                     break;
 
-                case "b":
+                case ConsoleKey.B:
                     Console.WriteLine("scores");
                     Console.WriteLine();
                     Console.WriteLine("Press any key to return");
@@ -31,7 +32,7 @@ namespace lp1_projetoFinal
                     Menu();
                     break;
 
-                case "c":
+                case ConsoleKey.C:
                     Console.WriteLine("Game developed by:");
                     Console.WriteLine();
                     Console.WriteLine("Ana dos Santos - a21801899");
@@ -42,7 +43,7 @@ namespace lp1_projetoFinal
                     Menu();
                     break;
 
-                case "d":
+                case ConsoleKey.D:
                     Console.WriteLine("Thank you for playing!");
                     Environment.Exit(0);
                     break;

@@ -10,8 +10,8 @@ namespace lp1_projetoFinal
 
             do
             {
-
                 Console.WriteLine("ingame wow!");
+
                i++;
                 
             }
