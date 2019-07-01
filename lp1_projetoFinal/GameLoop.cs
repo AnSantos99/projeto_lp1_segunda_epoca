@@ -6,16 +6,19 @@ namespace lp1_projetoFinal
     {
         public void Loop()
         {
-            int i = 0;
-
+           
+            ConsoleKey answer;
+            int hp = 2;
             do
             {
                 Console.WriteLine("ingame wow!");
 
-               i++;
-                
+
+                hp--;
+
+                answer = Console.ReadKey().Key;
             }
-            while (i == 0);
+            while (answer != ConsoleKey.Q && hp > 0);
         }
     }
 
