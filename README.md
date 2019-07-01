@@ -11,7 +11,7 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 ### Tasks by each group member:
 **Ana dos Santos -**
 
-**Diana Levay -**
+**Diana Levay -** initial gameloop logic, implementation of the menu and its options
 
 ### Describing the Solution approach:
 - which phases were implemented
