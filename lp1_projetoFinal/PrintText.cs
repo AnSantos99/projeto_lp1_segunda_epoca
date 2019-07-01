@@ -58,7 +58,7 @@ namespace lp1_projetoFinal
 
         }
 
-        public void gameText()
+        public void enemyAttackText()
         {
             Console.WriteLine("Select enemy to Attack:");
             Console.WriteLine("------------");
