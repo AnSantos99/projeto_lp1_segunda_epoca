@@ -130,7 +130,6 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Weapon (Name)");
             Console.WriteLine("Food (Name)");
-            Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             loop.Loop();

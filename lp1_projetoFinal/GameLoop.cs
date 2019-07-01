@@ -12,10 +12,16 @@ namespace lp1_projetoFinal
             {
                 PrintText gameInfo = new PrintText();
 
-                gameInfo.GameText();
+              //  gameInfo.GameText();
+
+                GameBoard drawBoard = new GameBoard();
+
+                drawBoard.RenderBoard();
 
                 answer = Console.ReadKey().Key;
                 hp--;
+
+
 
                 Console.Clear();
 
@@ -27,6 +33,9 @@ namespace lp1_projetoFinal
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.H)
                     gameInfo.HelpText();
+
+           
+                
             }
             while (answer != ConsoleKey.Q && hp > 0);
         }
