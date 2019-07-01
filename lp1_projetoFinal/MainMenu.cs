@@ -12,7 +12,7 @@ namespace lp1_projetoFinal
 
             PrintText menuInfo = new PrintText();
 
-            menuInfo.menuText();
+            menuInfo.MenuText();
             
 
             ConsoleKey answer;

@@ -13,12 +13,19 @@ namespace lp1_projetoFinal
             {
                 PrintText gameInfo = new PrintText();
 
-                gameInfo.gameText();
+                gameInfo.GameText();
 
                 answer = Console.ReadKey().Key;
                 hp--;
 
                 Console.Clear();
+
+                if (answer == ConsoleKey.L)
+                    gameInfo.LookAroundText();
+                if (answer == ConsoleKey.F)
+                    gameInfo.EnemyAttackText();
+                if (answer == ConsoleKey.H)
+                    gameInfo.HelpText();
             }
             while (answer != ConsoleKey.Q && hp > 0);
         }
