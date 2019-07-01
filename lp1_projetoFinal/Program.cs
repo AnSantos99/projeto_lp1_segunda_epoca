@@ -6,9 +6,8 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
-            GameLoop loop = new GameLoop();
-
-            loop.Loop();
+            MainMenu menu = new MainMenu();
+            menu.Menu();
 
         }
     }

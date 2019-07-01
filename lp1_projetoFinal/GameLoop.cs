@@ -6,13 +6,16 @@ namespace lp1_projetoFinal
     {
         public void Loop()
         {
+            int i = 0;
+
             do
             {
-                MainMenu menu = new MainMenu();
-                menu.Menu();
+
+                Console.WriteLine("ingame wow!");
+               i++;
                 
             }
-            while (true);
+            while (i == 0);
         }
     }
 
