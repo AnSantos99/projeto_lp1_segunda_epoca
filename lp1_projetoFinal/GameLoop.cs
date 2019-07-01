@@ -11,12 +11,14 @@ namespace lp1_projetoFinal
             int hp = 2;
             do
             {
-                Console.WriteLine("ingame wow!");
+                PrintText gameInfo = new PrintText();
 
-
-                hp--;
+                gameInfo.gameText();
 
                 answer = Console.ReadKey().Key;
+                hp--;
+
+                Console.Clear();
             }
             while (answer != ConsoleKey.Q && hp > 0);
         }

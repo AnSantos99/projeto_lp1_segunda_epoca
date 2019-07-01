@@ -8,13 +8,11 @@ namespace lp1_projetoFinal
         {
             Console.Clear();
             GameLoop loop = new GameLoop();
-            Console.WriteLine("Welcome to the game!");
-            Console.WriteLine();
-            Console.WriteLine("please select an option:");
-            Console.WriteLine("A. New Game");
-            Console.WriteLine("B. High Scores");
-            Console.WriteLine("C. Credits");
-            Console.WriteLine("D. Quit");
+
+
+            PrintText menuInfo = new PrintText();
+
+            menuInfo.menuText();
             
 
             ConsoleKey answer;

@@ -6,5 +6,9 @@ namespace lp1_projetoFinal
 {
     internal class Enemy : IHealthPoints
     {
+        public void Health()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
