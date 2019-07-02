@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class Program : GameBoard
+    class Program
     {
         static void Main(string[] args)
         {
