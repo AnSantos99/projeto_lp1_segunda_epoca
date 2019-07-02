@@ -20,7 +20,8 @@ namespace lp1_projetoFinal
             GameBoard.ColSize = Convert.ToInt32(args[3]);
 
             ConditionsChecker.CheckUserINvalidArgs(row, col);
-            ConditionsChecker.CheckUserInvalidArgNumbs(GameBoard.RowSize,GameBoard.ColSize);
+
+            ConditionsChecker.CheckUserInvalidArgNumbs(GameBoard.RowSize, GameBoard.ColSize);
 
             // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();

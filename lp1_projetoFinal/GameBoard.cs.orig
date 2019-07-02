@@ -4,16 +4,22 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    internal class GameBoard
+    class GameBoard
     {
-
-        internal  int exit;
-        
+<<<<<<< HEAD
         // public  int ColSize { get; set; }
         //public  int RowSize { get; set; }  
         
         internal static int RowSize;
         internal static int ColSize;
+=======
+
+        internal static int RowSize = 5;
+        internal static int ColSize = 5;
+        internal  int exit;
+        
+
+>>>>>>> backup
 
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
     
@@ -42,6 +48,7 @@ namespace lp1_projetoFinal
 
         public void RenderBoard()
         {
+
             // print the top row
             Console.Write($"   ");
             for (uint i = 0; i < ColSize; i++) Console.Write($"_[{i}]_|");
