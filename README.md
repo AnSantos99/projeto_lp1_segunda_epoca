@@ -9,9 +9,9 @@
 link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 ### Tasks by each group member:
-**Ana dos Santos -**
+**Ana dos Santos -** initial gameboard logic, 
 
-**Diana Levay -** initial gameloop logic, implementation of the menu and its options
+**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement
 
 ### Describing the Solution approach:
 - which phases were implemented
@@ -29,6 +29,8 @@ The following ".png" image contains the fluxogram showcasing the game loop of th
 
 ### References used for the development of this project:
 including idea exchanges, open code reused or based on (stack overflow, github, ...) and third party libraries, very detailed
+
+Some code from the first project we had done has been reutilised and restructured to fit this game's logic, especially when it came to setting up the board, we did not exchange ideas with any colleague this time, but we used some help from StackOverflow in order to implement the
 
 
 
