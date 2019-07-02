@@ -39,7 +39,7 @@ namespace lp1_projetoFinal
 
         public void Health()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Weight()

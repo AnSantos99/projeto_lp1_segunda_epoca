@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    internal class GameBoard
+    class GameBoard
     {
 
         // public  int ColSize { get; set; }
