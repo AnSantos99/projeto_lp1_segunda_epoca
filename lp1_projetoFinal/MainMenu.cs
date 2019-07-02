@@ -19,7 +19,7 @@ namespace lp1_projetoFinal
 
             switch (answer) {
                 case ConsoleKey.A:
-                    loop.Loop();
+                 //   loop.Loop();
                     break;
 
                 case ConsoleKey.B:
