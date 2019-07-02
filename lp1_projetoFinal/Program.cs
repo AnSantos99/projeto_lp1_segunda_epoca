@@ -8,9 +8,10 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
-
+            // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();
 
+            // call the Loop function to begin new game loop
             loop.Loop();
         }
     }

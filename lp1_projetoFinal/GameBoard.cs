@@ -7,8 +7,7 @@ namespace lp1_projetoFinal
     class GameBoard
     {
 
-        // public  int ColSize { get; set; }
-        //public  int RowSize { get; set; }  
+     
 
         internal static int RowSize = 2;
         internal static int ColSize = 6;
