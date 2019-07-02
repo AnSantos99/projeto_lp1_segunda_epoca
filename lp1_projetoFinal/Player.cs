@@ -6,11 +6,6 @@ namespace lp1_projetoFinal
 {
     internal class Player : IHealthPoints, IItems
     {
-<<<<<<< HEAD
-        double health = 100;
-
-       
-=======
         internal char name;
 
         internal Player(char name)
@@ -38,7 +33,6 @@ namespace lp1_projetoFinal
             }
         }
 
->>>>>>> upstream/master
         public void Health()
         {
             
