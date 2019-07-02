@@ -25,7 +25,6 @@ namespace lp1_projetoFinal
             }
 
             // Declare Variables BOARD
-
             Random random = new Random();
 
             int exit = random.Next(1, RowSize);

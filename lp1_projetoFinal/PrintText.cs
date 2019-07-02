@@ -3,10 +3,18 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
+    /// <summary>
+    /// this class contains 5 methods and has the purpose to store all the 
+    /// different texts that will be printed for each menu within the game 
+    /// it returns nothing
+    /// </summary>
     class PrintText
     {
 
-       
+       /// <summary>
+       /// this method's purpose is to store the initial game menu text, where
+       /// the user will be shown each option they can choose in the gameloop
+       /// </summary>
         public void MenuText()
         {
 
@@ -21,6 +29,11 @@ namespace lp1_projetoFinal
    
         }
   
+        /// <summary>
+        /// this method's use is to constantly print the information available
+        /// to the player at all times during a level, returning nothing
+        /// </summary>
+        /// <param name="player"> receives the current player's info</param>
         public void GameText(Player player)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -74,6 +87,10 @@ namespace lp1_projetoFinal
 
         }
 
+        /// <summary>
+        /// this method showcases the enemies around the player and allows them
+        /// to select one to attack when present
+        /// </summary>
         public void EnemyAttackText()
         {
             Console.WriteLine("--------------------------");
@@ -85,10 +102,16 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            Console.Clear();
     
 
         }
 
+        /// <summary>
+        /// this method shows information useful for the player that is extra
+        /// to the one they have on the main screen, depending on the items
+        /// they have found, weapons and their effects
+        /// </summary>
         public void HelpText()
         {
             Console.WriteLine("--------------------------");
@@ -112,10 +135,15 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-     
+            Console.Clear();
+
 
         }
 
+        /// <summary>
+        /// this menu shows the player the information pertraining their direct
+        /// surroundings in a moore view
+        /// </summary>
         public void LookAroundText()
         {
             Console.WriteLine("--------------------------");
@@ -131,9 +159,14 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            
+            Console.Clear();
+
         }
 
+        /// <summary>
+        /// this menu shows what the player currently owns and offers the 
+        /// options of picking, dropping and using items
+        /// </summary>
         public void InventoryText()
         {
             Console.WriteLine("--------------------------");
@@ -143,7 +176,8 @@ namespace lp1_projetoFinal
             Console.WriteLine("Food (Name)");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-         
+            Console.Clear();
+
         }
 
     }

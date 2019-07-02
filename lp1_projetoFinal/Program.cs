@@ -19,8 +19,10 @@ namespace lp1_projetoFinal
             ConditionsChecker.CheckUserINvalidArgs(row, col);
             ConditionsChecker.CheckUserInvalidArgNumbs(RowSize, ColSize);
 
+            // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();
 
+            // call the Loop function to begin new game loop
             loop.Loop();
         }
     }
