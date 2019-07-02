@@ -10,6 +10,7 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 ### Tasks by each group member:
 **Ana dos Santos -**
+Code Organization by creating classes and interfaces, creation of game flowchart with logic of our program.
 
 **Diana Levay -** initial gameloop logic, implementation of the menu and its options
 
@@ -23,7 +24,7 @@ The following ".png" image contains the UML diagram of the classes implemented f
 
 ### Fluxogram of the game loop:
 The following ".png" image contains the fluxogram showcasing the game loop of the project.
-![Fluxogram](URL)
+![Fluxogram](LP1_EP2_FlowChart.png)
 
 ### In summary / what we learned:
 
