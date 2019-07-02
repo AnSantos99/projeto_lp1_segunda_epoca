@@ -15,7 +15,7 @@ namespace lp1_projetoFinal
 
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
     
-            public void DefineBoard()
+        public void DefineBoard()
         {
             for (int i = 0; i < RowSize; i++)
             {
