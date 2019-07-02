@@ -10,7 +10,7 @@ namespace lp1_projetoFinal
         // public  int ColSize { get; set; }
         //public  int RowSize { get; set; }  
 
-        internal static int RowSize = 9;
+        internal static int RowSize = 2;
         internal static int ColSize = 6;
 
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
@@ -29,13 +29,13 @@ namespace lp1_projetoFinal
 
             Random random = new Random();
 
-            int exit = random.Next(1, 5);
+            int exit = random.Next(1, RowSize);
 
-            int playerStart = random.Next(1, 5);
+            int playerStart = random.Next(1, RowSize);
 
             cells[0, exit] = new BoardCells((char)Chars.exit);
 
-            cells[8, playerStart] = new BoardCells((char)Chars.player);
+            cells[RowSize-1, playerStart] = new BoardCells((char)Chars.player);
         }
 
         public void RenderBoard()
