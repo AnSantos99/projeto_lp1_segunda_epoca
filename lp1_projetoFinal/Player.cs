@@ -6,9 +6,12 @@ namespace lp1_projetoFinal
 {
     internal class Player : IHealthPoints, IItems
     {
+        double health = 100;
+
+       
         public void Health()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Weight()

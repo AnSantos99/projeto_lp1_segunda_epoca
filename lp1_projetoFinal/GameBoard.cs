@@ -4,12 +4,12 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    internal class GameBoard
+    class GameBoard
     {
         // 
         private const int CELLSIZE = 5;
 
-        static int[,] gameBoard;
+        static int[] gameBoard;
 
 
         /// <summary>
@@ -18,14 +18,13 @@ namespace lp1_projetoFinal
         public void Board()
         {
             // Declare Variables BOARD
-            gameBoard = new int[CELLSIZE, CELLSIZE];
-
-            const string MAPXCOORD = ("      1     2    3    4    5  ");
-            const string TOPLINE = "     --------------------------";
+                        
+            //const string MAPXCOORD = ("      1     2    3    4    5  ");
+            const string TOPLINE = "~~~~~ ~~~~~ ~~~~~ ~~~~~ ~~~~~ ~~~~~ ~~~~~";
             const string SIDELINE = "    |    |    |    |    |    |";
             string[] yCoordLetters = { "A", "B", "C", "D", "E" };
 
-            Console.WriteLine($"{MAPXCOORD}");
+            //Console.WriteLine($"{MAPXCOORD}");
 
             for (int i = 0; i < CELLSIZE; i++)
             {

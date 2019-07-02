@@ -13,7 +13,6 @@ namespace lp1_projetoFinal
             int hp = 2;
             do
             {
-
                 Console.WriteLine();
                 Console.WriteLine("ingame wow!");
 
