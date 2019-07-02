@@ -9,11 +9,9 @@ namespace lp1_projetoFinal
             Console.Clear();
             GameLoop loop = new GameLoop();
 
-
             PrintText menuInfo = new PrintText();
 
-            menuInfo.menuText();
-            
+            menuInfo.MenuText();
 
             ConsoleKey answer;
             answer = Console.ReadKey().Key;

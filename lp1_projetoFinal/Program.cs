@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class Program
+    class Program : GameBoard
     {
         static void Main(string[] args)
         {
@@ -53,10 +53,11 @@ namespace lp1_projetoFinal
                 Console.WriteLine("|");
             }
             */
-            
+
 
             MainMenu menu = new MainMenu();
             menu.Menu();
+
 
         }
     }
