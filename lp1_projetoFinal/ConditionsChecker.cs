@@ -6,6 +6,11 @@ namespace lp1_projetoFinal
 {
     internal class ConditionsChecker
     {
+
+        public static void ArgCheck(string col, int colNum, string row, int rowNum)
+        {
+            
+        }
         /// <summary>
         /// Check for invalid user inputs
         /// </summary>
@@ -13,25 +18,42 @@ namespace lp1_projetoFinal
         /// <param name="col"> check the col key input</param>
         public static void CheckUserINvalidArgs(string row, string col)
         {
-            // If user input is smaller or equal to 0
-            if (row.Length <= 0)
-                Console.WriteLine("No input detected"); Environment.Exit(0);
-
-            if (col.Length <= 0)
-                Console.WriteLine("No input detected"); Environment.Exit(0);
-
+            
             // If user input is not equal to the wished arguments
             if (row != "-r")
-                Console.WriteLine("Invalid input"); Environment.Exit(0);
+            {
+                Console.WriteLine("Invalid input. Please write: '-r (number)' ");
+                Environment.Exit(0);
+            }
+
 
             if (col != "-c")
-                Console.WriteLine("-c"); Environment.Exit(0);
+            {
+                Console.WriteLine("Invalid input. Please write: '-c (number)' ");
+                Environment.Exit(0);
+            }
 
-            // If user key input is bigger than 2 
-            if (row.Length > 2 && col.Length > 2)
-                Console.WriteLine("Invalid input"); Environment.Exit(0);
+            
+                
         }
 
+        public static void CheckUserInvalidArgNumbs(int row, int col)
+        {
+            // If user input is smaller or equal to 0
+            if (row <= 0 && col <= 0)
+                Console.WriteLine("No input detected"); Environment.Exit(0);
+
+            // If input is greater than 10
+            if (row >= 10 && col >= 10)
+            {
+                Console.WriteLine("Size out of range. Please choose a number" +
+                    "between 6 and 10 for row and column");
+
+                Environment.Exit(0);
+            }
+                
+
+        }
 
         /// <summary>
         /// Check user valid arguments

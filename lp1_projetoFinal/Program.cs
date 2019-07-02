@@ -12,9 +12,12 @@ namespace lp1_projetoFinal
             string row = args[0];
             string col = args[2];
 
-            // Get value
+            // Get value of map
             GameBoard.RowSize = Convert.ToInt32(args[1]);
             GameBoard.ColSize = Convert.ToInt32(args[3]);
+
+            ConditionsChecker.CheckUserINvalidArgs(row, col);
+            ConditionsChecker.CheckUserInvalidArgNumbs(RowSize, ColSize);
 
             GameLoop loop = new GameLoop();
 
