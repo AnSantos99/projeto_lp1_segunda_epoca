@@ -6,15 +6,23 @@ namespace lp1_projetoFinal
 {
     class GameBoard
     {
+
+        internal static int RowSize = 5;
+        internal static int ColSize = 5;
+        internal  int exit;
+        
         // public  int ColSize { get; set; }
         //public  int RowSize { get; set; }  
         
         internal static int RowSize;
         internal static int ColSize;
 
+        internal static int RowSize = 2;
+        internal static int ColSize = 6;
+
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
     
-        public void DefineBoard()
+        public void DefineBoard(Player player)
         {
             for (int i = 0; i < RowSize; i++)
             {
@@ -27,13 +35,14 @@ namespace lp1_projetoFinal
             // Declare Variables BOARD
             Random random = new Random();
 
-            int exit = random.Next(1, RowSize);
+            exit = random.Next(1, RowSize);
 
             int playerStart = random.Next(1, RowSize);
 
-            cells[0, exit] = new BoardCells((char)Chars.exit);
+            cells[RowSize - 1, exit] = new BoardCells((char)Chars.exit);
 
-            cells[RowSize-1, playerStart] = new BoardCells((char)Chars.player);
+            cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+            
         }
 
         public void RenderBoard()
@@ -78,13 +87,5 @@ namespace lp1_projetoFinal
 
  
         }
-
-        internal BoardCells GetBoardCells(Position position)
-        {
-            return cells[position.Row, position.Col];
-        }
-
-        
-
     }
 }

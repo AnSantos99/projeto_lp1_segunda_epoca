@@ -15,6 +15,8 @@ namespace lp1_projetoFinal
         
         // define player's health so we can manipulate it
         internal int health;
+
+        internal Position position;
         
         //internal Position position;
 
@@ -24,12 +26,12 @@ namespace lp1_projetoFinal
         /// </summary>
         /// <param name="name">to identify on other parts of code</param>
         /// <param name="health">default to 100</param>
-        internal Player(char name, int health /*Position position*/)
+        internal Player(char name, int health, Position position)
         {
             this.name = name;
             this.health = health;
-           
-            // this.position = position;
+            this.position = position;
+       
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace lp1_projetoFinal
         /// </summary>
         /// <param name="board">obtain current board player is in</param>
         /// <returns>the target coordinate to place player on</returns>
-        internal static Position GetPosition(GameBoard board)
+        /*internal static Position GetPosition(GameBoard board)
         {
             string position = Console.ReadLine();
 
@@ -47,7 +49,7 @@ namespace lp1_projetoFinal
             Position targetCoordinate = PositionForNumber(position);
 
             return targetCoordinate;
-        }
+        }*/
 
         /// <summary>
         /// 
@@ -69,8 +71,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public int Health(int healthChange)
         {
-            if (healthChange < 0)
-                health += healthChange;
+            health += healthChange;
             return health;
         }
 

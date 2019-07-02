@@ -6,7 +6,6 @@ namespace lp1_projetoFinal
 {
     internal class BoardCells
     {
-        SequencePosition position;
         char name;
 
         internal BoardCells() : this(' ') { }
