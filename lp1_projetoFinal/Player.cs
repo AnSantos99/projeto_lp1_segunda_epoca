@@ -7,10 +7,14 @@ namespace lp1_projetoFinal
     internal class Player : IHealthPoints, IItems
     {
         internal char name;
+        internal int health;
+        //internal Position position;
 
-        internal Player(char name)
+        internal Player(char name, int health /*Position position*/)
         {
             this.name = name;
+            this.health = health;
+           // this.position = position;
         }
 
         internal static Position GetPosition(GameBoard board)

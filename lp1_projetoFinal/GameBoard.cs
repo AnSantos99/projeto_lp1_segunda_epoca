@@ -7,23 +7,17 @@ namespace lp1_projetoFinal
     internal class GameBoard
     {
 
-       // public  int ColSize { get; set; }
+        // public  int ColSize { get; set; }
         //public  int RowSize { get; set; }  
 
-        internal BoardCells[,] cells;
+        internal static int RowSize = 9;
+        internal static int ColSize = 6;
+
+        internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
     
-        /// <summary>
-        /// Function to draw board
-        /// </summary>
-        public void RenderBoard()
+            public void DefineBoard()
         {
-            int RowSize = 9;
-            int ColSize = 6;
-            
-
-            cells = new BoardCells[RowSize, ColSize];
-
-            for(int i = 0; i < RowSize;  i++)
+            for (int i = 0; i < RowSize; i++)
             {
                 for (int j = 0; j < ColSize; j++)
                 {
@@ -32,16 +26,20 @@ namespace lp1_projetoFinal
             }
 
             // Declare Variables BOARD
-            
+
             Random random = new Random();
 
-            int exit = random.Next(1,5);
+            int exit = random.Next(1, 5);
 
             int playerStart = random.Next(1, 5);
 
             cells[0, exit] = new BoardCells((char)Chars.exit);
 
             cells[8, playerStart] = new BoardCells((char)Chars.player);
+        }
+
+        public void RenderBoard()
+        {
 
             // print the top row
             Console.Write($"   ");
@@ -54,8 +52,7 @@ namespace lp1_projetoFinal
             {
                 Console.Write("  |");
                 for (uint x = 0; x < ColSize; x++)
-                {
-                    
+                {    
                     Console.Write("     |");
                 }
 
@@ -88,6 +85,8 @@ namespace lp1_projetoFinal
         {
             return cells[position.Row, position.Col];
         }
+
+        
 
     }
 }
