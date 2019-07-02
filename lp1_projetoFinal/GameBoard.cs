@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class GameBoard
+    internal class GameBoard
     {
         // public  int ColSize { get; set; }
         //public  int RowSize { get; set; }  
@@ -38,7 +38,6 @@ namespace lp1_projetoFinal
 
         public void RenderBoard()
         {
-
             // print the top row
             Console.Write($"   ");
             for (uint i = 0; i < ColSize; i++) Console.Write($"_[{i}]_|");
@@ -79,12 +78,6 @@ namespace lp1_projetoFinal
  
         }
 
-        internal BoardCells GetBoardCells(Position position)
-        {
-            return cells[position.Row, position.Col];
-        }
-
-        
 
     }
 }

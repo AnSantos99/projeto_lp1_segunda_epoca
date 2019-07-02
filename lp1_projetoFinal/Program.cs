@@ -4,10 +4,13 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class Program : GameBoard
+    class Program
     {
         static void Main(string[] args)
         {
+            // Declare variable
+            GameBoard board = new GameBoard();
+
             // Get key pairs
             string row = args[0];
             string col = args[2];
@@ -17,7 +20,7 @@ namespace lp1_projetoFinal
             GameBoard.ColSize = Convert.ToInt32(args[3]);
 
             ConditionsChecker.CheckUserINvalidArgs(row, col);
-            ConditionsChecker.CheckUserInvalidArgNumbs(RowSize, ColSize);
+            ConditionsChecker.CheckUserInvalidArgNumbs(GameBoard.RowSize,GameBoard.ColSize);
 
             // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();

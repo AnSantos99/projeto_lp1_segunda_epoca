@@ -2,7 +2,7 @@ using System;
 
 namespace lp1_projetoFinal
 {
-    class MainMenu
+    internal class MainMenu
     {
         public void Menu()
         {
