@@ -63,23 +63,22 @@ namespace lp1_projetoFinal
                 board.RenderBoard();
 
                 // showcase player's current stats through level progression
-                gameInfo.GameText(player);
+              //  gameInfo.GameText(player);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
-
-                //PLACEHOLDER FOR CONDITION
-                //player.health--;
 
                 // clear console for ease of view
                 Console.Clear();
 
                 // check the answer given by the player
                 // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
+
+
                 if (answer == ConsoleKey.S)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Row++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
@@ -87,7 +86,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.W)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Row--;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
@@ -95,7 +94,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.A)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col--;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
@@ -103,7 +102,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
@@ -111,7 +110,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.Q)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col--;
                     player.position.Row--;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
@@ -120,7 +119,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.E)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col++;
                     player.position.Row--;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
@@ -129,7 +128,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.Z)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col--;
                     player.position.Row++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
@@ -138,7 +137,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.X)
                 {
                     player.Health(-2);
-                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Col++;
                     player.position.Row++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);

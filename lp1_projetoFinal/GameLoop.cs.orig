@@ -3,65 +3,166 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class GameLoop
+    internal class GameLoop
     {
+        /// create a new gameboard for this level
         internal static GameBoard board = new GameBoard();
-        Player player = new Player((char) Chars.player, 100);
 
+        // initiate a new player for the level with max HP
+
+        Player player;
+
+        Position playerPosition;
+
+        // initiate the main menu class
         internal MainMenu menu = new MainMenu();
 
-        bool start = false;
+        // start of game is set to false until menu start toggles it to be true
+        private bool start = false;
        
+        /// <summary>
+        /// this method contains the main loop cycle for the game, showing the
+        /// start menu and registering player input for each action every turn,
+        /// finishing whenever someone wins, loses or quits
+        /// it returns nothing
+        /// </summary>
         public void Loop()
         {
+            // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
 
-            if (!start) { menu.Menu(); board.DefineBoard(); }
-
-            start = true;
-
-            Console.OutputEncoding = Encoding.UTF8;
-
-            ConsoleKey answer;
-           
-     
-            do
-<<<<<<< HEAD
-            {       
-                   
-=======
+            // only show the menu and create board at startup
+            if (!start)
             {
-                Console.WriteLine();
-                Console.WriteLine("ingame wow!");
+                menu.Menu();
 
-                PrintText gameInfo = new PrintText();
+                Random random = new Random();
 
-              //  gameInfo.GameText();
+                int playerStart = random.Next(1, 6);
 
-                board = new GameBoard();
+                playerPosition = new Position(1, playerStart);
 
->>>>>>> b2583bcefa140aec59b315c177edc112b74aaa8b
-                board.RenderBoard();
+                player = new Player((char)Chars.player, 100, playerPosition);
 
-                gameInfo.GameText(player);
-
-                answer = Console.ReadKey().Key;
-                player.health--;
-
-                Console.Clear();
-                if (answer == ConsoleKey.DownArrow)
-
-                 if (answer == ConsoleKey.L)
-                    gameInfo.LookAroundText();
-                if (answer == ConsoleKey.E || answer == ConsoleKey.U || answer == ConsoleKey.D)
-                    gameInfo.InventoryText();
-                if (answer == ConsoleKey.F)
-                    gameInfo.EnemyAttackText();
-                if (answer == ConsoleKey.H)
-                    gameInfo.HelpText();
+                board.DefineBoard(player);
                 
             }
-            while (answer != ConsoleKey.Q && player.health > 0);
+
+            // set start to true to hide menu and set the board
+            start = true;
+
+            // to use unicode characters on the console's output
+            Console.OutputEncoding = Encoding.UTF8;
+
+            // for reading the player's input
+            ConsoleKey answer;
+
+            do
+            {
+                // render the board anew each time the cycle loops    
+                board.RenderBoard();
+
+                // showcase player's current stats through level progression
+                gameInfo.GameText(player);
+
+                // read user's single key input
+                answer = Console.ReadKey().Key;
+
+                //PLACEHOLDER FOR CONDITION
+                //player.health--;
+
+                // clear console for ease of view
+                Console.Clear();
+
+                // check the answer given by the player
+                // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
+                if (answer == ConsoleKey.S)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Row++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.W)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Row--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.A)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.D)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+<<<<<<< HEAD
+                if (answer == ConsoleKey.Q)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col--;
+                    player.position.Row--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.E)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col++;
+                    player.position.Row--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.Z)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col--;
+                    player.position.Row++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.X)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col++;
+                    player.position.Row++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+=======
+>>>>>>> 0c0a0c1ec5a934ec4bd350ac8ee0f9aa7a991cd5
+
+                if (answer == ConsoleKey.L)
+                    gameInfo.LookAroundText();
+                if (answer == ConsoleKey.D2 || answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
+                    gameInfo.InventoryText();
+                if (answer == ConsoleKey.D1)
+                    gameInfo.EnemyAttackText();
+                if (answer == ConsoleKey.D6)
+                    gameInfo.HelpText();
+
+                if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
+                    Environment.Exit(0);
+            }
+            // run the loop while the player hasn't won, lost or quit
+            while (answer != ConsoleKey.D8 && player.health > 0);
+
+          
         }
     }
 
