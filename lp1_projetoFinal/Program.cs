@@ -8,7 +8,11 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
+            GameLoop loop = new GameLoop();
 
+            loop.Loop();
+
+            /*
             uint rowArgCheck;
             rowArgCheck = Convert.ToUInt32(args[1]);
 
@@ -55,8 +59,6 @@ namespace lp1_projetoFinal
             */
 
 
-            MainMenu menu = new MainMenu();
-            menu.Menu();
 
 
         }

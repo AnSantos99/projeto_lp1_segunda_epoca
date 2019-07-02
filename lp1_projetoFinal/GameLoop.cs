@@ -1,13 +1,31 @@
 using System;
+using System.Text;
 
 namespace lp1_projetoFinal
 {
     class GameLoop
     {
+        internal static GameBoard board;
+        internal static Player player;
+
+        internal MainMenu menu = new MainMenu();
+
+        bool start = false;
+
         public void Loop()
         {
+
+            if (!start) { menu.Menu(); }
+
+            start = true;
+
+
+            Console.OutputEncoding = Encoding.UTF8;
+
             ConsoleKey answer;
             int hp = 2;
+
+       
             do
             {
                 Console.WriteLine();
@@ -17,18 +35,19 @@ namespace lp1_projetoFinal
 
               //  gameInfo.GameText();
 
-                GameBoard drawBoard = new GameBoard();
+                board = new GameBoard();
 
-                drawBoard.RenderBoard();
+                board.RenderBoard();
+
+                Position position = Player.GetPosition(board);
 
                 answer = Console.ReadKey().Key;
                 hp--;
 
-
-
                 Console.Clear();
+                if (answer == ConsoleKey.DownArrow)
 
-                if (answer == ConsoleKey.L)
+                 if (answer == ConsoleKey.L)
                     gameInfo.LookAroundText();
                 if (answer == ConsoleKey.E || answer == ConsoleKey.U || answer == ConsoleKey.D)
                     gameInfo.InventoryText();
