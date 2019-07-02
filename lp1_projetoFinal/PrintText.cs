@@ -68,21 +68,21 @@ namespace lp1_projetoFinal
             Console.WriteLine("Options:");
             Console.WriteLine("------------");
             Console.Write("\u2196\u2191\u2197   ");
-            Console.Write("     Attack Enemy(F)  ");
-            Console.Write("Pick up Item(E)   ");
-            Console.Write("Use Item(U)   ");
-            Console.WriteLine("Drop Item(D)   ");
+            Console.Write("     Attack Enemy(1)  ");
+            Console.Write("Pick up Item(2)   ");
+            Console.Write("Use Item(3)   ");
+            Console.WriteLine("Drop Item(4)   ");
 
             Console.Write("\u2190 \u2192 Move   ");
-            Console.Write("Look Around(L)   ");
-            Console.WriteLine("Help(H)");
+            Console.Write("Look Around(5)   ");
+            Console.WriteLine("Help(6)");
 
             Console.Write("\u2199\u2193\u2198   "); 
             
             
-            Console.Write("     Save Game(S)     ");
+            Console.Write("     Save Game(7)     ");
            
-            Console.WriteLine("Quit Game(Q)");
+            Console.WriteLine("Quit Game(8)");
    
 
         }

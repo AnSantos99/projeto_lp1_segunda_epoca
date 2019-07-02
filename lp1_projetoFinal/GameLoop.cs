@@ -74,7 +74,7 @@ namespace lp1_projetoFinal
 
                 // check the answer given by the player
                 // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
-                if (answer == ConsoleKey.DownArrow)
+                if (answer == ConsoleKey.S)
                 {
                     player.Health(-2);
                     board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
@@ -82,7 +82,7 @@ namespace lp1_projetoFinal
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
 
-                if (answer == ConsoleKey.UpArrow)
+                if (answer == ConsoleKey.W)
                 {
                     player.Health(-2);
                     board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
@@ -90,7 +90,7 @@ namespace lp1_projetoFinal
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
 
-                if (answer == ConsoleKey.LeftArrow)
+                if (answer == ConsoleKey.A)
                 {
                     player.Health(-2);
                     board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
@@ -98,7 +98,7 @@ namespace lp1_projetoFinal
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
 
-                if (answer == ConsoleKey.RightArrow)
+                if (answer == ConsoleKey.D)
                 {
                     player.Health(-2);
                     board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
@@ -106,20 +106,56 @@ namespace lp1_projetoFinal
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
 
+                if (answer == ConsoleKey.Q)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col--;
+                    player.position.Row--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.E)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col++;
+                    player.position.Row--;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.Z)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col--;
+                    player.position.Row++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
+                if (answer == ConsoleKey.X)
+                {
+                    player.Health(-2);
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.empty);
+                    player.position.Col++;
+                    player.position.Row++;
+                    board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
+                }
+
                 if (answer == ConsoleKey.L)
                     gameInfo.LookAroundText();
-                if (answer == ConsoleKey.E || answer == ConsoleKey.U || answer == ConsoleKey.D)
+                if (answer == ConsoleKey.D2 || answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
                     gameInfo.InventoryText();
-                if (answer == ConsoleKey.F)
+                if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
-                if (answer == ConsoleKey.H)
+                if (answer == ConsoleKey.D6)
                     gameInfo.HelpText();
 
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                     Environment.Exit(0);
             }
             // run the loop while the player hasn't won, lost or quit
-            while (answer != ConsoleKey.Q && player.health > 0);
+            while (answer != ConsoleKey.D8 && player.health > 0);
 
           
         }
