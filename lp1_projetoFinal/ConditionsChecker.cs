@@ -6,16 +6,17 @@ namespace lp1_projetoFinal
 {
     internal class ConditionsChecker
     {
-
-        public static void ArgCheck(string col, int colNum, string row, int rowNum)
+        
+        public static void ArgsCheck(string argKey1, int argVal1, string argKey2, int argVal2 )
         {
             
         }
+
         /// <summary>
-        /// Check for invalid user inputs
+        /// Function to check for invalid user input
         /// </summary>
-        /// <param name="row"> check the row key input</param>
-        /// <param name="col"> check the col key input</param>
+        /// <param name="row"> check the row KEY input</param>
+        /// <param name="col"> check the col KEY input</param>
         public static void CheckUserINvalidArgs(string row, string col)
         {
             
@@ -23,36 +24,53 @@ namespace lp1_projetoFinal
             if (row != "-r")
             {
                 Console.WriteLine("Invalid input. Please write: '-r (number)' ");
+
                 Environment.Exit(0);
             }
 
-
+            // Check if user input is diferent than wished argument
             if (col != "-c")
             {
                 Console.WriteLine("Invalid input. Please write: '-c (number)' ");
-                Environment.Exit(0);
-            }
 
-            
-                
+                Environment.Exit(0);
+            }    
         }
 
+        /// <summary>
+        /// Check user Invalid number arguments
+        /// </summary>
+        /// <param name="row"> Get number from args[1]</param>
+        /// <param name="col"> Get number from args[3]</param>
         public static void CheckUserInvalidArgNumbs(int row, int col)
         {
-            // If user input is smaller or equal to 0
-            if (row <= 0 && col <= 0)
-                Console.WriteLine("No input detected"); Environment.Exit(0);
-
-            // If input is greater than 10
-            if (row >= 10 && col >= 10)
+            // If user input is smaller or equal to 6
+            if (row <= 6 && col <= 6)
             {
-                Console.WriteLine("Size out of range. Please choose a number" +
-                    "between 6 and 10 for row and column");
+                Console.WriteLine();
+                Console.WriteLine("Invalid input. Please choose number for" +
+                    "row and column equal or above 6 for a better " +
+                    "game experience.");
 
                 Environment.Exit(0);
             }
-                
 
+            // Check if user input is above 10
+            if (row > 10)
+            {
+                Console.WriteLine("Size out of range. Please choose number " +
+                    "between 6 and 10 for row.");
+
+                Environment.Exit(0);
+            }
+
+            else if (col > 10)
+            {
+                Console.WriteLine("Size out of range. Please choose number " +
+                    "between 6 and 10 for column.");
+
+                Environment.Exit(0);
+            }
         }
 
         /// <summary>
@@ -61,9 +79,7 @@ namespace lp1_projetoFinal
         /// <param name="row"> Get row</param>
         /// <param name="col"> Get column</param>
         public static void CheckValidUserArgs(string row, string col)
-        {
-            GameBoard drawBoard = new GameBoard();
-            
+        {          
             if (row == "-r" && col == "-c")
             {
                 
