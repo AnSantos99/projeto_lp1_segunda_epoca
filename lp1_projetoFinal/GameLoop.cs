@@ -61,7 +61,7 @@ namespace lp1_projetoFinal
                 board.RenderBoard();
 
                 // showcase player's current stats through level progression
-             //   gameInfo.GameText(player);
+                gameInfo.GameText(player);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
@@ -115,7 +115,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.H)
                     gameInfo.HelpText();
 
-                if (board.cells[player.position.Row, player.position.Col] == board.cells[5 - 1, board.exit])
+                if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                     Environment.Exit(0);
             }
             // run the loop while the player hasn't won, lost or quit
