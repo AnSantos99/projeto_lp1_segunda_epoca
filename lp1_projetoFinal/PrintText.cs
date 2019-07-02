@@ -6,8 +6,7 @@ namespace lp1_projetoFinal
     class PrintText
     {
 
-        GameLoop loop = new GameLoop();
-
+       
         public void MenuText()
         {
 
@@ -56,7 +55,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("Options:");
             Console.WriteLine("------------");
             Console.Write("\u2196\u2191\u2197   ");
-            Console.Write("Attack Enemy(F)   ");
+            Console.Write("     Attack Enemy(F)  ");
             Console.Write("Pick up Item(E)   ");
             Console.Write("Use Item(U)   ");
             Console.WriteLine("Drop Item(D)   ");
@@ -68,7 +67,7 @@ namespace lp1_projetoFinal
             Console.Write("\u2199\u2193\u2198   "); 
             
             
-            Console.Write("Save Game(S)   ");
+            Console.Write("     Save Game(S)     ");
            
             Console.WriteLine("Quit Game(Q)");
    
@@ -86,7 +85,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            loop.Loop();
+    
 
         }
 
@@ -113,7 +112,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            loop.Loop();
+     
 
         }
 
@@ -132,7 +131,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            loop.Loop();
+            
         }
 
         public void InventoryText()
@@ -144,7 +143,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("Food (Name)");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            loop.Loop();
+         
         }
 
     }
