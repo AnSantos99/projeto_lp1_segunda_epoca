@@ -8,6 +8,9 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
+            // Declare variable
+            GameBoard board = new GameBoard();
+
             // Get key pairs
             string row = args[0];
             string col = args[2];
@@ -17,6 +20,7 @@ namespace lp1_projetoFinal
             GameBoard.ColSize = Convert.ToInt32(args[3]);
 
             ConditionsChecker.CheckUserINvalidArgs(row, col);
+
             ConditionsChecker.CheckUserInvalidArgNumbs(GameBoard.RowSize, GameBoard.ColSize);
 
             // initialise new GameLoop to run the application

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class GameBoard
+    internal class GameBoard
     {
 
         internal  int exit;
@@ -42,7 +42,6 @@ namespace lp1_projetoFinal
 
         public void RenderBoard()
         {
-
             // print the top row
             Console.Write($"   ");
             for (uint i = 0; i < ColSize; i++) Console.Write($"_[{i}]_|");

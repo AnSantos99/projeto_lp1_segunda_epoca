@@ -3,11 +3,13 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    class GameLoop
+    internal class GameLoop
     {
         /// create a new gameboard for this level
         internal static GameBoard board = new GameBoard();
+
         // initiate a new player for the level with max HP
+
         Player player;
 
         Position playerPosition;
@@ -16,7 +18,7 @@ namespace lp1_projetoFinal
         internal MainMenu menu = new MainMenu();
 
         // start of game is set to false until menu start toggles it to be true
-        bool start = false;
+        private bool start = false;
        
         /// <summary>
         /// this method contains the main loop cycle for the game, showing the
@@ -141,6 +143,7 @@ namespace lp1_projetoFinal
                     player.position.Row++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
                 }
+
 
                 if (answer == ConsoleKey.L)
                     gameInfo.LookAroundText();
