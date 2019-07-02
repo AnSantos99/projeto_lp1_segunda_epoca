@@ -11,7 +11,7 @@ namespace lp1_projetoFinal
         //public  int RowSize { get; set; }  
 
         internal BoardCells[,] cells;
-    
+        
         /// <summary>
         /// Function to draw board
         /// </summary>
