@@ -1,12 +1,15 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
     internal class GameLoop
     {
-        /// create a new gameboard for this level
+
+        internal int lvlCount = 0;
+
+        internal int chosenDiff = 2;
+
         internal static GameBoard board = new GameBoard();
 
         internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
@@ -25,7 +28,9 @@ namespace lp1_projetoFinal
 
         // start of game is set to false until menu start toggles it to be true
         private bool start = false;
-       
+
+        internal Levels newLevel;
+
         /// <summary>
         /// this method contains the main loop cycle for the game, showing the
         /// start menu and registering player input for each action every turn,
@@ -34,6 +39,8 @@ namespace lp1_projetoFinal
         /// </summary>
         public void Loop()
         {
+
+            newLevel = new Levels(lvlCount, chosenDiff);
             // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
 
@@ -59,12 +66,10 @@ namespace lp1_projetoFinal
                 itemList.Add(exit);
                 itemList.Add(map);
             }
+            
 
             // set start to true to hide menu and set the board
             start = true;
-
-            // to use unicode characters on the console's output
-            Console.OutputEncoding = Encoding.UTF8;
 
             // for reading the player's input
             ConsoleKey answer;
@@ -72,7 +77,7 @@ namespace lp1_projetoFinal
             do
             {
                 // render the board anew each time the cycle loops    
-                board.RenderBoard();
+                board.RenderBoard(newLevel);
 
                 // showcase player's current stats through level progression
                 gameInfo.GameText(player);
@@ -103,10 +108,9 @@ namespace lp1_projetoFinal
                             board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
                         }
                         }
-
                 }
 
-
+                
                 if (answer == ConsoleKey.S)
                 {
                     player.Health(-1);
@@ -176,32 +180,42 @@ namespace lp1_projetoFinal
                 }
 
 
-                if (answer == ConsoleKey.L)
-                    gameInfo.LookAroundText();
                 if (answer == ConsoleKey.D2 || answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
-                   
-                        foreach (CurrentMapObjects item in itemList)
+                 {
+                    foreach (CurrentMapObjects item in itemList)
+                    {
+                        if (board.cells[player.position.Row, player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
+
                         {
-                            if (board.cells[player.position.Row, player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
-                                
-                                
-                        foreach (CurrentMapObjects items in itemList)
-                        {
-                                
+                            foreach (CurrentMapObjects items in itemList)
+                            {
+
                                 board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name);
                                 board.cells[playerPosition.Row, playerPosition.Col] = new BoardCells((char)Chars.player);
 
-
-
                             }
-                       
+
+                        }
                     }
+                       
+                 }
                 //gameInfo.InventoryText();
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
                     gameInfo.HelpText(board.traps);
 
+                // NOT WORKING SEE WHY
+                /*
+                foreach(Trap trap in board.traps)
+                {
+                    if (trap.FallenInto(player))
+                    {
+                        Environment.Exit(0);
+                    }
+                 }
+                 */
+                
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                 {
                     Console.WriteLine("Congratulations! you've reached the exit!");
@@ -210,16 +224,18 @@ namespace lp1_projetoFinal
                     Console.Clear();
                     start = true;
                     board.DefineBoard(player);
+                    lvlCount++;
                     Loop();
+            
                 }
             }
+
             // run the loop while the player hasn't won, lost or quit
             while (answer != ConsoleKey.D8 && player.health > 0);
 
             Console.WriteLine("Too bad!!you lost the game!");
             Environment.Exit(0);
-
-
+    
         }
     }
 

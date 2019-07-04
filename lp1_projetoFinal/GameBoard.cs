@@ -44,6 +44,9 @@ namespace lp1_projetoFinal
                 cells[trap.Position.Row, trap.Position.Col] = new BoardCells((char)Chars.trap);
             }
 
+            
+
+
             // Declare Variables BOARD
             Random random = new Random();
 
@@ -61,9 +64,11 @@ namespace lp1_projetoFinal
             
         }
 
-        public void RenderBoard()
+        public void RenderBoard(Levels lvl)
         {
-           
+
+            Console.WriteLine($"Level {lvl.Current} : Difficulty {lvl.Diff} : Size {RowSize}x{ColSize}");
+
             // print the top row
             Console.Write($"   ");
             for (uint i = 0; i < ColSize; i++) Console.Write($"_[{i}]_|");
