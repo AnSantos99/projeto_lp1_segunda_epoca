@@ -63,7 +63,7 @@ namespace lp1_projetoFinal
                 board.RenderBoard();
 
                 // showcase player's current stats through level progression
-              //  gameInfo.GameText(player);
+                gameInfo.GameText(player);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
@@ -74,10 +74,23 @@ namespace lp1_projetoFinal
                 // check the answer given by the player
                 // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
 
+                if (answer == ConsoleKey.C)
+                {
+                    if(board.cells[player.position.Row-1, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row + 1, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row, player.position.Col + 1] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row, player.position.Col - 1] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row - 1, player.position.Col - 1] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row + 1, player.position.Col + 1] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row - 1, player.position.Col + 1] == board.cells[GameBoard.RowSize - 1, board.exit] ||
+                        board.cells[player.position.Row + 1, player.position.Col - 1] == board.cells[GameBoard.RowSize - 1, board.exit])
+                    board.cells[board.exitPosition.Row, board.exitPosition.Col] = new BoardCells((char)Chars.exit);
+                   
+                }
 
                 if (answer == ConsoleKey.S)
                 {
-                    player.Health(-2);
+                    player.Health(-1);
                     board.cells[player.position.Row, player.position.Col] = new BoardCells((char)Chars.path);
                     player.position.Row++;
                     board.cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
@@ -154,12 +167,23 @@ namespace lp1_projetoFinal
                     gameInfo.HelpText();
 
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
-                    Environment.Exit(0);
+                {
+                    Console.WriteLine("Congratulations! you've reached the exit!");
+                    Console.WriteLine("Press any key to continue to the next level");
+                    Console.ReadKey();
+                    Console.Clear();
+                    start = true;
+                    board.DefineBoard(player);
+                    Loop();
+                }
             }
             // run the loop while the player hasn't won, lost or quit
             while (answer != ConsoleKey.D8 && player.health > 0);
 
-          
+            Console.WriteLine("Too bad!!you lost the game!");
+            Environment.Exit(0);
+
+
         }
     }
 
