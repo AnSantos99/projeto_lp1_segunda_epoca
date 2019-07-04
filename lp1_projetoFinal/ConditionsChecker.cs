@@ -40,8 +40,8 @@ namespace lp1_projetoFinal
         /// <summary>
         /// Check user Invalid number arguments
         /// </summary>
-        /// <param name="row"> Get number from args[1]</param>
-        /// <param name="col"> Get number from args[3]</param>
+        /// <param name="row"> Get number from args in position[1]</param>
+        /// <param name="col"> Get number from args in position[3]</param>
         public static void CheckUserInvalidArgNumbs(int row, int col)
         {
             // If user input is smaller or equal to 6

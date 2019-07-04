@@ -28,6 +28,9 @@ namespace lp1_projetoFinal
 
         // start of game is set to false until menu start toggles it to be true
         private bool start = false;
+
+        // initiate the player score
+        internal GameScoreFiles score;
        
         /// <summary>
         /// this method contains the main loop cycle for the game, showing the
@@ -105,8 +108,8 @@ namespace lp1_projetoFinal
 
                        // board.cells[board.exitPosition.Row, board.exitPosition.Col] = new BoardCells((char)Chars.exit);
 
-                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
-                        }
+                        board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
+                    }
                          
 
 
@@ -212,6 +215,7 @@ namespace lp1_projetoFinal
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                 {
                     Console.WriteLine("Congratulations! you've reached the exit!");
+                    
                     Console.WriteLine("Press any key to continue to the next level");
                     Console.ReadKey();
                     Console.Clear();
