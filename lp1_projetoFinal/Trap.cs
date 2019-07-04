@@ -4,7 +4,7 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-     internal class Trap : CurrentMapObjects
+     internal class Trap 
     {
         internal int DamageLevel;
         internal Position Position;
@@ -12,13 +12,13 @@ namespace lp1_projetoFinal
         internal string TrapInfo;
         internal char Name;
 
-        internal void Set(int damageLevel, Position position, int maxDamage, string trapInfo, char name)
+        internal Trap(int damageLevel, Position position, int maxDamage, string trapInfo, char name)
         {
+            DamageLevel = damageLevel;
             Position = position;
             MaxDamage = maxDamage;
             TrapInfo = trapInfo;
             Name = name;
-            DamageLevel = damageLevel;
         }
 
     }
