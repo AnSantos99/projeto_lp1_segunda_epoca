@@ -73,73 +73,33 @@ namespace lp1_projetoFinal
             }
         }
 
+        /*
         /// <summary>
         /// Check user valid arguments
         /// </summary>
         /// <param name="row"> Get row</param>
         /// <param name="col"> Get column</param>
-        public static void CheckValidUserArgs(string row, string col)
-        {          
-            if (row == "-r" && col == "-c")
-            {
-                
-            }
-        }
-
-
-        public static void ArgsInput(string[] args, Dictionary<string, int> argsInputDic)
+        public static int CheckValidUserArgs(string input1, string input2, string )
         {
-            if(args[0] == "-r" || args [0] == "-c")
+            if (input1 == "-r")
             {
-                if (argsInputDic.ContainsKey("-r"))
-                {
-                    argsInputDic.ContainsValue(GameBoard.RowSize);
-                }
-
-                else if (argsInputDic.ContainsKey("-c"))
-                {
-                    argsInputDic.ContainsValue(GameBoard.ColSize);
-                }
+                return GameBoard.RowSize = Convert.ToInt32();
             }
-            
-
-        }
-
-
-        // --------------------------TEMPORARY-------------------------------//
-
-        /*
-        //Console.WriteLine("Please choose your own Game Board size");
-
-        // Get key pairs
-        string row = Convert.ToString(args[0]);
-        string col = Convert.ToString(args[2]);
-
-        // Get value
-        uint rowArgNum = Convert.ToUInt32(args[1]);
-        uint colArgNum = Convert.ToUInt32(args[3]);
-
-            // Save it to dic
-           // Dictionary<string, uint> getUserArgsDic = new Dictionary<string, uint>();
-
-            //ConditionsChecker.CheckUserINvalidArgs(row, col);
-            //ConditionsChecker.CheckValidUserArgs(row, col);
-
-            //getUserArgsDic.Add(row, rowArgNum);
-            //getUserArgsDic.Add(col, colArgNum);
-
-            for (int i = 0; i<rowArgNum; i++)
+            if (input2 == "-c")
             {
-                Console.WriteLine("HHHHHHH");
+                return GameBoard.ColSize = Convert.ToInt32(args[3]);
             }
 
-            for (int j = 0; j<colArgNum; j++)
+            if (input2 == "-r")
             {
-                Console.WriteLine("EEEEEEE");
+                return GameBoard.RowSize = Convert.ToInt32(args[3]);
+            }
+            if (input1 == "-c")
+            {
+                return GameBoard.ColSize = Convert.ToInt32(args[1]);
             }
 
-        */
-
-        
+            return 0;
+        }*/
     }
 }
