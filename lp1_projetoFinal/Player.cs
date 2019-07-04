@@ -17,6 +17,7 @@ namespace lp1_projetoFinal
         internal int health;
 
         internal Position position;
+
         
         //internal Position position;
 
@@ -50,20 +51,6 @@ namespace lp1_projetoFinal
 
             return targetCoordinate;
         }*/
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="position"></param>
-        /// <returns></returns>
-        private static Position PositionForNumber(string position)
-        {
-            switch(position)
-            {
-                case "a1": return new Position(0, 0);
-                default: return null;
-            }
-        }
 
         /// <summary>
         /// this method receives the player's health and lowers it after each

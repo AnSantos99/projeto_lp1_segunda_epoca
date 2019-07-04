@@ -8,10 +8,11 @@ namespace lp1_projetoFinal
     {
 
         internal  int exit;
-        
-        // public  int ColSize { get; set; }
-        //public  int RowSize { get; set; }  
-        
+
+        internal Position exitPosition;
+
+        internal Position mapPosition;
+
         internal static int RowSize;
         internal static int ColSize;
 
@@ -30,11 +31,15 @@ namespace lp1_projetoFinal
             // Declare Variables BOARD
             Random random = new Random();
 
-            exit = random.Next(1, RowSize);
+            exit = random.Next(0, RowSize);
 
-            int playerStart = random.Next(1, RowSize);
+            int playerStart = random.Next(0, RowSize);
 
-            cells[RowSize - 1, exit] = new BoardCells((char)Chars.exit);
+            cells[RowSize - 1, exit] = new BoardCells((char)Chars.empty);
+
+            exitPosition = new Position(RowSize - 1, exit);
+
+            mapPosition = new Position(2, 2);
 
             cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
             
@@ -42,6 +47,7 @@ namespace lp1_projetoFinal
 
         public void RenderBoard()
         {
+           
             // print the top row
             Console.Write($"   ");
             for (uint i = 0; i < ColSize; i++) Console.Write($"_[{i}]_|");
@@ -75,11 +81,9 @@ namespace lp1_projetoFinal
                 {
                     Console.Write("__ __|");
                 }
+
                 Console.WriteLine();
-
             }
-
- 
         }
     }
 }
