@@ -87,6 +87,25 @@ namespace lp1_projetoFinal
         }
 
 
+        public static void ArgsInput(string[] args, Dictionary<string, int> argsInputDic)
+        {
+            if(args[0] == "-r" || args [0] == "-c")
+            {
+                if (argsInputDic.ContainsKey("-r"))
+                {
+                    argsInputDic.ContainsValue(GameBoard.RowSize);
+                }
+
+                else if (argsInputDic.ContainsKey("-c"))
+                {
+                    argsInputDic.ContainsValue(GameBoard.ColSize);
+                }
+            }
+            
+
+        }
+
+
         // --------------------------TEMPORARY-------------------------------//
 
         /*
