@@ -10,6 +10,7 @@ namespace lp1_projetoFinal
         enemy = 'e',
         empty = '~',
         path = '.',
+        trap = 't',
         map = 'm',
         exit = 'E',
 

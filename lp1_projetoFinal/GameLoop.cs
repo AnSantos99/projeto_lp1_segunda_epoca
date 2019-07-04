@@ -13,15 +13,12 @@ namespace lp1_projetoFinal
 
         internal CurrentMapObjects map;
 
-        CurrentMapObjects objects;
-
         // initiate a new player for the level with max HP
 
         Player player;
 
         Position playerPosition;
 
-        Position itemPosition;
 
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
@@ -207,7 +204,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText();
+                    gameInfo.HelpText(board.traps);
 
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                 {
