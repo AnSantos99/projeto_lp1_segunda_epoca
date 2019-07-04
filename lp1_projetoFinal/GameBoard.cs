@@ -11,6 +11,8 @@ namespace lp1_projetoFinal
 
         internal Position exitPosition;
 
+        internal Position mapPosition;
+
         internal static int RowSize;
         internal static int ColSize;
 
@@ -29,13 +31,15 @@ namespace lp1_projetoFinal
             // Declare Variables BOARD
             Random random = new Random();
 
-            exit = random.Next(1, RowSize);
+            exit = random.Next(0, RowSize);
 
-            int playerStart = random.Next(1, RowSize);
+            int playerStart = random.Next(0, RowSize);
 
             cells[RowSize - 1, exit] = new BoardCells((char)Chars.empty);
 
             exitPosition = new Position(RowSize - 1, exit);
+
+            mapPosition = new Position(2, 2);
 
             cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
             
@@ -77,11 +81,9 @@ namespace lp1_projetoFinal
                 {
                     Console.Write("__ __|");
                 }
+
                 Console.WriteLine();
-
             }
-
- 
         }
     }
 }
