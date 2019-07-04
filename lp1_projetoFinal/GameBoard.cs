@@ -31,9 +31,11 @@ namespace lp1_projetoFinal
                 }
             }
 
-            Trap trap1 = new Trap(2, new Position(4, 4), 5, "hello", ((char)Chars.trap));
+            Trap trap1 = new Trap();
+            trap1.Set(2, new Position(4, 4), 5, "hello", ((char)Chars.trap));
             //Trap trap2 = new Trap(1, new Position(6, 5), 5, "goodbye", ((char)Chars.trap));
-            Trap trap3 = new Trap(3, new Position(5, 4), 5, "wow", ((char)Chars.trap));
+            Trap trap3 = new Trap();
+            trap3.Set(3, new Position(5, 4), 5, "wow", ((char)Chars.trap));
 
             traps.Add(trap1);
             //traps.Add(trap2);

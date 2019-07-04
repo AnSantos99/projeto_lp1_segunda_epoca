@@ -11,7 +11,7 @@ namespace lp1_projetoFinal
 
         internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
 
-        internal CurrentMapObjects map;
+        
 
         // initiate a new player for the level with max HP
 
@@ -52,13 +52,19 @@ namespace lp1_projetoFinal
 
                 board.DefineBoard(player);
 
-                CurrentMapObjects exit = new CurrentMapObjects(board.exitPosition, Chars.exit);
+                CurrentMapObjects exit = new CurrentMapObjects();
+                exit.Set(board.exitPosition, Chars.exit);
 
-                 map = new CurrentMapObjects(board.mapPosition, Chars.map);
+                CurrentMapObjects map = new CurrentMapObjects();
+                map.Set(board.mapPosition, Chars.map);
 
                 itemList.Add(exit);
                 itemList.Add(map);
 
+                foreach(Trap trap in board.traps)
+                { 
+                    itemList.Add(trap);
+                }
             }
 
             // set start to true to hide menu and set the board
@@ -100,15 +106,20 @@ namespace lp1_projetoFinal
                         board.cells[player.position.Row - 1, player.position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[player.position.Row + 1, player.position.Col - 1] == board.cells[item.Position.Row, item.Position.Col])
 
-                       // board.cells[board.exitPosition.Row, board.exitPosition.Col] = new BoardCells((char)Chars.exit);
-
+                        {
                             board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
                         }
-                         
 
+                        if (board.cells[player.position.Row, player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
+                        {
+                            if(item is Trap)
+                            {
+                                player.Health(-(item.DamageLevel));
+                            }
+                        }
+                        }
 
                 }
-
 
 
                 if (answer == ConsoleKey.S)
