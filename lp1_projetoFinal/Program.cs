@@ -8,20 +8,30 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
-            // Declare variable
-            GameBoard board = new GameBoard();
-
-            // Get key pairs
-            string row = args[0];
-            string col = args[2];
-
             // Get value of map
-            GameBoard.RowSize = Convert.ToInt32(args[1]);
-            GameBoard.ColSize = Convert.ToInt32(args[3]);
+            string keyInput1 = args[0];
+            string keyInput2 = args[2];
 
-            ConditionsChecker.CheckUserINvalidArgs(row, col);
+            if (keyInput1 == "-r")
+            { 
+                GameBoard.RowSize = Convert.ToInt32(args[1]);
+            }
+            if (keyInput2 == "-c")
+            {
+                GameBoard.ColSize = Convert.ToInt32(args[3]);
+            }
 
-            ConditionsChecker.CheckUserInvalidArgNumbs(GameBoard.RowSize, GameBoard.ColSize);
+            if (keyInput2 == "-r")
+            {
+                GameBoard.RowSize = Convert.ToInt32(args[3]);
+            }
+            if (keyInput1 == "-c")
+            {
+                GameBoard.ColSize = Convert.ToInt32(args[1]);
+            }
+
+            ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
+            //(needs to be checked) ConditionsChecker.CheckUserINvalidArgs(args[0], args[2]);
 
             // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();

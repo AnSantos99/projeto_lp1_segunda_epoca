@@ -10,9 +10,9 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 ### Tasks by each group member:
 
-**Ana dos Santos -** initial gameboard logic, code organization by creating classes and interfaces, creation of game flowchart with logic of our program.
+**Ana dos Santos -** initial gameboard logic, code organization by creating classes and interfaces, creation of game flowchart with logic of our program, highscores logic and file creation, args conditions.
 
-**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement
+**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement, map, traps, look around.
 
 ### Describing the Solution approach:
 - which phases were implemented
