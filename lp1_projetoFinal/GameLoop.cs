@@ -13,15 +13,12 @@ namespace lp1_projetoFinal
 
         internal CurrentMapObjects map;
 
-        CurrentMapObjects objects;
-
         // initiate a new player for the level with max HP
 
         Player player;
 
         Position playerPosition;
 
-        Position itemPosition;
 
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
@@ -64,7 +61,6 @@ namespace lp1_projetoFinal
 
                 itemList.Add(exit);
                 itemList.Add(map);
-
             }
 
             // set start to true to hide menu and set the board
@@ -106,15 +102,13 @@ namespace lp1_projetoFinal
                         board.cells[player.position.Row - 1, player.position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[player.position.Row + 1, player.position.Col - 1] == board.cells[item.Position.Row, item.Position.Col])
 
-                       // board.cells[board.exitPosition.Row, board.exitPosition.Col] = new BoardCells((char)Chars.exit);
 
-                        board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
-                    }
-                         
-
+                        {
+                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
+                        }
+                        }
 
                 }
-
 
 
                 if (answer == ConsoleKey.S)
@@ -210,7 +204,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText();
+                    gameInfo.HelpText(board.traps);
 
                 if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit])
                 {

@@ -9,12 +9,10 @@ namespace lp1_projetoFinal
         internal Position Position { set; get; }
         internal Chars Name { set; get; }
 
-
         internal CurrentMapObjects(Position position, Chars name)
         {
             Position = position;
             Name = name;
-
         }
 
     }
