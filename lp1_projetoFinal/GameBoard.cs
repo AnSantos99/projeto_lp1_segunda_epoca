@@ -31,11 +31,13 @@ namespace lp1_projetoFinal
 
             map = new CurrentMapObjects(random.RandomPosition(RowSize, ColSize, ((char)Chars.map)), Chars.map, "reveals level info");
 
-            Items item1 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "food yum", 4);
+            Items item1 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "food yum", 4, 2);
 
-            Items item2 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "chomp chomp", 2);
+            Items item2 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "chomp chomp", 2, 2);
 
-            Items item3 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "dinner is served", 1);
+            Items item3 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "dinner is served", 1, 4);
+
+            inventory.AddToInventory(item1);
 
 
 

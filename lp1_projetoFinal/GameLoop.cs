@@ -55,7 +55,7 @@ namespace lp1_projetoFinal
                 board.RenderBoard(newLevel);
 
                 // showcase player's current stats through level progression
-                gameInfo.GameText(board.player);
+                gameInfo.GameText(newLevel, board.player, board.inventory);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
@@ -179,7 +179,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps);
+                    gameInfo.HelpText(board.traps, board.inventory);
 
           
                 foreach(Trap trap in board.traps)

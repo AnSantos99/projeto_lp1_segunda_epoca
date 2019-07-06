@@ -14,7 +14,7 @@ namespace lp1_projetoFinal
         map = 'm',
         exit = 'E',
         food = 'f',
-        weapons = 'w'
+        weapon = 'w'
 
     }
 }

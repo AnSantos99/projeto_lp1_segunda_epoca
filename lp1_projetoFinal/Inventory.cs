@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System;
 
 namespace lp1_projetoFinal
 {
     class Inventory
     {
-        internal List<Items> itemsInInventory;
+        internal List<Items> itemsInInventory = new List<Items>();
         internal int currentWeight;
         internal int maxWeight = 6;
 
@@ -22,7 +23,15 @@ namespace lp1_projetoFinal
             }
         }
 
-        internal void DropItem(Items item)
+        internal void writeInfo()
+        {
+            foreach (Items item in itemsInInventory)
+            {
+                Console.WriteLine(item.Info + "              " + item.Effect);
+            }
+        }
+
+    internal void DropItem(Items item)
         {
             itemsInInventory.Remove(item);
             currentWeight -= item.Weight;

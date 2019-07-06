@@ -35,32 +35,32 @@ namespace lp1_projetoFinal
         /// to the player at all times during a level, returning nothing
         /// </summary>
         /// <param name="player"> receives the current player's info</param>
-        public void GameText(Player player)
+        public void GameText(Levels level, Player player, Inventory inventory)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
             Console.Write("last actions:              ");
             Console.WriteLine("Player Stats:");
             Console.WriteLine("------------------------------------------------");
-           
             
-            Console.WriteLine("Current Level:");
+            Console.WriteLine($"Current Level:{level.Current}");
             Console.WriteLine($"HP: {player.health}");
-            Console.WriteLine("Selected Weapon:");
-            Console.WriteLine("Inventory occupation:");
+            Console.WriteLine($"Selected Weapon:");
+            Console.WriteLine($"Inventory occupation: {inventory.currentWeight}");
 
             Console.WriteLine("Caption:");
             Console.WriteLine("------------");
-            Console.WriteLine("SYMBOL - player");
-            Console.WriteLine("SYMBOL - enemies");
-            Console.WriteLine("SYMBOL - empty");
-            Console.WriteLine("SYMBOL - unexplored");
-            Console.WriteLine("SYMBOL - map");
-            Console.WriteLine("SYMBOL - food");
-            Console.WriteLine("SYMBOL - weapon");
-            Console.WriteLine("SYMBOL - trap");
-            Console.WriteLine("SYMBOL - exit");
-   
+            Console.WriteLine($"SYMBOL - {(char)Chars.player}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.enemy}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.empty}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.path}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.map}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.food}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.weapon}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.trap}");
+            Console.WriteLine($"SYMBOL - {(char)Chars.exit}");
+
+
 
             Console.WriteLine("Messages:");
             Console.WriteLine("------------");
@@ -113,12 +113,14 @@ namespace lp1_projetoFinal
         /// to the one they have on the main screen, depending on the items
         /// they have found, weapons and their effects
         /// </summary>
-        public void HelpText(List<Trap> traps)
+        public void HelpText(List<Trap> traps, Inventory inventory)
         {
+            
+
             Console.WriteLine("--------------------------");
             Console.WriteLine("Food          HPIncrease        Weight");
             Console.WriteLine("----------------------------------------");
-            Console.WriteLine("Name             +5              +4");
+            inventory.writeInfo();
 
             Console.WriteLine();
 
