@@ -45,8 +45,8 @@ namespace lp1_projetoFinal
 
             for (int i = 1; i <= 8; i++)
             {
-                scoreList.
-                Console.WriteLine($"Place {i}: {GetScore()}");
+                
+                //Console.WriteLine($"Place {i}: {GetScore()}");
 
             }
         }
@@ -66,7 +66,7 @@ namespace lp1_projetoFinal
 
             
 
-            File.WriteAllLines(fileName, scoreList);
+            //File.WriteAllLines(fileName, scoreList);
 
         }
 
