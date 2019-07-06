@@ -1,62 +1,41 @@
 using System;
-using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
     internal class RandomGenerator
     {
-
-        internal RandomGenerator()
-        {
-
-
-        }
-
-        internal Position RandomPosition(int rows, int cols)
+        
+        internal Position RandomPosition(int rows, int cols, char name)
         {
             Random random = new Random();
 
-            int aux = random.Next(0, cols);
-
-            int aux2 = random.Next(0, rows);
-
-            Position newPosition = new Position(aux2, aux);
-
-            return newPosition;
-
-        }
+            int col;
+            int row;
 /*
-        internal int RandomPosition(CurrentMapObjects exit)
-        {
-            Random random = new Random();
-
-            exit = random.Next(0, RowSize);
-
-            int playerStart = random.Next(0, RowSize);
-
-            cells[RowSize - 1, exit] = new BoardCells((char)Chars.empty);
-
-            exitPosition = new Position(RowSize - 1, exit);
-
-            mapPosition = new Position(2, 2);
-
-            cells[player.position.Row, player.position.Col] = new BoardCells(player.name);
-
-            return newPosition;
-
-        }
-
-        internal Position RandomPosition(List<CurrentMapObjects> list)
-        {
-            foreach (CurrentMapObjects item in list)
+            if (name == (char)Chars.exit)
             {
-                return itemPosition;
-
-                return newPosition;
+                row = rows;
+                col = random.Next(0, cols);
             }
+
+            else if (name == (char)Chars.player)
+            {
+                row = 0;
+                col = random.Next(0, cols);
+            }
+
+            else
+            {*/
+                row = random.Next(0, (rows - 1));
+                col = random.Next(0, (cols - 1));
+
+          //  }
+
+            return new Position(row, col);
+
         }
 
-    */
+      
 
     }
 }

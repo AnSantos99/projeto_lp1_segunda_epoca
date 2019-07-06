@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
@@ -12,7 +11,6 @@ namespace lp1_projetoFinal
 
         internal static GameBoard board = new GameBoard();
 
-        // initiate a new player for the level with max HP
 
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
@@ -94,67 +92,67 @@ namespace lp1_projetoFinal
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Row++;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.W)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Row--;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.A)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.D)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.Q)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
                     board.player.position.Row--;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.E)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
                     board.player.position.Row--;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.Z)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
                     board.player.position.Row++;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
                 if (answer == ConsoleKey.X)
                 {
-                    board.player.Health(-2);
+                    board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
                     board.player.position.Row++;
-                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells(board.player.name);
+                    board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
 
 
@@ -180,8 +178,8 @@ namespace lp1_projetoFinal
                 //gameInfo.InventoryText();
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
-              /*  if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps); */
+                if (answer == ConsoleKey.D6)
+                    gameInfo.HelpText(board.traps);
 
                 // NOT WORKING SEE WHY
                 /*
@@ -194,7 +192,7 @@ namespace lp1_projetoFinal
                  }
                  */
                 
-                if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit.Position.Col])
+                if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {
                     Console.WriteLine("Congratulations! you've reached the exit!");
                     

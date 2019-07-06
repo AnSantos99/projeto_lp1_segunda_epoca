@@ -8,8 +8,6 @@ namespace lp1_projetoFinal
     {
         char name;
 
-        internal BoardCells() : this(' ') { }
-
         internal BoardCells(char name)
         {
             this.name = name;
