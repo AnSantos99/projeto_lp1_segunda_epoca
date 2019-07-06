@@ -17,7 +17,7 @@ namespace lp1_projetoFinal
                 currentWeight += item.Weight;
             }
 
-            else
+            else 
             {
                 // print message abt not having space
             }
