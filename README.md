@@ -12,7 +12,7 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 **Ana dos Santos -** initial gameboard logic, code organization by creating classes and interfaces, creation of game flowchart with logic of our program, highscores logic and file creation, args conditions.
 
-**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement, map, traps, look around.
+**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement, map, traps, look around, implementation of the inventory feature and pickup, drop.
 
 ### Describing the Solution approach:
 - which phases were implemented
