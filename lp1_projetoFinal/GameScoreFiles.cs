@@ -30,7 +30,7 @@ namespace lp1_projetoFinal
         */
 
         /// <summary>
-        /// Get player score according to enemies killedand level difficulty
+        /// Get player score according to enemies killed and level difficulty
         /// If player reaches level exit or if player dies
         /// </summary>
         /// <returns> return current score </returns>
@@ -42,16 +42,8 @@ namespace lp1_projetoFinal
                 player.health == 0)
             {
                 //score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame); ----> Formula do stor)
+                score++;
             }
-
-            /*
-            Stack<int> saveScore = new Stack<int>(GetScore());
-
-            foreach (int element in saveScore)
-            {
-                saveScore.Push(score);
-            }*/
-
             return score;
         }
 
@@ -60,10 +52,12 @@ namespace lp1_projetoFinal
         /// </summary>
         public void ShowScoreOnPage()
         {
-            scoreText.ScoreText();
+            Stack<int> savedScore = new Stack<int>();
+            savedScore.Push(GetScore());
+
             for (int i = 0; i <= 8; i++)
             {
-                Console.WriteLine($"Place {i} = 213");
+                Console.WriteLine($"Place {i}: {savedScore}");
             }
         }
 
@@ -74,6 +68,7 @@ namespace lp1_projetoFinal
         public void SaveScoreOnFile(Stack<string> scoreList)
         {
             fileName = string.Format(@"GameScore_{0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
+            
             File.WriteAllLines(fileName, scoreList);
         }
 
@@ -84,10 +79,5 @@ namespace lp1_projetoFinal
         {
             File.ReadAllLines(fileName);
         }
-
-       
-        
-
-
     }
 }

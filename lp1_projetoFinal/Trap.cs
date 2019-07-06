@@ -1,15 +1,17 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace lp1_projetoFinal
 {
-     internal class Trap 
+     internal class Trap : CurrentMapObjects
     {
+
+        
+         
         internal int DamageLevel;
-        internal Position Position;
         internal int MaxDamage;
-        internal string TrapInfo;
         internal char Name;
 
         internal Trap(int damageLevel, Position position, int maxDamage, string trapInfo, char name)
@@ -20,11 +22,18 @@ namespace lp1_projetoFinal
             TrapInfo = trapInfo;
             Name = name;
         }
+        
+
+        internal bool FallenInto(Player player)
+        {
+            if (player.position == this.Position)
+                return true;
+
+            return false;
+        }
+
+        
 
     }
-
-    /*tres armadilhas cada uma num sitio diff com uma posicao diff e max damage diff random enrtre 0 e max
-        help mostra os varios tipos
-    trapinfo aparece no help dependendo das armadilhas q estiverem no nivel
-        */
 }
+*/

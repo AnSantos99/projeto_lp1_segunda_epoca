@@ -25,10 +25,8 @@ namespace lp1_projetoFinal
                     break;
 
                 case ConsoleKey.B:
-                    menuInfo.ScoreText();
                     Console.WriteLine();
-                    score.ShowScoreOnPage();
-                    //score.LoadScoreFromFile();
+                    menuInfo.ScoreText();
                     Console.WriteLine();
                     Console.WriteLine("Press any key to return");
                     Console.ReadKey();
