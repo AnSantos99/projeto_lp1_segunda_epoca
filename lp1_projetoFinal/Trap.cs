@@ -15,7 +15,9 @@
         }
         
         internal bool FallenInto(Player player)
-        { 
+        {
+            if (player.position.Row == this.Position.Row && player.position.Col == this.Position.Col)
+                return true;
             return false;
         }
 

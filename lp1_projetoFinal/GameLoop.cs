@@ -181,15 +181,15 @@ namespace lp1_projetoFinal
                     gameInfo.HelpText(board.traps);
 
                 // NOT WORKING SEE WHY
-                /*
+          
                 foreach(Trap trap in board.traps)
                 {
-                    if (trap.FallenInto(player))
+                    if (trap.FallenInto(board.player))
                     {
-                        Environment.Exit(0);
+                        board.player.Health(-2);
                     }
                  }
-                 */
+                 
                 
                 if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {
