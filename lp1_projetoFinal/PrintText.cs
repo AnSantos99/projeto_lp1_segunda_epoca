@@ -115,7 +115,7 @@ namespace lp1_projetoFinal
         /// to the one they have on the main screen, depending on the items
         /// they have found, weapons and their effects
         /// </summary>
-        public void HelpText(List<Trap> traps)
+        public void HelpText(/*List<Trap> traps*/)
         {
             Console.WriteLine("--------------------------");
             Console.WriteLine("Food          HPIncrease        Weight");
@@ -133,10 +133,11 @@ namespace lp1_projetoFinal
 
             Console.WriteLine("Trap            MaxDamage");
             Console.WriteLine("--------------------------");
-            foreach(Trap trap in traps)
+            /*foreach(Trap trap in traps)
             {
                 Console.WriteLine(trap.TrapInfo + "              " + trap.DamageLevel);
             }
+            */
             Console.WriteLine("Name              10.0");
 
             Console.WriteLine("--------------------------");

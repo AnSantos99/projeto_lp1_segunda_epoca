@@ -16,9 +16,13 @@ namespace lp1_projetoFinal
             Diff = diff;
         }
 
-        internal void Setup()
+        internal void Setup(GameBoard board, Player player, List<CurrentMapObjects> items)
         {
-
+            /*
+            board = new GameBoard();
+            player = new Player(name, 100, position);
+            items = new List<CurrentMapObjects>();
+            */
         }
 
     }
