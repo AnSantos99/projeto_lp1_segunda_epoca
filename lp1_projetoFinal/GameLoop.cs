@@ -79,6 +79,7 @@ namespace lp1_projetoFinal
                         board.cells[board.player.position.Row - 1, board.player.position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[board.player.position.Row + 1, board.player.position.Col - 1] == board.cells[item.Position.Row, item.Position.Col])
 
+
                         {
                             board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
                         }
@@ -194,6 +195,7 @@ namespace lp1_projetoFinal
                 if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {
                     Console.WriteLine("Congratulations! you've reached the exit!");
+                    
                     Console.WriteLine("Press any key to continue to the next level");
                     Console.ReadKey();
                     Console.Clear();
@@ -209,6 +211,8 @@ namespace lp1_projetoFinal
             while (answer != ConsoleKey.D8 && board.player.health > 0);
 
             Console.WriteLine("Too bad!!you lost the game!");
+            GameScoreFiles score = new GameScoreFiles();
+            score.SaveScoreOnFile();
             Environment.Exit(0);
     
         }

@@ -28,7 +28,6 @@ namespace lp1_projetoFinal
 
         public void DefineBoard()
         {
-
             exitPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.exit));
 
             mapPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.map));
