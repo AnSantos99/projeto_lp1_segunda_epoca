@@ -1,34 +1,21 @@
-﻿/*
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace lp1_projetoFinal
+﻿namespace lp1_projetoFinal
 {
      internal class Trap : CurrentMapObjects
     {
 
-        
-         
         internal int DamageLevel;
         internal int MaxDamage;
-        internal char Name;
-
-        internal Trap(int damageLevel, Position position, int maxDamage, string trapInfo, char name)
+        internal string TrapInfo;
+      
+        internal Trap(Position position, Chars name, string info, int damageLevel, int maxDamage) : base(position, name, info)
         {
             DamageLevel = damageLevel;
-            Position = position;
             MaxDamage = maxDamage;
-            TrapInfo = trapInfo;
-            Name = name;
+            TrapInfo = info;
         }
         
-
         internal bool FallenInto(Player player)
-        {
-            if (player.position == this.Position)
-                return true;
-
+        { 
             return false;
         }
 
@@ -36,4 +23,3 @@ namespace lp1_projetoFinal
 
     }
 }
-*/

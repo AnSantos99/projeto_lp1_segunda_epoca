@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace lp1_projetoFinal
 {
     internal class GameBoard
     {
 
-    //    internal List<Trap> traps = new List<Trap>();
+        internal List<Trap> traps = new List<Trap>();
     
         internal static int RowSize;
         internal static int ColSize;
@@ -17,7 +16,11 @@ namespace lp1_projetoFinal
         internal CurrentMapObjects map;
         internal CurrentMapObjects exit;
 
-        internal RandomGenerator random;
+        internal Position exitPosition;
+        internal Position mapPosition;
+        internal Position playerStart;
+
+        internal RandomGenerator random  = new RandomGenerator();
 
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
 
@@ -26,21 +29,39 @@ namespace lp1_projetoFinal
         public void DefineBoard()
         {
 
-            Position exitPosition = random.RandomPosition(RowSize, ColSize, Chars.exit);
+            exitPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.exit));
 
-            Position mapPosition = random.RandomPosition(RowSize, ColSize, Chars.map);
+            mapPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.map));
+
+            playerStart = random.RandomPosition(RowSize, ColSize, ((char)Chars.player));
 
             exit = new CurrentMapObjects(exitPosition, Chars.exit, "reach the exit!");
 
             map = new CurrentMapObjects(mapPosition, Chars.map, "reveals level info");
 
 
+            Trap trap1 = new Trap((random.RandomPosition(RowSize, ColSize, ((char)Chars.trap))), (Chars.trap), "this trap takes 1hp", 1, 3);
+
+            Trap trap2 = new Trap((random.RandomPosition(RowSize, ColSize, ((char)Chars.trap))), (Chars.trap), "this trap takes 2hp", 2, 3);
+
+            Trap trap3 = new Trap((random.RandomPosition(RowSize, ColSize, ((char)Chars.trap))), (Chars.trap), "this trap takes 3hp", 3, 3);
+
+            traps.Add(trap1);
+            traps.Add(trap2);
+            traps.Add(trap3);
+
             itemList.Add(exit);
             itemList.Add(map);
 
+            foreach (Trap trap in traps)
+            {
+                itemList.Add(trap);
+            }
+
+            player = new Player((char)Chars.player, 100, playerStart);
+
             foreach (CurrentMapObjects item in itemList)
             {
-
                 cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
             }
 
@@ -51,28 +72,13 @@ namespace lp1_projetoFinal
                     cells[i, j] = new BoardCells((char)Chars.empty);
                 }
             }
-            /*
-              Trap trap1 = new Trap(2, new Position(4, 4), 5, "hello", ((char)Chars.trap));
-              Trap trap2 = new Trap(1, new Position(4, 3), 5, "hello", ((char)Chars.trap));
-              Trap trap3 = new Trap(3, new Position(5, 4), 5, "hello", ((char)Chars.trap));
 
-              traps.Add(trap1);
-              traps.Add(trap2);
-              traps.Add(trap3);
-
-              foreach (Trap trap in traps)
-              {
-                  cells[trap.Position.Row, trap.Position.Col] = new BoardCells((char)Chars.trap);
-              }
-            */
+           
 
             // Declare Variables BOARD
 
-            Position playerStart = new Position(3,4);//random.RandomPosition(RowSize, ColSize);
 
-            player = new Player((char)Chars.player, 100, playerStart);
-
-            cells[player.position.Row, player.position.Col] = new BoardCells(player.name);               
+            cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);               
 
         }
 
