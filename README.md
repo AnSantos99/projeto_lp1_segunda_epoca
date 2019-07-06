@@ -28,6 +28,9 @@ The following ".png" image contains the fluxogram showcasing the game loop of th
 
 ### In summary / what we learned:
 
+During the development of this project we were able to properly implement classes with inheritance, use lists and the creation of files to store and update information, implementing save features.
+We attempted the use of interfaces but were able to get better results with classes, thus this was not very useful for the end goal due to our own hability contraints however it was helpful to revise some of these topics.
+
 ### References used for the development of this project:
 including idea exchanges, open code reused or based on (stack overflow, github, ...) and third party libraries, very detailed
 
