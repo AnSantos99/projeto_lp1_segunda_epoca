@@ -9,7 +9,7 @@ namespace lp1_projetoFinal
             Console.Clear();
             GameLoop loop = new GameLoop();
 
-            GameScoreFiles score = null;
+            GameScoreFiles score = new GameScoreFiles();
 
             PrintText menuInfo = new PrintText();
 
@@ -27,6 +27,7 @@ namespace lp1_projetoFinal
                 case ConsoleKey.B:
                     Console.WriteLine();
                     menuInfo.ScoreText();
+                    //score.ShowScoreOnPage();
                     Console.WriteLine();
                     Console.WriteLine("Press any key to return");
                     Console.ReadKey();

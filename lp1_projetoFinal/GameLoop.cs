@@ -213,6 +213,8 @@ namespace lp1_projetoFinal
             while (answer != ConsoleKey.D8 && board.player.health > 0);
 
             Console.WriteLine("Too bad!!you lost the game!");
+            GameScoreFiles score = new GameScoreFiles();
+            score.SaveScoreOnFile();
             Environment.Exit(0);
     
         }

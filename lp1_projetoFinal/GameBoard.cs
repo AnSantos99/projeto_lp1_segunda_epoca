@@ -26,9 +26,9 @@ namespace lp1_projetoFinal
         public void DefineBoard()
         {
 
-            Position exitPosition = random.RandomPosition(RowSize, ColSize, Chars.exit);
+            Position exitPosition = new Position(4, 2);//random.RandomPosition(RowSize, ColSize, Chars.exit);
 
-            Position mapPosition = random.RandomPosition(RowSize, ColSize, Chars.map);
+            Position mapPosition = new Position(6, 6); //random.RandomPosition(RowSize, ColSize, Chars.map);
 
             exit = new CurrentMapObjects(exitPosition, Chars.exit, "reach the exit!");
 

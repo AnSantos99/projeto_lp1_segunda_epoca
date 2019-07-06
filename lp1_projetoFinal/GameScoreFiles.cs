@@ -17,17 +17,6 @@ namespace lp1_projetoFinal
         GameBoard board;
         PrintText scoreText;
 
-        /// <summary>
-        /// Constructor to set score when needed
-        /// </summary>
-        /// <param name="score"></param>
-        /*
-        public GameScoreFiles(int score)
-        {
-            this.score = score;
-
-        }
-        */
 
         /// <summary>
         /// Get player score according to enemies killed and level difficulty
@@ -38,39 +27,49 @@ namespace lp1_projetoFinal
         {
             score = 0;
 
-            if (board.cells[player.position.Row, player.position.Col] == board.cells[GameBoard.RowSize - 1, board.exit] ||
-                player.health == 0)
+            if (player.health == 0)
             {
                 //score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame); ----> Formula do stor)
                 score++;
             }
-            return score;
+            return score;  
         }
+        
 
         /// <summary>
         /// Get results to show on score Page
         /// </summary>
         public void ShowScoreOnPage()
         {
-            Stack<int> savedScore = new Stack<int>();
-            savedScore.Push(GetScore());
+            Stack<int> scoreList = new Stack<int>();
 
-            for (int i = 0; i <= 8; i++)
+            for (int i = 1; i <= 8; i++)
             {
-                Console.WriteLine($"Place {i}: {savedScore}");
+                scoreList.
+                Console.WriteLine($"Place {i}: {GetScore()}");
+
             }
         }
+
 
         /// <summary>
         /// Make a new file and save score Stack into it
         /// </summary>
         /// <param name="scoreList"> get score from list</param>
-        public void SaveScoreOnFile(Stack<string> scoreList)
+        public void SaveScoreOnFile()
         {
+            string[] arrList;
             fileName = string.Format(@"GameScore_{0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
+
+
             
+
+            
+
             File.WriteAllLines(fileName, scoreList);
+
         }
+
 
         /// <summary>
         /// Read the score file
@@ -81,3 +80,4 @@ namespace lp1_projetoFinal
         }
     }
 }
+
