@@ -6,7 +6,7 @@ namespace lp1_projetoFinal
     /// this class' purpose is to define and identify our player as well as to 
     /// set and move them on the board
     /// </summary>
-    internal class Player : /*IHealthPoints*/ IItems
+    internal class Player
     {
         // define player's name so we can identify them
         internal char name;

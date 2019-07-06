@@ -181,7 +181,6 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D6)
                     gameInfo.HelpText(board.traps);
 
-                // NOT WORKING SEE WHY
           
                 foreach(Trap trap in board.traps)
                 {

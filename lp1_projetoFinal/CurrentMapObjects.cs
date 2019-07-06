@@ -6,7 +6,6 @@ namespace lp1_projetoFinal
         internal Chars Name { set; get; }
         internal string Info { set; get; }
        
-
         internal CurrentMapObjects(Position position, Chars name, string info)
         {
             Position = position;
