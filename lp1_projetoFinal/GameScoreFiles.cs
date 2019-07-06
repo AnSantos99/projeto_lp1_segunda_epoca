@@ -16,6 +16,8 @@ namespace lp1_projetoFinal
         Position position;
         GameBoard board;
         PrintText scoreText;
+        Levels currentLevel;
+        Enemy enemiesKilled;
 
 
         /// <summary>
@@ -25,15 +27,16 @@ namespace lp1_projetoFinal
         /// <returns> return current score </returns>
         public int GetScore()
         {
-            score = 1;
-            /*
+            score = 0;
+
             if (board.cells[board.player.position.Row, board.player.position.Col] == 
                 board.cells[board.exit.Position.Row, board.exit.Position.Col] ||
                 player.health == 0)
             {
+                
                 //score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame); ----> Formula do stor)
                 score++;
-            }*/
+            }
             return score;  
         }
         
@@ -60,10 +63,11 @@ namespace lp1_projetoFinal
 
         public void SaveScoreOnFile(Stack<int> scoreStack)
         {
-            int.TryParse(scoreStack);
+            
             fileName = string.Format(@"Score_{0}{1}.txt",GameBoard.RowSize, GameBoard.ColSize);
 
-            File.WriteAllLines(fileName, scoreStack);
+            File.WriteAllLines(fileName, /*IIIDDDDKKKKK*/);
+            
         }
 
         /*
