@@ -9,10 +9,11 @@ namespace lp1_projetoFinal
     {
         // declare variables
         int score;
-        string fileName;
+        string fileName = string.Format(@"Score_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
 
         // initiate player and position
-        GameScoreFiles[] scoreList;
+        //Stack<string> scoreList;
+
         Player player;
         Position position;
         GameBoard board;
@@ -20,71 +21,71 @@ namespace lp1_projetoFinal
         Levels currentLevel;
         Enemy enemiesKilled;
 
+        public int Score { get; set; }
+
 
         /// <summary>
         /// Get player score according to enemies killed and level difficulty
-        /// If player reaches level exit or if player dies
+        /// and get score 
         /// </summary>
         /// <returns> return current score </returns>
         public int GetScore()
         {
-            score = 0;
-
-            if (board.cells[board.player.position.Row, board.player.position.Col] == 
-                board.cells[board.exit.Position.Row, board.exit.Position.Col] ||
-                player.health == 0)
-            {
-                
-                //score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame); ----> Formula do stor)
-                score++;
-            }
-            return score;  
+            Score = 0;
+            if (player.health == 0) Score++;
+            return Score;  
         }
-        
+
+        /*
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SaveScoreToStack()
+        {
+            scoreList.Push(Convert.ToString(Score));
+        }*/
+
 
         /// <summary>
-        /// Get results to show on score Page and save it to scoreList on stack
+        /// Prints out the Score on score menu
         /// </summary>
-        public void ShowScoreOnPage()
+        public void SaveScoreOnFile()
         {
-            string scoreText = "Score";
-
-            //Stack<int> scoreList = new Stack<int>();
-
-            foreach (GameScoreFiles score in scoreList)
-                scoreList += $"{player.name},{player.score}";
-
-            File.WriteAllText("highscores.csv", allHighScoresText);
-        }
-
-
-        scoreList.(GetScore());
-
-            foreach (int score in scoreList)
-            {             
-                Console.WriteLine(score);
-            }
+            GetScore();
+            
 
             for (int i = 1; i <= 8; i++)
             {
-                Console.WriteLine($"Place {i}= {scoreList}");
+                Console.WriteLine($"Place {i} = {Score}");
             }
 
-            SaveScoreOnFile(scoreList);
+            //File.WriteAllLines(fileName);
         }
 
-        public void SaveScoreOnFile(int[] score)
+
+
+        /// <summary>
+        /// Read the score file
+        /// </summary>
+        public void LoadScoreFromFile()
         {
-            fileName = string.Format(@"Score_{0}{1}.cvs", GameBoard.RowSize, GameBoard.ColSize);
+            SaveScoreOnFile();
 
-            foreach (int element in score)
+            using (StreamReader file = new StreamReader(fileName))
             {
-                Convert.ToString(element);
+                int counter = 0;
+                string ln;
+                while ((ln = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(ln);
+                    //List<string> scoreFiles = new List<string>();
+                    //File.ReadAllLines(fileName);
+                }
             }
-
-            File.WriteAllLines(fileName, score);
-            
         }
+
+
+
 
         /*
         /// <summary>
@@ -100,22 +101,7 @@ namespace lp1_projetoFinal
         }*/
 
 
-        /// <summary>
-        /// Read the score file
-        /// </summary>
-        public void LoadScoreFromFile()
-        {
-            List<string> scoreFiles = new List<string>();
 
-            string answer = Console.ReadLine();
-
-            foreach (int file in answer)
-            {
-                
-            }
-            
-            File.ReadAllLines(fileName);
-        }
     }
 }
 

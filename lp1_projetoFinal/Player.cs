@@ -16,8 +16,6 @@ namespace lp1_projetoFinal
 
         internal Position position;
 
-        internal int score;
-
         
         //internal Position position;
 
@@ -34,6 +32,14 @@ namespace lp1_projetoFinal
             this.position = position;
        
         }
+
+
+        internal Player(int score)
+        {
+            Score = score;
+        }
+
+        public int Score { get; set; }
 
         /// <summary>
         /// this method works to obtain the player's current position and know
@@ -65,12 +71,6 @@ namespace lp1_projetoFinal
         public void Weight()
         {
             throw new NotImplementedException();
-        }
-
-        public Player(int score, string name)
-        {
-            this.name = name;
-            this.score = score;
         }
     }
 }

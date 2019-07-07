@@ -8,6 +8,9 @@ namespace lp1_projetoFinal
     {
         static void Main(string[] args)
         {
+            // Console Name
+            Console.Title = "";
+
             // Get value of map
             string keyInput1 = args[0];
             string keyInput2 = args[2];
