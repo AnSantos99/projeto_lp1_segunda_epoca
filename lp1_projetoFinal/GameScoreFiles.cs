@@ -12,6 +12,7 @@ namespace lp1_projetoFinal
         string fileName;
 
         // initiate player and position
+        GameScoreFiles[] scoreList;
         Player player;
         Position position;
         GameBoard board;
@@ -46,13 +47,24 @@ namespace lp1_projetoFinal
         /// </summary>
         public void ShowScoreOnPage()
         {
-            Stack<int> scoreList = new Stack<int>();
-            //scoreList.Push(GetScore());
+            string scoreText = "Score";
 
-            foreach (int element in scoreList)
-            {
-                scoreList.Push(score);
+            //Stack<int> scoreList = new Stack<int>();
+
+            foreach (GameScoreFiles score in scoreList)
+                scoreList += $"{player.name},{player.score}";
+
+            File.WriteAllText("highscores.csv", allHighScoresText);
+        }
+
+
+        scoreList.(GetScore());
+
+            foreach (int score in scoreList)
+            {             
+                Console.WriteLine(score);
             }
+
             for (int i = 1; i <= 8; i++)
             {
                 Console.WriteLine($"Place {i}= {scoreList}");
@@ -61,12 +73,16 @@ namespace lp1_projetoFinal
             SaveScoreOnFile(scoreList);
         }
 
-        public void SaveScoreOnFile(Stack<int> scoreStack)
+        public void SaveScoreOnFile(int[] score)
         {
-            
-            fileName = string.Format(@"Score_{0}{1}.txt",GameBoard.RowSize, GameBoard.ColSize);
+            fileName = string.Format(@"Score_{0}{1}.cvs", GameBoard.RowSize, GameBoard.ColSize);
 
-            File.WriteAllLines(fileName, /*IIIDDDDKKKKK*/);
+            foreach (int element in score)
+            {
+                Convert.ToString(element);
+            }
+
+            File.WriteAllLines(fileName, score);
             
         }
 
