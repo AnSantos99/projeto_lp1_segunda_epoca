@@ -13,6 +13,8 @@ namespace lp1_projetoFinal
         trap = 't',
         map = 'm',
         exit = 'E',
+        food = 'f',
+        weapon = 'w'
 
     }
 }

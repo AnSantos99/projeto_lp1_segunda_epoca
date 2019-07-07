@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace lp1_projetoFinal
+﻿namespace lp1_projetoFinal
 {
     interface IWeapons
     {

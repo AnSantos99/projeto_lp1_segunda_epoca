@@ -12,7 +12,7 @@ link [here](https://github.com/nanilevay/projeto_lp1_segunda_epoca)
 
 **Ana dos Santos -** initial gameboard logic, code organization by creating classes and interfaces, creation of game flowchart with logic of our program, highscores logic and file creation, args conditions.
 
-**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement, map, traps, look around.
+**Diana Levay -** initial gameloop logic, implementation of the menu and its options, gameboard architecture, player movement, map, traps, look around, implementation of the inventory feature and pickup, drop.
 
 ### Describing the Solution approach:
 - which phases were implemented
@@ -27,6 +27,9 @@ The following ".png" image contains the fluxogram showcasing the game loop of th
 ![Fluxogram](LP1_EP2_FlowChart.png)
 
 ### In summary / what we learned:
+
+During the development of this project we were able to properly implement classes with inheritance, use lists and the creation of files to store and update information, implementing save features.
+We attempted the use of interfaces but were able to get better results with classes, thus this was not very useful for the end goal due to our own hability contraints however it was helpful to revise some of these topics.
 
 ### References used for the development of this project:
 including idea exchanges, open code reused or based on (stack overflow, github, ...) and third party libraries, very detailed

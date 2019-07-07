@@ -55,7 +55,7 @@ namespace lp1_projetoFinal
                 board.RenderBoard(newLevel);
 
                 // showcase player's current stats through level progression
-                gameInfo.GameText(board.player);
+                gameInfo.GameText(newLevel, board.player, board.inventory);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
@@ -179,18 +179,17 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps);
+                    gameInfo.HelpText(board.traps, board.inventory);
 
-                // NOT WORKING SEE WHY
-                /*
+          
                 foreach(Trap trap in board.traps)
                 {
-                    if (trap.FallenInto(player))
+                    if (trap.FallenInto(board.player))
                     {
-                        Environment.Exit(0);
+                        board.player.Health(-2);
                     }
                  }
-                 */
+                 
                 
                 if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {

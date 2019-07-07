@@ -6,7 +6,11 @@ namespace lp1_projetoFinal
     internal class GameBoard
     {
 
+        internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
+
         internal List<Trap> traps = new List<Trap>();
+
+        internal Inventory inventory = new Inventory();
     
         internal static int RowSize;
         internal static int ColSize;
@@ -16,27 +20,26 @@ namespace lp1_projetoFinal
         internal CurrentMapObjects map;
         internal CurrentMapObjects exit;
 
-        internal Position exitPosition;
-        internal Position mapPosition;
-        internal Position playerStart;
-
         internal RandomGenerator random  = new RandomGenerator();
 
         internal BoardCells[,] cells = new BoardCells[RowSize, ColSize];
 
-        internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
 
         public void DefineBoard()
         {
-            exitPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.exit));
+            exit = new CurrentMapObjects(random.RandomPosition(RowSize, ColSize, ((char)Chars.exit)), Chars.exit, "reach the exit!");
 
-            mapPosition = random.RandomPosition(RowSize, ColSize, ((char)Chars.map));
+            map = new CurrentMapObjects(random.RandomPosition(RowSize, ColSize, ((char)Chars.map)), Chars.map, "reveals level info");
 
-            playerStart = random.RandomPosition(RowSize, ColSize, ((char)Chars.player));
+            Items item1 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "food yum", 4, 2);
 
-            exit = new CurrentMapObjects(exitPosition, Chars.exit, "reach the exit!");
+            Items item2 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "chomp chomp", 2, 2);
 
-            map = new CurrentMapObjects(mapPosition, Chars.map, "reveals level info");
+            Items item3 = new Items(random.RandomPosition(RowSize, ColSize, ((char)Chars.food)), Chars.food, "dinner is served", 1, 4);
+
+            inventory.AddToInventory(item1);
+
+
 
 
             Trap trap1 = new Trap((random.RandomPosition(RowSize, ColSize, ((char)Chars.trap))), (Chars.trap), "this trap takes 1hp", 1, 3);
@@ -52,12 +55,16 @@ namespace lp1_projetoFinal
             itemList.Add(exit);
             itemList.Add(map);
 
+            itemList.Add(item1);
+            itemList.Add(item2);
+            itemList.Add(item3);
+
             foreach (Trap trap in traps)
             {
                 itemList.Add(trap);
             }
 
-            player = new Player((char)Chars.player, 100, playerStart);
+            player = new Player((char)Chars.player, 100, random.RandomPosition(RowSize, ColSize, ((char)Chars.player)));
 
             foreach (CurrentMapObjects item in itemList)
             {
