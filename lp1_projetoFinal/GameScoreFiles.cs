@@ -7,22 +7,17 @@ namespace lp1_projetoFinal
 {
     internal class GameScoreFiles
     {
-        // declare variables
-        int score;
-        string fileName = string.Format(@"Score_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
-
-        // initiate player and position
-        //Stack<string> scoreList;
+        //string fileName = string.Format(@"Score_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
+        const string FILENAME = "Highscores.txt";
+        string newFile = string.Format("Highscores_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
+        StreamWriter fileContent = new StreamWriter(FILENAME);
+        
+        // List for score
+        List<GameScore> scoreList = new List<GameScore>();
 
         Player player;
-        Position position;
-        GameBoard board;
-        PrintText scoreText;
-        Levels currentLevel;
-        Enemy enemiesKilled;
-
-        public int Score { get; set; }
-
+        int score;
+        GameScore sc;
 
         /// <summary>
         /// Get player score according to enemies killed and level difficulty
@@ -31,9 +26,12 @@ namespace lp1_projetoFinal
         /// <returns> return current score </returns>
         public int GetScore()
         {
-            Score = 0;
-            if (player.health == 0) Score++;
-            return Score;  
+            score= 0;
+            if (player.health == 0) score++;
+
+            //scoreList.Add(score);
+
+            return score;  
         }
 
         /*
@@ -51,57 +49,49 @@ namespace lp1_projetoFinal
         /// </summary>
         public void SaveScoreOnFile()
         {
-            GetScore();
-            
+            string textTest = "Hello";
+            string frs = sc.Frase = "Hi";
+            int scr = sc.Score = 100;
 
-            for (int i = 1; i <= 8; i++)
+            scoreList.Add();
+
+            if (File.Exists(FILENAME))
             {
-                Console.WriteLine($"Place {i} = {Score}");
+                File.Create(newFile);
+                fileContent.WriteLine(textTest, scoreList[1]);
             }
+
+            fileContent.Close();
+
+
+
+            /*
+            foreach (GameScore score in scoreList)
+            {
+                fileContent.WriteLine(textTest + score.Score);
+                File.Delete(FILENAME);
+            }*/
 
             //File.WriteAllLines(fileName);
         }
 
-
-
         /// <summary>
-        /// Read the score file
+        /// Read The current file
         /// </summary>
         public void LoadScoreFromFile()
         {
             SaveScoreOnFile();
 
-            using (StreamReader file = new StreamReader(fileName))
+            using (StreamReader file = new StreamReader(newFile))
             {
-                int counter = 0;
-                string ln;
-                while ((ln = file.ReadLine()) != null)
+                string reader;
+                while ((reader = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(ln);
-                    //List<string> scoreFiles = new List<string>();
-                    //File.ReadAllLines(fileName);
+                    Console.WriteLine(reader);                   
                 }
+                file.Close();
             }
         }
-
-
-
-
-        /*
-        /// <summary>
-        /// Make a new file and save score Stack into it
-        /// </summary>
-        /// <param name="scoreList"> get score from list</param>
-        public void SaveScoreOnFile()
-        {
-            
-            fileName = string.Format(@"Score_{0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
-
-            File.WriteAllLines(fileName, );
-        }*/
-
-
-
     }
 }
 
