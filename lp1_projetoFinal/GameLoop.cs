@@ -7,7 +7,7 @@ namespace lp1_projetoFinal
 
         internal int lvlCount = 1;
 
-        internal int chosenDiff = 5;
+        internal int chosenDiff;
 
         internal static GameBoard board = new GameBoard();
 

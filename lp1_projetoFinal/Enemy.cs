@@ -4,11 +4,14 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
-    internal class Enemy : IHealthPoints
+    internal class Enemy
     {
+        /*
+        internal int 
         public void Health()
         {
-            throw new NotImplementedException();
+           
         }
+        */
     }
 }

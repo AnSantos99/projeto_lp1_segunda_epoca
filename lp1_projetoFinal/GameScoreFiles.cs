@@ -7,17 +7,25 @@ namespace lp1_projetoFinal
 {
     internal class GameScoreFiles
     {
+        // Original file name
         const string FILENAME = "Highscores.txt";
+
+        // To create a new file with name of choosen format
         string newFile = string.Format("Highscores_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
+
+        // To store file contents
         StreamWriter fileContent = new StreamWriter(FILENAME);
         
-        // List for score
+        // List to store all scores
         List<GameScore> scoreList = new List<GameScore>();
 
-        Player player;
-        int score;
+        
+        //Player player;
+        
+        // GameScore variable to call class members
         GameScore sc;
 
+        /*
         /// <summary>
         /// Get player score according to enemies killed and level difficulty
         /// and get score 
@@ -25,55 +33,32 @@ namespace lp1_projetoFinal
         /// <returns> return current score </returns>
         public int GetScore()
         {
+            int score;
             score= 0;
             if (player.health == 0) score++;
-
-            //scoreList.Add(score);
-
             return score;  
-        }
-
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        public void SaveScoreToStack()
-        {
-            scoreList.Push(Convert.ToString(Score));
         }*/
 
 
         /// <summary>
-        /// Prints out the Score on score menu
+        /// Function to save scores on file
         /// </summary>
         public void SaveScoreOnFile()
         {
             string textTest = "Hello";
-            string frs = sc.Frase = "Hi";
-            int scr = 100;
-            sc = new GameScore("hi", scr);
+            int scrTest = 100;
 
+            sc = new GameScore("hi", scrTest);
             scoreList.Add(sc);
 
             if (File.Exists(FILENAME))
             {
                 //File.Create(newFile);
-                fileContent.WriteLine(textTest + sc.Score);
+                fileContent.WriteLine(textTest + sc.Frase + sc.Score);
             }
-
             fileContent.Close();
-
-
-
-            /*
-            foreach (GameScore score in scoreList)
-            {
-                fileContent.WriteLine(textTest + score.Score);
-                File.Delete(FILENAME);
-            }*/
-
-            //File.WriteAllLines(fileName);
         }
+
 
         /// <summary>
         /// Read The current file
