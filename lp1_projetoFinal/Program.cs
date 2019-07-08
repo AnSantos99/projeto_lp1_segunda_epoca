@@ -14,7 +14,11 @@ namespace lp1_projetoFinal
             string keyInput1 = args[0];
             string keyInput2 = args[2];
             string keyInput3 = args[4];
-           
+
+            int val1 = int.Parse(args[1]);
+            int val2 = int.Parse(args[3]);
+            int val3 = int.Parse(args[5]);
+
             int levelDiff = int.Parse(args[5]);
 
             if (keyInput1 == "-r")
@@ -35,15 +39,10 @@ namespace lp1_projetoFinal
                 GameBoard.ColSize = Convert.ToInt32(args[1]);
             }
 
-            /*
-            if (keyInput3 == "-d")
-            {
-                level = new Levels(1, levelDiff);
-            }
-            */
-                
+            ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
+            ConditionsChecker.CheckDifficultyLevel(levelDiff);
+            //ConditionsChecker.CheckValidUserArgs(keyInput1, keyInput2, keyInput3, val1, val2, val3);
 
-            //ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
             //(needs to be checked) ConditionsChecker.CheckUserINvalidArgs(args[0], args[2]);
 
             // initialise new GameLoop to run the application

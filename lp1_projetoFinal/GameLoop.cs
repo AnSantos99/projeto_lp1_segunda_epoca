@@ -8,8 +8,6 @@ namespace lp1_projetoFinal
         // counter to raise the level each time 
         internal int lvlCount = 1;
 
-        internal int chosenDiff;
-
         internal static GameBoard board = new GameBoard();
 
         internal char key;
