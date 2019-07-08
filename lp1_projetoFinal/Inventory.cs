@@ -7,7 +7,7 @@ namespace lp1_projetoFinal
     {
         internal List<Items> itemsInInventory = new List<Items>();
         internal int currentWeight;
-        internal int maxWeight = 6;
+        internal int maxWeight = 10;
 
         internal void AddToInventory(Items item)
         {
@@ -15,6 +15,7 @@ namespace lp1_projetoFinal
             {
                 itemsInInventory.Add(item);
                 currentWeight += item.Weight;
+
             }
 
             else 

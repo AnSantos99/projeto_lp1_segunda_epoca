@@ -4,6 +4,10 @@ using System.Text;
 
 namespace lp1_projetoFinal
 {
+    /// <summary>
+    /// this enum serves the sole purpose of having a different char available
+    /// for each item present in the map for ease of printing
+    /// </summary>
     internal enum Chars
     {
         player = 'c',
