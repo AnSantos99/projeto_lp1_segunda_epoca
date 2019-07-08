@@ -13,8 +13,6 @@ namespace lp1_projetoFinal
 
         internal char key;
 
-        internal bool playing = false;
-
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
 
@@ -54,7 +52,6 @@ namespace lp1_projetoFinal
 
             do
             {
-                if (board.player.health > 0) playing = true;
 
                 // render the board anew each time the cycle loops    
                 board.RenderBoard(newLevel);
@@ -224,7 +221,7 @@ namespace lp1_projetoFinal
                     if (quit == ConsoleKey.Y)
                     {  //insert score stuff
                         Console.WriteLine("thank you for playing!");
-                        playing = false;
+       
                     }
                 }
                 
@@ -255,7 +252,7 @@ namespace lp1_projetoFinal
             }
 
             // run the loop while the player hasn't won, lost or quit
-            while (playing);
+            while (board.player.health > 0);
 
 
             GameScoreFiles score = new GameScoreFiles();

@@ -2,7 +2,6 @@
 {
      internal class Trap : CurrentMapObjects
     {
-
         internal int DamageLevel;
         internal int MaxDamage;
         internal string TrapInfo;

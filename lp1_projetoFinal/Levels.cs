@@ -31,7 +31,7 @@ namespace lp1_projetoFinal
             int maxTrapsInLvl = Linear(Current, Diff, 2);
             int maxItemsInLvl = Linear(Current, Diff, 2);
 
-            cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
+            
 
             items.Add(exit);
             items.Add(map);
@@ -81,6 +81,8 @@ namespace lp1_projetoFinal
                     cells[i, j] = new BoardCells((char)Chars.empty);
                 }
             }
+
+            cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
 
         }
 
