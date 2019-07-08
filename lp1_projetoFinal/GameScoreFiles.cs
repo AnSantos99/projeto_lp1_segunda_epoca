@@ -52,8 +52,9 @@ namespace lp1_projetoFinal
                 while ((reader = file.ReadLine()) != null)
                 {
                     // Check if file exists and read every line of it
-                    if (File.Exists(FILENAME)) Console.WriteLine(reader);                   
+                    if (File.Exists(FILENAME)) Console.WriteLine(reader);
                 }
+
                 file.Close();
             }
         }
