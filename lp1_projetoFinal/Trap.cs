@@ -2,7 +2,6 @@
 {
      internal class Trap : CurrentMapObjects
     {
-
         internal int DamageLevel;
         internal int MaxDamage;
         internal string TrapInfo;
@@ -16,7 +15,7 @@
         
         internal bool FallenInto(Player player)
         {
-            if (player.position.Row == this.Position.Row && player.position.Col == this.Position.Col)
+            if (player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
                 return true;
             return false;
         }

@@ -6,13 +6,18 @@ namespace lp1_projetoFinal
 {
     internal class UserInputArgs
     {
-        Dictionary<string, int> argPairs = new Dictionary<string, int>();
+        //Dictionary<string, int> argPairs = new Dictionary<string, int>();
 
-        /*
-        public void Pairs()
+
+        /// <summary>
+        /// Set Dictionary to defualt value to choose after in args
+        /// </summary>
+        /// <param name="myDictionary"></param>
+        public static void ArgsDicReader(Dictionary<string, int> myDictionary)
         {
-            
-            argPairs.Add(new Dictionary<string, int>("-r", 0));
-        }*/
+            myDictionary.Add(default(string), default(int));
+            myDictionary.Add(default(string), default(int));
+            myDictionary.Add(default(string), default(int));
+        }
     }
 }

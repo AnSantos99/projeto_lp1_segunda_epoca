@@ -15,8 +15,6 @@ namespace lp1_projetoFinal
 
         internal double score;
 
-        internal RandomGenerator random = new RandomGenerator();
-
 
         internal Levels(int current, int diff)
         {
@@ -25,21 +23,13 @@ namespace lp1_projetoFinal
         }
 
 
-        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, int RowSize, int ColSize, BoardCells[,] cells)
+        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, List<Items> grabItems, int RowSize, int ColSize, BoardCells[,] cells)
         {
             
             int maxTrapsInLvl = Linear(Current, Diff, 2);
             int maxItemsInLvl = Linear(Current, Diff, 2);
 
-            cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
-
-            for (int i = 0; i < RowSize; i++)
-            {
-                for (int j = 0; j < ColSize; j++)
-                {
-                    cells[i, j] = new BoardCells((char)Chars.empty);
-                }
-            }
+            
 
             items.Add(exit);
             items.Add(map);
@@ -70,6 +60,7 @@ namespace lp1_projetoFinal
                 Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(RowSize), rnd.Next(RowSize));
                 
                 items.Add(item);
+                grabItems.Add(item);
 
             }
 
@@ -80,6 +71,17 @@ namespace lp1_projetoFinal
 
                 cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
             }
+
+
+            for (int i = 0; i < RowSize; i++)
+            {
+                for (int j = 0; j < ColSize; j++)
+                {
+                    cells[i, j] = new BoardCells((char)Chars.empty);
+                }
+            }
+
+            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name);
 
         }
 

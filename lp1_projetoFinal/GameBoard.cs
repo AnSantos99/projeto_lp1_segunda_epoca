@@ -19,13 +19,15 @@ namespace lp1_projetoFinal
 
         internal List<Trap> traps =  new List<Trap>();
 
+        internal List<Items> pickItems = new List<Items>();
+
         internal Random rnd  = new Random();
 
         internal BoardCells[,] cells;
 
         public void DefineBoard(Levels lvl)
         {
-            player = new Player((char)Chars.player, 100, new Position(rnd.Next(RowSize), 0));
+            player = new Player((char)Chars.player, 100, new Position(rnd.Next(RowSize), 0), inventory);
 
             exit = new CurrentMapObjects(new Position(rnd.Next(RowSize), (ColSize-1)), Chars.exit, "reach the exit!");
 
@@ -33,7 +35,7 @@ namespace lp1_projetoFinal
 
             cells = new BoardCells[RowSize, ColSize];
 
-            lvl.Setup(player, exit, map, itemList, traps, RowSize, ColSize, cells);
+            lvl.Setup(player, exit, map, itemList, traps, pickItems, RowSize, ColSize, cells);
         }
 
         public void RenderBoard(Levels lvl)
