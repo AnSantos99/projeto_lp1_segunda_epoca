@@ -223,7 +223,8 @@ namespace lp1_projetoFinal
         public void ScoreText()
         {
             Console.WriteLine("<-------------------------->");
-            Console.WriteLine(@"Your Current Score on map {0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
+            Console.WriteLine(@"Your Current Score on map {0}x{1} will be shown here:", GameBoard.RowSize, GameBoard.ColSize);
+
         }
 
        

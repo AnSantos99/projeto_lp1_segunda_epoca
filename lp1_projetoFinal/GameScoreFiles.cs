@@ -1,4 +1,6 @@
-﻿using System;
+﻿/*
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -26,13 +28,14 @@ namespace lp1_projetoFinal
         /// </summary>
         public void SaveScoreOnFile()
         {
+ 
             string textTest = "Hello";
             int scrTest = 100;
 
             sc = new GameScore("hi", scrTest);
             scoreList.Add(sc);
 
-            fileContent.WriteLine(textTest + sc.Frase + sc.Score);
+            fileContent.WriteLine(name + textTest + sc.Frase + sc.Score);
             fileContent.Close();
         }
 
@@ -60,4 +63,4 @@ namespace lp1_projetoFinal
         }
     }
 }
-
+*/

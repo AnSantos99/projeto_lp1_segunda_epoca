@@ -12,6 +12,8 @@ namespace lp1_projetoFinal
 
         internal char key;
 
+        internal GameScore score;
+
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
 
@@ -257,9 +259,10 @@ namespace lp1_projetoFinal
             // run the loop while the player hasn't won, lost or quit
             while (board.player.health > 0);
 
-
-            GameScoreFiles score = new GameScoreFiles();
-            score.SaveScoreOnFile();
+            Console.WriteLine("please input your name for the score");
+            string name = Console.ReadLine();
+            score = new GameScore(name, newLevel.score);
+            score.SaveScoreOnFile(score);
             Environment.Exit(0);
     
         }
