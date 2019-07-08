@@ -7,41 +7,22 @@ namespace lp1_projetoFinal
 {
     internal class GameScoreFiles
     {
-        // Original file name
-        const string FILENAME = "Highscores.txt";
-
         // To create a new file with name of choosen format
-        string newFile = string.Format("Highscores_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
+        static string FILENAME = string.Format("Highscores_{0}x{1}.txt",
+            GameBoard.RowSize, GameBoard.ColSize);
 
-        // To store file contents
-        StreamWriter fileContent = new StreamWriter(FILENAME);
-        
-        // List to store all scores
+        // List to store all player scores
         List<GameScore> scoreList = new List<GameScore>();
 
-        
-        //Player player;
+        // To store contents into files
+        StreamWriter fileContent = new StreamWriter(FILENAME);
         
         // GameScore variable to call class members
         GameScore sc;
 
-        /*
-        /// <summary>
-        /// Get player score according to enemies killed and level difficulty
-        /// and get score 
-        /// </summary>
-        /// <returns> return current score </returns>
-        public int GetScore()
-        {
-            int score;
-            score= 0;
-            if (player.health == 0) score++;
-            return score;  
-        }*/
-
 
         /// <summary>
-        /// Function to save scores on file
+        /// Function to save scores current file by adding scores from list
         /// </summary>
         public void SaveScoreOnFile()
         {
@@ -51,20 +32,18 @@ namespace lp1_projetoFinal
             sc = new GameScore("hi", scrTest);
             scoreList.Add(sc);
 
-            if (File.Exists(FILENAME))
-            {
-                //File.Create(newFile);
-                fileContent.WriteLine(textTest + sc.Frase + sc.Score);
-            }
+            fileContent.WriteLine(textTest + sc.Frase + sc.Score);
             fileContent.Close();
         }
 
 
         /// <summary>
-        /// Read The current file
+        /// Function to read file created with specific game dimensions name
+        /// and print out its content.
         /// </summary>
         public void LoadScoreFromFile()
         {
+            // Call function to create file
             SaveScoreOnFile();
 
             using (StreamReader file = new StreamReader(FILENAME))
@@ -72,7 +51,8 @@ namespace lp1_projetoFinal
                 string reader;
                 while ((reader = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(reader);                   
+                    // Check if file exists and read every line of it
+                    if (File.Exists(FILENAME)) Console.WriteLine(reader);                   
                 }
                 file.Close();
             }
