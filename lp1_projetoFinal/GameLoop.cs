@@ -5,9 +5,9 @@ namespace lp1_projetoFinal
     internal class GameLoop
     {
 
-        internal int lvlCount = 0;
+        internal int lvlCount = 1;
 
-        internal int chosenDiff = 2;
+        internal int chosenDiff = 5;
 
         internal static GameBoard board = new GameBoard();
 
@@ -38,7 +38,7 @@ namespace lp1_projetoFinal
             {
                 menu.Menu();
 
-                board.DefineBoard();
+                board.DefineBoard(newLevel);
 
             }
             
@@ -70,7 +70,8 @@ namespace lp1_projetoFinal
                 {
                     foreach (CurrentMapObjects item in board.itemList)
                     {
-                        if (board.cells[board.player.position.Row - 1, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
+                        if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
+                            board.cells[board.player.position.Row - 1, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[board.player.position.Row + 1, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[board.player.position.Row, board.player.position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
                         board.cells[board.player.position.Row, board.player.position.Col - 1] == board.cells[item.Position.Row, item.Position.Col] ||
@@ -154,9 +155,26 @@ namespace lp1_projetoFinal
                     board.player.position.Row++;
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
+                
+               
+                // NOT WORKING SEE WHY
+                if (answer == ConsoleKey.D2)
+                {
+                    foreach (Items item in board.inventory.itemsInInventory)
+                    {
+                        if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
 
+                        {
+                            board.inventory.itemsInInventory.Add(item);
+                            board.itemList.Remove(item);
+                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)Chars.path);
 
-                if (answer == ConsoleKey.D2 || answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
+                        }
+                    }
+                }
+               
+
+                if (answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
                  {
                     foreach (CurrentMapObjects item in board.itemList)
                     {
@@ -179,27 +197,26 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps, board.inventory);
+                    gameInfo.HelpText(newLevel.traps, board.inventory);
 
           
                 foreach(Trap trap in board.traps)
                 {
                     if (trap.FallenInto(board.player))
                     {
-                        board.player.Health(-2);
+                        board.player.Health(-trap.DamageLevel);
                     }
                  }
                  
                 
                 if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {
-                    Console.WriteLine("Congratulations! you've reached the exit!");
-                    
+                    Console.WriteLine("Congratulations! you've reached the exit!");              
                     Console.WriteLine("Press any key to continue to the next level");
                     Console.ReadKey();
                     Console.Clear();
                     start = true;
-                    board.DefineBoard();
+                    board.DefineBoard(newLevel);
                     lvlCount++;
                     Loop();
             
