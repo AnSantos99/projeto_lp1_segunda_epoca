@@ -14,8 +14,9 @@ namespace lp1_projetoFinal
         // define player's health so we can manipulate it
         internal int health;
 
-        internal Position position;
+        internal Position Position;
 
+        internal Inventory Inventory;
         
         //internal Position position;
 
@@ -25,14 +26,14 @@ namespace lp1_projetoFinal
         /// </summary>
         /// <param name="name">to identify on other parts of code</param>
         /// <param name="health">default to 100</param>
-        internal Player(char name, int health, Position position)
+        internal Player(char name, int health, Position position, Inventory inventory)
         {
             this.name = name;
             this.health = health;
-            this.position = position;
+            this.Position = position;
+            this.Inventory = inventory;
        
         }
-
 
         internal Player(int score)
         {

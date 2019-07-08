@@ -198,13 +198,22 @@ namespace lp1_projetoFinal
         /// this menu shows what the player currently owns and offers the 
         /// options of picking, dropping and using items
         /// </summary>
-        public void InventoryText()
+        public void InventoryText(List<Items> inventory)
         {
+            Console.WriteLine("Food          HPIncrease        Weight");
+            Console.WriteLine("----------------------------------------");
+
             Console.WriteLine("--------------------------");
             Console.WriteLine("Select item to XXXX");
             Console.WriteLine("--------------------------");
             Console.WriteLine("Weapon (Name)");
             Console.WriteLine("Food (Name)");
+
+            foreach (Items item in inventory)
+            {
+                Console.WriteLine(item.Info + "              " + item.Effect);
+            }
+
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();

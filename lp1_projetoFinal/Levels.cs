@@ -25,7 +25,7 @@ namespace lp1_projetoFinal
         }
 
 
-        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, int RowSize, int ColSize, BoardCells[,] cells)
+        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, List<Items> grabItems, int RowSize, int ColSize, BoardCells[,] cells)
         {
             
             int maxTrapsInLvl = Linear(Current, Diff, 2);
@@ -62,6 +62,7 @@ namespace lp1_projetoFinal
                 Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(RowSize), rnd.Next(RowSize));
                 
                 items.Add(item);
+                grabItems.Add(item);
 
             }
 
@@ -82,7 +83,7 @@ namespace lp1_projetoFinal
                 }
             }
 
-            cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
+            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name);
 
         }
 
