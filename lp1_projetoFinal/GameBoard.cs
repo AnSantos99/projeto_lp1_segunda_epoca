@@ -80,5 +80,11 @@ namespace lp1_projetoFinal
                 Console.WriteLine();
             }
         }
+
+        public void ResetBoard()
+        {
+            itemList.Clear();
+            pickItems.Clear();
+        }
     }
 }

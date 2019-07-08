@@ -31,7 +31,7 @@ namespace lp1_projetoFinal
         public void Loop(int chosenDiff)
         {
 
-            newLevel = new Levels(lvlCount, chosenDiff);
+            newLevel = new Levels(lvlCount, chosenDiff*lvlCount);
             // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
 
@@ -248,6 +248,7 @@ namespace lp1_projetoFinal
                     Console.ReadKey();
                     Console.Clear();
                     start = true;
+                    board.ResetBoard();
                     board.DefineBoard(newLevel);
                     lvlCount++;
                     Loop(chosenDiff);

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace lp1_projetoFinal
+﻿namespace lp1_projetoFinal
 {
     internal class Enemy
     {
-        /*
-        internal int 
-        public void Health()
+        internal int Health;
+
+        internal int AttackPower;
+
+        internal Enemy(int health, int attackPower)
         {
-           
+            this.Health = health;
+            this.AttackPower = attackPower;
         }
-        */
     }
 }

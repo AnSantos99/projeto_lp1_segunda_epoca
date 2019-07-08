@@ -16,6 +16,8 @@ namespace lp1_projetoFinal
 
         internal Position Position;
 
+       // internal Weapon selectedWeapon;
+
         internal Inventory Inventory;
         
         //internal Position position;
