@@ -14,7 +14,8 @@ namespace lp1_projetoFinal
             string keyInput1 = args[0];
             string keyInput2 = args[2];
             string keyInput3 = args[4];
-            //int levelDiff = int.Parse(args[5]);
+           
+            int levelDiff = int.Parse(args[5]);
 
             Levels level;
 
@@ -36,10 +37,12 @@ namespace lp1_projetoFinal
                 GameBoard.ColSize = Convert.ToInt32(args[1]);
             }
 
+            /*
             if (keyInput3 == "-d")
             {
-                level = new Levels(1, int.Parse(args[5]));
+                level = new Levels(1, levelDiff);
             }
+            */
                 
 
             //ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
@@ -49,7 +52,7 @@ namespace lp1_projetoFinal
             GameLoop loop = new GameLoop();
 
             // call the Loop function to begin new game loop
-            loop.Loop();
+            loop.Loop(levelDiff);
         }
     }
 }
