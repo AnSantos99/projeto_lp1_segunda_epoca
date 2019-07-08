@@ -29,7 +29,7 @@ namespace lp1_projetoFinal
         /// finishing whenever someone wins, loses or quits
         /// it returns nothing
         /// </summary>
-        public void Loop()
+        public void Loop(int chosenDiff)
         {
 
 
@@ -253,7 +253,7 @@ namespace lp1_projetoFinal
                     start = true;
                     board.DefineBoard(newLevel);
                     lvlCount++;
-                    Loop();
+                    Loop(chosenDiff);
             
                 }
             }
