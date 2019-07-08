@@ -11,6 +11,9 @@ namespace lp1_projetoFinal
 
         internal static GameBoard board = new GameBoard();
 
+        internal char key;
+
+        internal bool playing = false;
 
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
@@ -28,6 +31,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public void Loop()
         {
+
 
             newLevel = new Levels(lvlCount, chosenDiff);
             // initialise the PrintText class so different texts can be printed
@@ -49,13 +53,17 @@ namespace lp1_projetoFinal
             // for reading the player's input
             ConsoleKey answer;
 
+            
+
             do
             {
+                if (board.player.health > 0) playing = true;
+
                 // render the board anew each time the cycle loops    
                 board.RenderBoard(newLevel);
 
                 // showcase player's current stats through level progression
-                gameInfo.GameText(newLevel, board.player, board.inventory);
+                gameInfo.GameText(newLevel, board.player, board.inventory, key);
 
                 // read user's single key input
                 answer = Console.ReadKey().Key;
@@ -90,6 +98,7 @@ namespace lp1_projetoFinal
                 
                 if (answer == ConsoleKey.S)
                 {
+                    key = 'S';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Row++;
@@ -98,6 +107,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.W)
                 {
+                    key = 'W';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Row--;
@@ -106,6 +116,8 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.A)
                 {
+
+                    key = 'A';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
@@ -114,6 +126,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.D)
                 {
+                    key = 'D';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
@@ -122,6 +135,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.Q)
                 {
+                    key = 'Q';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
@@ -131,6 +145,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.E)
                 {
+                    key = 'E';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
@@ -140,6 +155,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.Z)
                 {
+                    key = 'Z';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col--;
@@ -149,6 +165,7 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.X)
                 {
+                    key = 'X';
                     board.player.Health(-1);
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.path);
                     board.player.position.Col++;
@@ -160,7 +177,7 @@ namespace lp1_projetoFinal
                 // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
-                    foreach (Items item in board.inventory.itemsInInventory)
+                    foreach (Items item in board.itemList)
                     {
                         if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
 
@@ -168,7 +185,6 @@ namespace lp1_projetoFinal
                             board.inventory.itemsInInventory.Add(item);
                             board.itemList.Remove(item);
                             board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)Chars.path);
-
                         }
                     }
                 }
@@ -176,6 +192,8 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
                  {
+                    gameInfo.InventoryText();
+
                     foreach (CurrentMapObjects item in board.itemList)
                     {
                         if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
@@ -188,23 +206,39 @@ namespace lp1_projetoFinal
                                 board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)Chars.player);
 
                             }
-
+     
                         }
                     }
                        
                  }
-                //gameInfo.InventoryText();
+                
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(newLevel.traps, board.inventory);
+                    gameInfo.HelpText(board.traps, board.inventory);
 
-          
-                foreach(Trap trap in board.traps)
+                if (answer == ConsoleKey.D8)
+                {
+                    Console.Clear();
+                    
+                    Console.WriteLine("are you sure you wish to quit? y/n");
+                    ConsoleKey quit = Console.ReadKey().Key;
+
+
+                    if (quit == ConsoleKey.Y)
+                        //insert score stuff
+                        Console.WriteLine("thank you for playing!");
+                        playing = false;
+                }
+                
+
+
+                foreach (Trap trap in board.traps)
                 {
                     if (trap.FallenInto(board.player))
                     {
                         board.player.Health(-trap.DamageLevel);
+                        key = 'D';
                     }
                  }
                  
@@ -224,9 +258,11 @@ namespace lp1_projetoFinal
             }
 
             // run the loop while the player hasn't won, lost or quit
-            while (answer != ConsoleKey.D8 && board.player.health > 0);
+            while (playing);
 
-            Console.WriteLine("Too bad!!you lost the game!");
+
+            GameScoreFiles score = new GameScoreFiles();
+            score.SaveScoreOnFile();
             Environment.Exit(0);
     
         }

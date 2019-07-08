@@ -19,24 +19,21 @@ namespace lp1_projetoFinal
 
         internal List<Trap> traps =  new List<Trap>();
 
-        internal RandomGenerator random  = new RandomGenerator();
+        internal Random rnd  = new Random();
 
         internal BoardCells[,] cells;
 
         public void DefineBoard(Levels lvl)
         {
-            player = new Player((char)Chars.player, 100, random.RandomPosition(RowSize, ColSize, ((char)Chars.player)));
+            player = new Player((char)Chars.player, 100, new Position(rnd.Next(RowSize), 0));
 
-            exit = new CurrentMapObjects(random.RandomPosition(RowSize, ColSize, ((char)Chars.exit)), Chars.exit, "reach the exit!");
+            exit = new CurrentMapObjects(new Position(rnd.Next(RowSize), (ColSize-1)), Chars.exit, "reach the exit!");
 
-            map = new CurrentMapObjects(random.RandomPosition(RowSize, ColSize, ((char)Chars.map)), Chars.map, "reveals level info");
+            map = new CurrentMapObjects(new Position(rnd.Next(RowSize), rnd.Next(ColSize)), Chars.map, "reveals level info");
 
             cells = new BoardCells[RowSize, ColSize];
 
             lvl.Setup(player, exit, map, itemList, traps, RowSize, ColSize, cells);
-
-
-
         }
 
         public void RenderBoard(Levels lvl)
@@ -60,7 +57,7 @@ namespace lp1_projetoFinal
                 }
 
                 Console.WriteLine();
-                Console.Write($"[{y + 1}] ");
+                Console.Write($"[{y}] ");
 
                 // check if there are pieces and place them
                 for (uint x = 0; x < ColSize; x++)
