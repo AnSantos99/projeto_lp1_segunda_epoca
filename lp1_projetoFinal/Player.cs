@@ -33,6 +33,14 @@ namespace lp1_projetoFinal
        
         }
 
+
+        internal Player(int score)
+        {
+            Score = score;
+        }
+
+        public int Score { get; set; }
+
         /// <summary>
         /// this method works to obtain the player's current position and know
         /// what coordinate they can be found in at any needed time

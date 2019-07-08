@@ -24,6 +24,7 @@ namespace lp1_projetoFinal
             Diff = diff; 
         }
 
+
         internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, int RowSize, int ColSize, BoardCells[,] cells)
         {
             

@@ -7,76 +7,75 @@ namespace lp1_projetoFinal
 {
     internal class GameScoreFiles
     {
-        // declare variables
-        int score;
-        string fileName;
+        // Original file name
+        const string FILENAME = "Highscores.txt";
 
-        // initiate player and position
-        Player player;
-        Position position;
-        GameBoard board;
-        PrintText scoreText;
+        // To create a new file with name of choosen format
+        string newFile = string.Format("Highscores_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
 
+        // To store file contents
+        StreamWriter fileContent = new StreamWriter(FILENAME);
+        
+        // List to store all scores
+        List<GameScore> scoreList = new List<GameScore>();
 
+        
+        //Player player;
+        
+        // GameScore variable to call class members
+        GameScore sc;
+
+        /*
         /// <summary>
         /// Get player score according to enemies killed and level difficulty
-        /// If player reaches level exit or if player dies
+        /// and get score 
         /// </summary>
         /// <returns> return current score </returns>
         public int GetScore()
         {
-            score = 0;
-
-            if (player.health == 0)
-            {
-                //score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame); ----> Formula do stor)
-                score++;
-            }
+            int score;
+            score= 0;
+            if (player.health == 0) score++;
             return score;  
-        }
-        
-
-        /// <summary>
-        /// Get results to show on score Page
-        /// </summary>
-        public void ShowScoreOnPage()
-        {
-            Stack<int> scoreList = new Stack<int>();
-
-            for (int i = 1; i <= 8; i++)
-            {
-                
-                //Console.WriteLine($"Place {i}: {GetScore()}");
-
-            }
-        }
+        }*/
 
 
         /// <summary>
-        /// Make a new file and save score Stack into it
+        /// Function to save scores on file
         /// </summary>
-        /// <param name="scoreList"> get score from list</param>
         public void SaveScoreOnFile()
         {
-            string[] arrList;
-            fileName = string.Format(@"GameScore_{0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
+            string textTest = "Hello";
+            int scrTest = 100;
 
+            sc = new GameScore("hi", scrTest);
+            scoreList.Add(sc);
 
-            
-
-            
-
-            //File.WriteAllLines(fileName, scoreList);
-
+            if (File.Exists(FILENAME))
+            {
+                //File.Create(newFile);
+                fileContent.WriteLine(textTest + sc.Frase + sc.Score);
+            }
+            fileContent.Close();
         }
 
 
         /// <summary>
-        /// Read the score file
+        /// Read The current file
         /// </summary>
         public void LoadScoreFromFile()
         {
-            File.ReadAllLines(fileName);
+            SaveScoreOnFile();
+
+            using (StreamReader file = new StreamReader(FILENAME))
+            {
+                string reader;
+                while ((reader = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(reader);                   
+                }
+                file.Close();
+            }
         }
     }
 }
