@@ -33,14 +33,6 @@ namespace lp1_projetoFinal
 
             cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
 
-            for (int i = 0; i < RowSize; i++)
-            {
-                for (int j = 0; j < ColSize; j++)
-                {
-                    cells[i, j] = new BoardCells((char)Chars.empty);
-                }
-            }
-
             items.Add(exit);
             items.Add(map);
 
@@ -79,6 +71,15 @@ namespace lp1_projetoFinal
                 int col = rnd.Next(ColSize);
 
                 cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
+            }
+
+
+            for (int i = 0; i < RowSize; i++)
+            {
+                for (int j = 0; j < ColSize; j++)
+                {
+                    cells[i, j] = new BoardCells((char)Chars.empty);
+                }
             }
 
         }

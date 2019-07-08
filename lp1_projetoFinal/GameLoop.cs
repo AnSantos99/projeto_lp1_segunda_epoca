@@ -32,7 +32,6 @@ namespace lp1_projetoFinal
         public void Loop(int chosenDiff)
         {
 
-
             newLevel = new Levels(lvlCount, chosenDiff);
             // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
@@ -52,8 +51,6 @@ namespace lp1_projetoFinal
 
             // for reading the player's input
             ConsoleKey answer;
-
-            
 
             do
             {
@@ -172,19 +169,18 @@ namespace lp1_projetoFinal
                     board.player.position.Row++;
                     board.cells[board.player.position.Row, board.player.position.Col] = new BoardCells((char)board.player.name);
                 }
-                
                
                 // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
-                    foreach (Items item in board.itemList)
+                    foreach (CurrentMapObjects item in board.itemList)
                     {
                         if (board.cells[board.player.position.Row, board.player.position.Col] == board.cells[item.Position.Row, item.Position.Col])
 
                         {
-                            board.inventory.itemsInInventory.Add(item);
-                            board.itemList.Remove(item);
-                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)Chars.path);
+                           // board.inventory.AddToInventory(item);
+                           // board.itemList.Remove(item);
+                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
                         }
                     }
                 }

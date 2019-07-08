@@ -17,8 +17,6 @@ namespace lp1_projetoFinal
            
             int levelDiff = int.Parse(args[5]);
 
-            Levels level;
-
             if (keyInput1 == "-r")
             { 
                 GameBoard.RowSize = Convert.ToInt32(args[1]);
