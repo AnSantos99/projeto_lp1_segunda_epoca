@@ -226,9 +226,10 @@ namespace lp1_projetoFinal
 
 
                     if (quit == ConsoleKey.Y)
-                        //insert score stuff
+                    {  //insert score stuff
                         Console.WriteLine("thank you for playing!");
                         playing = false;
+                    }
                 }
                 
 
