@@ -15,8 +15,6 @@ namespace lp1_projetoFinal
 
         internal double score;
 
-        internal RandomGenerator random = new RandomGenerator();
-
 
         internal Levels(int current, int diff)
         {
