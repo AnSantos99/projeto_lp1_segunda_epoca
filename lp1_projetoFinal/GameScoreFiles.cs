@@ -7,7 +7,6 @@ namespace lp1_projetoFinal
 {
     internal class GameScoreFiles
     {
-        //string fileName = string.Format(@"Score_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
         const string FILENAME = "Highscores.txt";
         string newFile = string.Format("Highscores_{0}x{1}.txt", GameBoard.RowSize, GameBoard.ColSize);
         StreamWriter fileContent = new StreamWriter(FILENAME);
@@ -51,14 +50,15 @@ namespace lp1_projetoFinal
         {
             string textTest = "Hello";
             string frs = sc.Frase = "Hi";
-            int scr = sc.Score = 100;
+            int scr = 100;
+            sc = new GameScore("hi", scr);
 
-            scoreList.Add();
+            scoreList.Add(sc);
 
             if (File.Exists(FILENAME))
             {
-                File.Create(newFile);
-                fileContent.WriteLine(textTest, scoreList[1]);
+                //File.Create(newFile);
+                fileContent.WriteLine(textTest + sc.Score);
             }
 
             fileContent.Close();
@@ -82,7 +82,7 @@ namespace lp1_projetoFinal
         {
             SaveScoreOnFile();
 
-            using (StreamReader file = new StreamReader(newFile))
+            using (StreamReader file = new StreamReader(FILENAME))
             {
                 string reader;
                 while ((reader = file.ReadLine()) != null)
