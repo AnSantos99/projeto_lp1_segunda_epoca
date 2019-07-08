@@ -28,6 +28,7 @@ namespace lp1_projetoFinal
         {
             
             int maxTrapsInLvl = Linear(Current, Diff, 2);
+            int maxItemsInLvl = Linear(Current, Diff, 2);
 
             cells[player.position.Row, player.position.Col] = new BoardCells((char)player.name);
 
@@ -44,6 +45,8 @@ namespace lp1_projetoFinal
 
             int numberOfTraps = rnd.Next(maxTrapsInLvl);
 
+            int numberOfItems = rnd.Next(maxItemsInLvl);
+
             for (int i = 0; i < numberOfTraps; i++)
             {
 
@@ -54,6 +57,18 @@ namespace lp1_projetoFinal
 
                 traps.Add(trap);
                 items.Add(trap);  
+
+            }
+
+            for (int i = 0; i < numberOfItems; i++)
+            {
+
+                int row = rnd.Next(RowSize);
+                int col = rnd.Next(ColSize);
+
+                Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(RowSize), rnd.Next(RowSize));
+                
+                items.Add(item);
 
             }
 

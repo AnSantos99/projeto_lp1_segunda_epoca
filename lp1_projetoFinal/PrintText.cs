@@ -35,14 +35,34 @@ namespace lp1_projetoFinal
         /// to the player at all times during a level, returning nothing
         /// </summary>
         /// <param name="player"> receives the current player's info</param>
-        public void GameText(Levels level, Player player, Inventory inventory)
+        public void GameText(Levels level, Player player, Inventory inventory, char key)
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Console.Write("last actions:              ");
+            Console.Write("last actions:");
+            
+            Console.WriteLine("------------------------------------------------");
+
+            if (key == 'W') Console.WriteLine("Moved to the North");
+            if (key == 'S') Console.WriteLine("Moved to the South");
+            if (key == 'D') Console.WriteLine("Moved to the East");
+            if (key == 'A') Console.WriteLine("Moved to the West");
+
+            if (key == 'Q') Console.WriteLine("Moved to the NorthWest");
+            if (key == 'E') Console.WriteLine("Moved to the NorthEast");
+            if (key == 'Z') Console.WriteLine("Moved to the SouthWest");
+            if (key == 'X') Console.WriteLine("Moved to the SouthEast");
+
+            if (key == 'T') Console.WriteLine("Fallen into a trap!!");
+            /*
+            if (key == 'O') Console.WriteLine("Picked Up xxx");
+
+            if (key == ' ') Console.WriteLine("You defeated enemy and won");
+
+            if (key == ' ') Console.WriteLine("Picked Up xxx");
+            */
             Console.WriteLine("Player Stats:");
             Console.WriteLine("------------------------------------------------");
-            
             Console.WriteLine($"Current Level:{level.Current}");
             Console.WriteLine($"HP: {player.health}");
             Console.WriteLine($"Selected Weapon:");
@@ -50,14 +70,16 @@ namespace lp1_projetoFinal
 
             Console.WriteLine("Caption:");
             Console.WriteLine("------------");
-            Console.WriteLine($"SYMBOL - {(char)Chars.player}");
-            Console.WriteLine($"SYMBOL - {(char)Chars.enemy}");
+            Console.Write($"SYMBOL - {(char)Chars.player}");
+            Console.Write($"SYMBOL - {(char)Chars.enemy}");
             Console.WriteLine($"SYMBOL - {(char)Chars.empty}");
-            Console.WriteLine($"SYMBOL - {(char)Chars.path}");
-            Console.WriteLine($"SYMBOL - {(char)Chars.map}");
+
+            Console.Write($"SYMBOL - {(char)Chars.path}");
+            Console.Write($"SYMBOL - {(char)Chars.map}");
             Console.WriteLine($"SYMBOL - {(char)Chars.food}");
-            Console.WriteLine($"SYMBOL - {(char)Chars.weapon}");
-            Console.WriteLine($"SYMBOL - {(char)Chars.trap}");
+
+            Console.Write($"SYMBOL - {(char)Chars.weapon}");
+            Console.Write($"SYMBOL - {(char)Chars.trap}");
             Console.WriteLine($"SYMBOL - {(char)Chars.exit}");
 
 
@@ -194,6 +216,8 @@ namespace lp1_projetoFinal
             Console.WriteLine("----------------------------------");
             Console.WriteLine(@"Your Current Score on map {0}x{1}", GameBoard.RowSize, GameBoard.ColSize);
         }
+
+       
 
     }
 }
