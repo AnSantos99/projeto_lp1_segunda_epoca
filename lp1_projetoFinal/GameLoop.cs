@@ -164,7 +164,6 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
                
-                // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
                     key = 'P';
@@ -173,9 +172,9 @@ namespace lp1_projetoFinal
 
                     if (board.map.FallenInto(board.player))
                     {
+                        board.itemList.Remove(board.map);
                         foreach (CurrentMapObjects items in board.itemList)
                             board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name, false);
-                        board.itemList.Remove(board.map);
                     }
 
                     foreach (Items item in board.pickItems)
@@ -229,6 +228,7 @@ namespace lp1_projetoFinal
                     {
                         board.player.HealthChange(-trap.DamageLevel);
                         key = 'D';
+                        trap.Active = false;
                     }
                  }
 

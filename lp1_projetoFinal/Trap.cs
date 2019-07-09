@@ -5,6 +5,7 @@
         internal int DamageLevel;
         internal int MaxDamage;
         internal string TrapInfo;
+        internal bool Active = true;
       
         internal Trap(Position position, Chars name, string info, int damageLevel, int maxDamage) : base(position, name, info)
         {
@@ -15,7 +16,7 @@
         
         internal bool FallenInto(Player player)
         {
-            if (player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
+            if (Active && player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
                 return true;
             return false;
         }
