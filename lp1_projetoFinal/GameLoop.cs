@@ -168,7 +168,15 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D2)
                 {
                     key = 'P';
+
                     int index = 0;
+
+                    if (board.map.FallenInto(board.player))
+                    {
+                        foreach (CurrentMapObjects items in board.itemList)
+                            board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name, false);
+                        board.itemList.Remove(board.map);
+                    }
 
                     foreach (Items item in board.pickItems)
                     {
@@ -178,11 +186,6 @@ namespace lp1_projetoFinal
                             index++;
                             key = 'D';
 
-                            if(item.Name == Chars.map)
-                            {
-                                foreach(CurrentMapObjects items in board.itemList)
-                                    board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,false);
-                            }
                         }
                     }
                    
