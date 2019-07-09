@@ -25,7 +25,7 @@ namespace lp1_projetoFinal
 
             
             Dictionary<string, int> argsAccepter = new Dictionary<string, int>();
-            ConditionsChecker.ArgsCheck(argsAccepter, args);
+            //ConditionsChecker.ArgsCheck(argsAccepter, args);
             
 
             int row = GameBoard.RowSize;

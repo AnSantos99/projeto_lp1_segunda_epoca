@@ -12,6 +12,7 @@ namespace lp1_projetoFinal
 
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
+        int MAXSIZE = 2;
 
         
         public GameScore(){}
@@ -28,46 +29,45 @@ namespace lp1_projetoFinal
         /// </summary>
         public void SaveScoreOnFile(GameScore score)
         {
-            int counter = 0;
+            scoreList.Capacity = MAXSIZE;
+
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
             // Append text to the file content
             StreamWriter fileContent = File.AppendText(FILENAME);
 
-            // Add scores to scorelist
             scoreList.Add(score);
 
-            foreach(GameScore scoreo in scoreList)
-
-
+            // Add scores to scorelist
+            foreach (GameScore scoreo in scoreList)
             {
                 fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");
-                counter++;
             }
-
-
-            
             fileContent.Close();
+            
+            
         }
+
 
         /// <summary>
         /// Function to read file created with specific game dimensions name
         /// and print out its content.
         /// </summary>
         public void LoadScoreFromFile(GameScore score)
-        { 
+        {
+            scoreList.Capacity = MAXSIZE;
+
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-            using (StreamReader file = new StreamReader(FILENAME, true))
+            using (StreamReader file = new StreamReader(FILENAME))
             { 
                 string reader;
                 while ((reader = file.ReadLine()) != null)
                 {
                     Console.WriteLine(reader);
                 }
-
                 file.Close();
             }
         }
