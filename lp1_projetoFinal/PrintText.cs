@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
+    
     /// <summary>
     /// this class contains 5 methods and has the purpose to store all the 
     /// different texts that will be printed for each menu within the game 
@@ -11,11 +12,12 @@ namespace lp1_projetoFinal
     /// </summary>
     class PrintText
     {
+        internal static Stack<string> actions = new Stack<string>();
 
-       /// <summary>
-       /// this method's purpose is to store the initial game menu text, where
-       /// the user will be shown each option they can choose in the gameloop
-       /// </summary>
+        /// <summary>
+        /// this method's purpose is to store the initial game menu text, where
+        /// the user will be shown each option they can choose in the gameloop
+        /// </summary>
         public void MenuText()
         {
 
@@ -39,21 +41,21 @@ namespace lp1_projetoFinal
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Console.Write("last actions:");
             
-            Console.WriteLine("------------------------------------------------");
 
-            if (key == 'W') Console.WriteLine("Moved to the North");
-            if (key == 'S') Console.WriteLine("Moved to the South");
-            if (key == 'D') Console.WriteLine("Moved to the East");
-            if (key == 'A') Console.WriteLine("Moved to the West");
+            if (key == 'W') actions.Push("Moved to the North");
+            if (key == 'S') actions.Push("Moved to the South");
+            if (key == 'D') actions.Push("Moved to the East");
+            if (key == 'A') actions.Push("Moved to the West");
 
-            if (key == 'Q') Console.WriteLine("Moved to the NorthWest");
-            if (key == 'E') Console.WriteLine("Moved to the NorthEast");
-            if (key == 'Z') Console.WriteLine("Moved to the SouthWest");
-            if (key == 'X') Console.WriteLine("Moved to the SouthEast");
+            if (key == 'Q') actions.Push("Moved to the NorthWest");
+            if (key == 'E') actions.Push("Moved to the NorthEast");
+            if (key == 'Z') actions.Push("Moved to the SouthWest");
+            if (key == 'X') actions.Push("Moved to the SouthEast");
 
-            if (key == 'T') Console.WriteLine("Fallen into a trap!!");
+            if (key == 'T') actions.Push("Fallen into a trap!!");
+
+            if (key == 'P') actions.Push("Picked up item");
             /*
             if (key == 'O') Console.WriteLine("Picked Up xxx");
 
@@ -61,6 +63,22 @@ namespace lp1_projetoFinal
 
             if (key == ' ') Console.WriteLine("Picked Up xxx");
             */
+
+            Console.Write("last actions:");
+            
+            Console.WriteLine("------------------------------------------------");
+
+            foreach (string action in actions)
+            {
+                Console.WriteLine(action);
+            }
+
+            if (actions.Count >= 3)
+            {
+                for(int i = 0; i < 3; i++)
+                    actions.Pop();
+            }
+
             Console.WriteLine("Player Stats:");
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine($"Current Level:{level.Current}");
@@ -142,7 +160,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("--------------------------");
             Console.WriteLine("Food          HPIncrease        Weight");
             Console.WriteLine("----------------------------------------");
-            inventory.WriteInfo(player);
+           // inventory.WriteInfo(player, 'd');
 
             Console.WriteLine();
 

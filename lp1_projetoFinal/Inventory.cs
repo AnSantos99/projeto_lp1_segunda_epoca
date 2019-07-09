@@ -24,8 +24,9 @@ namespace lp1_projetoFinal
             }
         }
 
-        internal void WriteInfo(Player player)
+        internal void WriteInfo(Player player, char choice)
         {
+
             foreach (Items item in itemsInInventory)
             {
                 Console.WriteLine(item.Info + $"{item.Effect}     {item.Index}");
@@ -41,7 +42,7 @@ namespace lp1_projetoFinal
                 
             }
 
-           
+          
         }
 
     internal void DropItem(Items item)

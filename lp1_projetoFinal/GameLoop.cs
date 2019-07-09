@@ -167,6 +167,7 @@ namespace lp1_projetoFinal
                 // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
+                    key = 'P';
                     int index = 0;
 
                     foreach (Items item in board.pickItems)
@@ -188,11 +189,16 @@ namespace lp1_projetoFinal
                 }
                
 
-                if (answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
+                if (answer == ConsoleKey.D3)
                  {
-                    board.inventory.WriteInfo(board.player);
+                    board.inventory.WriteInfo(board.player, 'p');
                  }
-                
+
+                if (answer == ConsoleKey.D4)
+                {
+                    board.inventory.WriteInfo(board.player, 'd');
+                }
+
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
