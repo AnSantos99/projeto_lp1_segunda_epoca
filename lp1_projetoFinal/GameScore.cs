@@ -6,30 +6,15 @@ namespace lp1_projetoFinal
 {
     internal class GameScore
     {
+        // Name and score properties
         public double Score { get; set; }
         public string Name { get; set; }
 
-        /*
-        // To create a new file with name of choosen format
-        static string FILENAME = string.Format("Highscores_{0}x{1}.txt",
-            GameBoard.RowSize, GameBoard.ColSize);
-
-        // List to store all player scores
+        // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
 
-        // To store contents into files
-        StreamWriter fileContent = new StreamWriter(FILENAME);
-
-
-        StreamReader file = new StreamReader(FILENAME);
-        */
-
-        internal List<GameScore> scoreList = new List<GameScore>();
-
-        public GameScore()
-        {
-
-        }
+        
+        public GameScore(){}
 
         public GameScore(string name, double score)
         {
@@ -46,11 +31,16 @@ namespace lp1_projetoFinal
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-            StreamWriter fileContent = new StreamWriter(FILENAME);
+            // Append text to the file content
+            StreamWriter fileContent = File.AppendText(FILENAME);
+
+            // Add scores to scorelist
             scoreList.Add(score);
-            foreach(GameScore scoreo in scoreList)
+            
+            // For every score  wirte the name and the score
+            foreach (GameScore scoreo in scoreList)
             {
-                fileContent.WriteLine(scoreo.Name + scoreo.Score);
+                fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");   
             }
             
             fileContent.Close();
@@ -62,22 +52,20 @@ namespace lp1_projetoFinal
         /// </summary>
         public void LoadScoreFromFile(GameScore score)
         { 
-
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-            using (StreamReader file = new StreamReader(FILENAME))
-            {
+            using (StreamReader file = new StreamReader(FILENAME, true))
+            { 
                 string reader;
                 while ((reader = file.ReadLine()) != null)
                 {
+                    //File.AppendAllTextAsync(FILENAME, reader);
                     // Check if file exists and read every line of it
-                    if (File.Exists(FILENAME)) Console.WriteLine(reader);
+                    Console.WriteLine(reader);
                 }
-
                 file.Close();
             }
-
         }
     }
 }

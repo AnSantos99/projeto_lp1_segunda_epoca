@@ -35,7 +35,7 @@ namespace lp1_projetoFinal
             //if () { } 
 
 
-            /*
+            
             if (keyInput1 == "-r")
             { 
                 GameBoard.RowSize = Convert.ToInt32(args[1]);
@@ -52,7 +52,7 @@ namespace lp1_projetoFinal
             if (keyInput1 == "-c")
             {
                 GameBoard.ColSize = Convert.ToInt32(args[1]);
-            }*/
+            }
 
             //ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
             //ConditionsChecker.CheckDifficultyLevel(levelDiff);
