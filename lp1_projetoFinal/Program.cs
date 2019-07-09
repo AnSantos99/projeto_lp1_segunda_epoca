@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace lp1_projetoFinal
 {
@@ -34,10 +33,6 @@ namespace lp1_projetoFinal
             argsAccepter.Add("-c", col);
             argsAccepter.Add("-r", row);
             argsAccepter.Add("-d", levelDiff);
-
-            //if () { } 
-
-
             
             if (keyInput1 == "-r")
             { 
@@ -58,9 +53,7 @@ namespace lp1_projetoFinal
             }
 
             //ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
-            //ConditionsChecker.CheckDifficultyLevel(levelDiff);
-
-
+            //ConditionsChecker.CheckDifficultyLevel(levelDiff)
 
             // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();

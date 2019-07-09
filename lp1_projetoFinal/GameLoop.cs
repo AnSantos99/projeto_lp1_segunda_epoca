@@ -9,6 +9,8 @@ namespace lp1_projetoFinal
         // counter to raise the level each time 
         internal int lvlCount = 1;
 
+        internal Random rnd = new Random();
+
         internal static GameBoard board = new GameBoard();
 
         internal char key;
@@ -31,6 +33,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public void Loop(int chosenDiff)
         {
+            
 
             newLevel = new Levels(lvlCount, chosenDiff*lvlCount);
             // initialise the PrintText class so different texts can be printed
@@ -70,6 +73,8 @@ namespace lp1_projetoFinal
                 // check the answer given by the player
                 // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
 
+             
+
                 if (answer == ConsoleKey.D5)
                 {
                     List<CurrentMapObjects> lookAroundItems = new List<CurrentMapObjects>();
@@ -87,7 +92,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.S && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'S';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Row++;
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
@@ -96,7 +101,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.W && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'W';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Row--;
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
@@ -106,7 +111,7 @@ namespace lp1_projetoFinal
                 {
 
                     key = 'A';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
@@ -115,7 +120,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D && Position.IsValidPosition((new Position((board.player.Position.Row), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'D';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
@@ -124,7 +129,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.Q && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col -1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'Q';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
                     board.player.Position.Row--;
@@ -134,7 +139,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.E && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'E';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
                     board.player.Position.Row--;
@@ -144,7 +149,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.Z && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col - 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'Z';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
                     board.player.Position.Row++;
@@ -154,17 +159,25 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.X && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'X';
-                    board.player.Health(-1);
+                    board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
                     board.player.Position.Row++;
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
                
-                // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
+                    key = 'P';
+
                     int index = 0;
+
+                    if (board.map.FallenInto(board.player))
+                    {
+                        board.itemList.Remove(board.map);
+                        foreach (CurrentMapObjects items in board.itemList)
+                            board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name, false);
+                    }
 
                     foreach (Items item in board.pickItems)
                     {
@@ -174,22 +187,22 @@ namespace lp1_projetoFinal
                             index++;
                             key = 'D';
 
-                            if(item.Name == Chars.map)
-                            {
-                                foreach(CurrentMapObjects items in board.itemList)
-                                    board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,false);
-                            }
                         }
                     }
                    
                 }
                
 
-                if (answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
+                if (answer == ConsoleKey.D3)
                  {
-                    board.inventory.WriteInfo(board.player);
+                    board.inventory.WriteInfo(board.player, 'p');
                  }
-                
+
+                if (answer == ConsoleKey.D4)
+                {
+                    board.inventory.WriteInfo(board.player, 'd');
+                }
+
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
@@ -206,7 +219,7 @@ namespace lp1_projetoFinal
                     if (quit == ConsoleKey.Y)
                     {  //insert score stuff
                         Console.WriteLine("thank you for playing!");
-                        board.player.health = 0;
+                        board.player.Health = 0;
                     }
                 }
          
@@ -215,8 +228,9 @@ namespace lp1_projetoFinal
                 {
                     if (trap.FallenInto(board.player))
                     {
-                        board.player.Health(-trap.DamageLevel);
+                        board.player.HealthChange(-rnd.Next(trap.DamageLevel, trap.MaxDamage));
                         key = 'D';
+                        trap.Active = false;
                     }
                  }
 
@@ -238,7 +252,7 @@ namespace lp1_projetoFinal
             }
 
             // run the loop while the player hasn't won, lost or quit
-            while (board.player.health > 0);
+            while (board.player.Health > 0);
 
             Console.WriteLine("please input your name for the score");
             string name = Console.ReadLine();

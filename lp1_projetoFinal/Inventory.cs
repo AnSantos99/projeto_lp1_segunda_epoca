@@ -24,8 +24,9 @@ namespace lp1_projetoFinal
             }
         }
 
-        internal void WriteInfo(Player player)
+        internal void WriteInfo(Player player, char choice)
         {
+
             foreach (Items item in itemsInInventory)
             {
                 Console.WriteLine(item.Info + $"{item.Effect}     {item.Index}");
@@ -34,13 +35,14 @@ namespace lp1_projetoFinal
             Console.WriteLine("Which item do you wish to use?");
             string answer = Console.ReadLine();
 
-            foreach (Items item in itemsInInventory)
+            if (Convert.ToInt32(answer) == itemsInInventory[Convert.ToInt32(answer)].Index)
             {
-                if (answer == Convert.ToString(item.Index))
-                {
-                    player.Health(+item.Effect);
-                }
+                player.HealthChange(+itemsInInventory[Convert.ToInt32(answer)].Effect);
+                itemsInInventory.RemoveAt(Convert.ToInt32(answer));
+                
             }
+
+          
         }
 
     internal void DropItem(Items item)

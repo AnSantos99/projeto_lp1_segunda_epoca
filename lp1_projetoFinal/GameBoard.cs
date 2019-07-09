@@ -9,6 +9,8 @@ namespace lp1_projetoFinal
         internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
 
         internal Inventory inventory = new Inventory();
+
+        internal int currentHealth = 100;
     
         internal static int RowSize;
         internal static int ColSize;
@@ -27,7 +29,7 @@ namespace lp1_projetoFinal
 
         public void DefineBoard(Levels lvl)
         {
-            player = new Player((char)Chars.player, 100, new Position(rnd.Next(RowSize), 0), inventory);
+            player = new Player((char)Chars.player, currentHealth, new Position(rnd.Next(RowSize), 0), inventory);
 
             exit = new CurrentMapObjects(new Position(rnd.Next(RowSize), (ColSize-1)), Chars.exit, "reach the exit!");
 
@@ -40,6 +42,8 @@ namespace lp1_projetoFinal
 
         public void RenderBoard(Levels lvl)
         {
+            if (player.Health > player.maxHealth)
+                player.Health = player.maxHealth;
 
             Console.WriteLine($"Level {lvl.Current} : Difficulty {lvl.Diff} : Size {RowSize}x{ColSize}");
 
@@ -83,6 +87,7 @@ namespace lp1_projetoFinal
 
         public void ResetBoard()
         {
+            currentHealth = player.Health;
             itemList.Clear();
             pickItems.Clear();
         }

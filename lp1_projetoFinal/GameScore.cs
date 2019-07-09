@@ -12,7 +12,7 @@ namespace lp1_projetoFinal
 
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
-        int MAXSIZE = 2;
+        int count = 0;
 
         
         public GameScore(){}
@@ -29,7 +29,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public void SaveScoreOnFile(GameScore score)
         {
-            scoreList.Capacity = MAXSIZE;
+            //scoreList.Capacity = MAXSIZE;
 
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
@@ -45,8 +45,10 @@ namespace lp1_projetoFinal
                 fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");
             }
             fileContent.Close();
+               
             
             
+
         }
 
 
@@ -56,7 +58,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public void LoadScoreFromFile(GameScore score)
         {
-            scoreList.Capacity = MAXSIZE;
+            //scoreList.Capacity = MAXSIZE;
 
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
