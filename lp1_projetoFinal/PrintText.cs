@@ -64,7 +64,7 @@ namespace lp1_projetoFinal
             Console.WriteLine("Player Stats:");
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine($"Current Level:{level.Current}");
-            Console.WriteLine($"HP: {player.health}");
+            Console.WriteLine($"HP: {player.Health}");
             Console.WriteLine($"Selected Weapon:");
             Console.WriteLine($"Inventory occupation: {inventory.currentWeight}");
 

@@ -34,13 +34,14 @@ namespace lp1_projetoFinal
             Console.WriteLine("Which item do you wish to use?");
             string answer = Console.ReadLine();
 
-            foreach (Items item in itemsInInventory)
+            if (Convert.ToInt32(answer) == itemsInInventory[Convert.ToInt32(answer)].Index)
             {
-                if (answer == Convert.ToString(item.Index))
-                {
-                    player.Health(+item.Effect);
-                }
+                player.HealthChange(+itemsInInventory[Convert.ToInt32(answer)].Effect);
+                itemsInInventory.RemoveAt(Convert.ToInt32(answer));
+                
             }
+
+           
         }
 
     internal void DropItem(Items item)

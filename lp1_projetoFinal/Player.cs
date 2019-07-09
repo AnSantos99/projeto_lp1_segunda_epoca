@@ -11,9 +11,11 @@ namespace lp1_projetoFinal
     {
         // define player's name so we can identify them
         internal char name;
-        
+
+        internal int maxHealth = 100;
+
         // define player's health so we can manipulate it
-        internal int health;
+        internal int Health;
 
         internal Position Position;
 
@@ -32,10 +34,9 @@ namespace lp1_projetoFinal
         internal Player(char name, int health, Position position, Inventory inventory)
         {
             this.name = name;
-            this.health = health;
+            this.Health = health;
             this.Position = position;
             this.Inventory = inventory;
-       
         }
 
         internal Player(int score)
@@ -66,10 +67,14 @@ namespace lp1_projetoFinal
         /// this method receives the player's health and lowers it after each
         /// movement
         /// </summary>
-        public int Health(int healthChange)
+        public int HealthChange(int changeAmount)
         {
-            health += healthChange;
-            return health;
+            
+
+            if (Health <= maxHealth)
+                Health += changeAmount;
+
+            return Health;
         }
 
         public void Weight()
