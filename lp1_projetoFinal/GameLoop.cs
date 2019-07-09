@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
@@ -71,23 +72,16 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.D5)
                 {
+                    List<CurrentMapObjects> lookAroundItems = new List<CurrentMapObjects>();
+
                     foreach (CurrentMapObjects item in board.itemList)
                     {
-                        if (board.cells[board.player.Position.Row, board.player.Position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
-                            board.cells[board.player.Position.Row - 1, board.player.Position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row + 1, board.player.Position.Col] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row, board.player.Position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row, board.player.Position.Col - 1] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row - 1, board.player.Position.Col - 1] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row + 1, board.player.Position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row - 1, board.player.Position.Col + 1] == board.cells[item.Position.Row, item.Position.Col] ||
-                        board.cells[board.player.Position.Row + 1, board.player.Position.Col - 1] == board.cells[item.Position.Row, item.Position.Col])
+                        board.player.Surroundings(lookAroundItems, item, board);
+                    }
 
-
-                        {
-                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
-                        }
-                        }
+                    gameInfo.LookAroundText(lookAroundItems);
+    
+                    lookAroundItems.Clear();
                 }
 
                 
@@ -95,18 +89,18 @@ namespace lp1_projetoFinal
                 {
                     key = 'S';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.W)
                 {
                     key = 'W';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.A)
@@ -114,58 +108,58 @@ namespace lp1_projetoFinal
 
                     key = 'A';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.D)
                 {
                     key = 'D';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.Q)
                 {
                     key = 'Q';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.E)
                 {
                     key = 'E';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.Z)
                 {
                     key = 'Z';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col--;
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
                 if (answer == ConsoleKey.X)
                 {
                     key = 'X';
                     board.player.Health(-1);
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true);
                     board.player.Position.Col++;
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name);
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
                
                 // NOT WORKING SEE WHY
@@ -173,14 +167,21 @@ namespace lp1_projetoFinal
                 {
                     foreach (Items item in board.pickItems)
                     {
-                        if (board.cells[board.player.Position.Row, board.player.Position.Col] == board.cells[item.Position.Row, item.Position.Col])
-
+                        if (item.FallenInto(board.player))
                         {
-
                             board.inventory.AddToInventory(item);
-                            board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
+                            board.player.Health(+item.Effect);
+
+                            key = 'D';
+
+                            if(item.Name == Chars.map)
+                            {
+                                foreach(CurrentMapObjects items in board.itemList)
+                                    board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,true);
+                            }
                         }
                     }
+                   
                 }
                
 
@@ -197,8 +198,8 @@ namespace lp1_projetoFinal
                             foreach (CurrentMapObjects items in board.itemList)
                             {
 
-                                board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name);
-                                board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.player);
+                                board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,true);
+                                board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.player,false);
 
                             }
      
@@ -224,12 +225,9 @@ namespace lp1_projetoFinal
                     {  //insert score stuff
                         Console.WriteLine("thank you for playing!");
                         board.player.health = 0;
-
-       
                     }
                 }
-                
-
+         
 
                 foreach (Trap trap in board.traps)
                 {
@@ -239,8 +237,9 @@ namespace lp1_projetoFinal
                         key = 'D';
                     }
                  }
-                 
-                
+
+
+
                 if (board.cells[board.player.Position.Row, board.player.Position.Col] == board.cells[board.exit.Position.Row, board.exit.Position.Col])
                 {
                     Console.WriteLine("Congratulations! you've reached the exit!");              
@@ -261,7 +260,7 @@ namespace lp1_projetoFinal
 
             Console.WriteLine("please input your name for the score");
             string name = Console.ReadLine();
-            score = new GameScore(name, newLevel.score);
+            score = new GameScore(name, newLevel.ScoreSetter(lvlCount));
             score.SaveScoreOnFile(score);
             Environment.Exit(0);
     

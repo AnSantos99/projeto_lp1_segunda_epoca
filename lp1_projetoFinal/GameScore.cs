@@ -48,6 +48,7 @@ namespace lp1_projetoFinal
 
             StreamWriter fileContent = new StreamWriter(FILENAME);
             scoreList.Add(score);
+
             foreach(GameScore scoreo in scoreList)
             {
                 fileContent.WriteLine(scoreo.Name + scoreo.Score);

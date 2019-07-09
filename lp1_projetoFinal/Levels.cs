@@ -29,7 +29,6 @@ namespace lp1_projetoFinal
             int maxTrapsInLvl = Linear(Current, Diff, 2);
             int maxItemsInLvl = Linear(Current, Diff, 2);
 
-            
 
             items.Add(exit);
             items.Add(map);
@@ -57,7 +56,7 @@ namespace lp1_projetoFinal
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
-                Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(RowSize), rnd.Next(RowSize));
+                Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
                 
                 items.Add(item);
                 grabItems.Add(item);
@@ -69,7 +68,7 @@ namespace lp1_projetoFinal
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
-                cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name);
+                cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name,false);
             }
 
 
@@ -77,17 +76,17 @@ namespace lp1_projetoFinal
             {
                 for (int j = 0; j < ColSize; j++)
                 {
-                    cells[i, j] = new BoardCells((char)Chars.empty);
+                    cells[i, j] = new BoardCells((char)Chars.empty,false);
                 }
             }
 
-            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name);
+            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name,false);
 
         }
 
-        internal void ScoreSetter()
+        internal double ScoreSetter(int lvl)
         {
-            score = (1 + 0.4 * Diff); // * (level + 0.1 * enemiesKilledInGame);
+            return score = (1 + 0.4 * Diff); // * (lvl + 0.1 * enemiesKilledInGame);
         }
 
         /// <summary>

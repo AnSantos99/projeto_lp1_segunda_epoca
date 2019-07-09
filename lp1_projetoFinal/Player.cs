@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace lp1_projetoFinal
 {
@@ -74,6 +75,70 @@ namespace lp1_projetoFinal
         public void Weight()
         {
             throw new NotImplementedException();
+        }
+
+        internal void Surroundings(List<CurrentMapObjects> nearObjects, CurrentMapObjects item, GameBoard board)
+        {
+    
+                if (item.Position.Row == this.Position.Row && item.Position.Col == this.Position.Col)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position,item.Name,item.Info, "on your current position:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+  
+                }
+                if (item.Position.Row == this.Position.Row - 1 && item.Position.Col == this.Position.Col)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "N:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+       
+                }
+                if (item.Position.Row == this.Position.Row + 1  && item.Position.Col == this.Position.Col)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "S:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+   
+                }
+                if (item.Position.Row == this.Position.Row && item.Position.Col == this.Position.Col - 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "W:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+           
+                }
+                if (item.Position.Row == this.Position.Row && item.Position.Col == this.Position.Col + 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "E:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+
+                }
+
+                if (item.Position.Row == this.Position.Row - 1 && item.Position.Col == this.Position.Col - 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "NW:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+     
+                }
+
+                if (item.Position.Row == this.Position.Row - 1 && item.Position.Col == this.Position.Col + 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "NE:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+
+                }
+
+                if (item.Position.Row == this.Position.Row + 1 && item.Position.Col == this.Position.Col - 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "SW:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+         
+                }
+
+                if (item.Position.Row == this.Position.Row + 1 && item.Position.Col == this.Position.Col + 1)
+                {
+                    nearObjects.Add(new CurrentMapObjects(item.Position, item.Name, item.Info, "SE:"));
+                    board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);
+
+                }
+
         }
     }
 }
