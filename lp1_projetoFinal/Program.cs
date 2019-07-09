@@ -23,7 +23,10 @@ namespace lp1_projetoFinal
 
             int levelDiff = int.Parse(args[5]);
 
+            
             Dictionary<string, int> argsAccepter = new Dictionary<string, int>();
+            ConditionsChecker.ArgsCheck(argsAccepter, args);
+            
 
             int row = GameBoard.RowSize;
             int col = GameBoard.ColSize;

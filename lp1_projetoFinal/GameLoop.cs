@@ -83,9 +83,8 @@ namespace lp1_projetoFinal
     
                     lookAroundItems.Clear();
                 }
-
                 
-                if (answer == ConsoleKey.S)
+                if (answer == ConsoleKey.S && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'S';
                     board.player.Health(-1);
@@ -94,7 +93,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.W)
+                if (answer == ConsoleKey.W && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'W';
                     board.player.Health(-1);
@@ -103,7 +102,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.A)
+                if (answer == ConsoleKey.A && Position.IsValidPosition((new Position((board.player.Position.Row), (board.player.Position.Col - 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
 
                     key = 'A';
@@ -113,7 +112,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.D)
+                if (answer == ConsoleKey.D && Position.IsValidPosition((new Position((board.player.Position.Row), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'D';
                     board.player.Health(-1);
@@ -122,7 +121,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.Q)
+                if (answer == ConsoleKey.Q && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col -1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'Q';
                     board.player.Health(-1);
@@ -132,7 +131,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.E)
+                if (answer == ConsoleKey.E && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'E';
                     board.player.Health(-1);
@@ -142,7 +141,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.Z)
+                if (answer == ConsoleKey.Z && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col - 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'Z';
                     board.player.Health(-1);
@@ -152,7 +151,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false);
                 }
 
-                if (answer == ConsoleKey.X)
+                if (answer == ConsoleKey.X && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
                 {
                     key = 'X';
                     board.player.Health(-1);
@@ -165,19 +164,20 @@ namespace lp1_projetoFinal
                 // NOT WORKING SEE WHY
                 if (answer == ConsoleKey.D2)
                 {
+                    int index = 0;
+
                     foreach (Items item in board.pickItems)
                     {
                         if (item.FallenInto(board.player))
                         {
-                            board.inventory.AddToInventory(item);
-                            board.player.Health(+item.Effect);
-
+                            board.inventory.AddToInventory(new Items(item.Position, item.Name, item.Info, item.Weight, item.Effect, index));
+                            index++;
                             key = 'D';
 
                             if(item.Name == Chars.map)
                             {
                                 foreach(CurrentMapObjects items in board.itemList)
-                                    board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,true);
+                                    board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,false);
                             }
                         }
                     }
@@ -187,31 +187,13 @@ namespace lp1_projetoFinal
 
                 if (answer == ConsoleKey.D3 || answer == ConsoleKey.D4)
                  {
-
-                    gameInfo.InventoryText(board.player.Inventory.itemsInInventory);
-
-                    foreach (CurrentMapObjects item in board.itemList)
-                    {
-                        if (board.cells[board.player.Position.Row, board.player.Position.Col] == board.cells[item.Position.Row, item.Position.Col])
-
-                        {
-                            foreach (CurrentMapObjects items in board.itemList)
-                            {
-
-                                board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name,true);
-                                board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.player,false);
-
-                            }
-     
-                        }
-                    }
-                       
+                    board.inventory.WriteInfo(board.player);
                  }
                 
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps, board.inventory);
+                    gameInfo.HelpText(board.traps, board.inventory, board.player);
 
                 if (answer == ConsoleKey.D8)
                 {

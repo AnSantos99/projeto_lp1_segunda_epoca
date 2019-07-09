@@ -79,8 +79,8 @@ namespace lp1_projetoFinal
 
         internal void Surroundings(List<CurrentMapObjects> nearObjects, CurrentMapObjects item, GameBoard board)
         {
-    
-                if (item.Position.Row == this.Position.Row && item.Position.Col == this.Position.Col)
+
+            if (item.Position.Row == this.Position.Row && item.Position.Col == this.Position.Col)
                 {
                     nearObjects.Add(new CurrentMapObjects(item.Position,item.Name,item.Info, "on your current position:"));
                     board.cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name, false);

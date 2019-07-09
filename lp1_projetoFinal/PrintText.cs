@@ -135,14 +135,14 @@ namespace lp1_projetoFinal
         /// to the one they have on the main screen, depending on the items
         /// they have found, weapons and their effects
         /// </summary>
-        public void HelpText(List<Trap> traps, Inventory inventory)
+        public void HelpText(List<Trap> traps, Inventory inventory, Player player)
         {
             
 
             Console.WriteLine("--------------------------");
             Console.WriteLine("Food          HPIncrease        Weight");
             Console.WriteLine("----------------------------------------");
-            inventory.writeInfo();
+            inventory.WriteInfo(player);
 
             Console.WriteLine();
 
@@ -177,28 +177,23 @@ namespace lp1_projetoFinal
         /// </summary>
         public void LookAroundText(List<CurrentMapObjects> list)
         {
-        
-       
+
+            Console.WriteLine("--------------------------");
+
+            if (list.Count > 0)
+            {
                 foreach (CurrentMapObjects objects in list)
                 {
                     Console.WriteLine(objects.Direction + objects.Name + objects.Info);
                 }
+            }
+            else
+                Console.WriteLine("There's nothing around you!");
                 
 
-            
-            /*
+       
             Console.WriteLine("--------------------------");
-            Console.WriteLine("HERE:");
-            Console.WriteLine("<- W:");
-            Console.WriteLine("<- NW:");
-            Console.WriteLine("<- N:");
-            Console.WriteLine("<- NE:");
-            Console.WriteLine("<- E:");
-            Console.WriteLine("<- SE:");
-            Console.WriteLine("<- S:");
-            Console.WriteLine("<- SW:");
-            Console.WriteLine("--------------------------");
-            */
+            Console.WriteLine();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();
