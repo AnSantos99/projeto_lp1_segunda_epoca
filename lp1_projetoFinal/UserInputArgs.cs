@@ -15,9 +15,9 @@ namespace lp1_projetoFinal
         /// <param name="myDictionary"></param>
         public static void ArgsDicReader(Dictionary<string, int> myDictionary)
         {
-            myDictionary.Add(default(string), default(int));
-            myDictionary.Add(default(string), default(int));
-            myDictionary.Add(default(string), default(int));
+            myDictionary.Add("-r", default(int));
+            myDictionary.Add("-c", default(int));
+            myDictionary.Add("-d", default(int));
         }
     }
 }

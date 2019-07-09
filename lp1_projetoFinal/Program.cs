@@ -9,18 +9,33 @@ namespace lp1_projetoFinal
         static void Main(string[] args)
         {
             //GameLoop LevelDiff = new GameLoop();
-            // Get value of map
 
+            // Get value of map
             string keyInput1 = args[0];
             string keyInput2 = args[2];
             string keyInput3 = args[4];
 
-            int val1 = int.Parse(args[1]);
+            //int val1 = int.Parse(args[1]);
             int val2 = int.Parse(args[3]);
             int val3 = int.Parse(args[5]);
 
+            int vals = int.Parse(args[1]);
+
             int levelDiff = int.Parse(args[5]);
 
+            Dictionary<string, int> argsAccepter = new Dictionary<string, int>();
+
+            int row = GameBoard.RowSize;
+            int col = GameBoard.ColSize;
+
+            argsAccepter.Add("-c", col);
+            argsAccepter.Add("-r", row);
+            argsAccepter.Add("-d", levelDiff);
+
+            //if () { } 
+
+
+            /*
             if (keyInput1 == "-r")
             { 
                 GameBoard.RowSize = Convert.ToInt32(args[1]);
@@ -37,13 +52,12 @@ namespace lp1_projetoFinal
             if (keyInput1 == "-c")
             {
                 GameBoard.ColSize = Convert.ToInt32(args[1]);
-            }
+            }*/
 
-            ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
-            ConditionsChecker.CheckDifficultyLevel(levelDiff);
-            //ConditionsChecker.CheckValidUserArgs(keyInput1, keyInput2, keyInput3, val1, val2, val3);
+            //ConditionsChecker.CheckUserInvalidArgNumbs(Convert.ToInt32(args[1]), Convert.ToInt32(args[3]));
+            //ConditionsChecker.CheckDifficultyLevel(levelDiff);
 
-            //(needs to be checked) ConditionsChecker.CheckUserINvalidArgs(args[0], args[2]);
+
 
             // initialise new GameLoop to run the application
             GameLoop loop = new GameLoop();
