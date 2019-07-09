@@ -14,5 +14,13 @@ namespace lp1_projetoFinal
             Row = row;
             Col = col;
         }
+
+        internal static bool IsValidPosition(Position position, int rowNum, int colNum)
+        {
+            if (position.Row >= 0 && position.Row <= rowNum && position.Col >= 0 && position.Col <= colNum)
+                return true;
+
+            return false;
+        }
     }
 }

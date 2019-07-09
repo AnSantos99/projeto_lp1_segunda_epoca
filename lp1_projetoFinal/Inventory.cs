@@ -24,11 +24,22 @@ namespace lp1_projetoFinal
             }
         }
 
-        internal void writeInfo()
+        internal void WriteInfo(Player player)
         {
             foreach (Items item in itemsInInventory)
             {
-                Console.WriteLine(item.Info + "              " + item.Effect);
+                Console.WriteLine(item.Info + $"{item.Effect}     {item.Index}");
+            }
+
+            Console.WriteLine("Which item do you wish to use?");
+            string answer = Console.ReadLine();
+
+            foreach (Items item in itemsInInventory)
+            {
+                if (answer == Convert.ToString(item.Index))
+                {
+                    player.Health(+item.Effect);
+                }
             }
         }
 
