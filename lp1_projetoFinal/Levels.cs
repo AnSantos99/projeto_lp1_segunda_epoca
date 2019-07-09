@@ -87,7 +87,7 @@ namespace lp1_projetoFinal
 
         internal void ScoreSetter()
         {
-           // score = (1 + 0.4 * gameDifficulty) * (level + 0.1 * enemiesKilledInGame);
+            score = (1 + 0.4 * Diff); // * (level + 0.1 * enemiesKilledInGame);
         }
 
         /// <summary>
