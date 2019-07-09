@@ -176,7 +176,7 @@ namespace lp1_projetoFinal
 
             foreach (Trap trap in traps)
             {
-                Console.WriteLine(trap.TrapInfo + "              " + trap.DamageLevel);
+                Console.WriteLine(trap.TrapInfo + "              " + trap.MaxDamage);
             }
             
             Console.WriteLine("Name              10.0");

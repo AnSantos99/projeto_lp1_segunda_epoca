@@ -9,6 +9,8 @@ namespace lp1_projetoFinal
         // counter to raise the level each time 
         internal int lvlCount = 1;
 
+        internal Random rnd = new Random();
+
         internal static GameBoard board = new GameBoard();
 
         internal char key;
@@ -226,7 +228,7 @@ namespace lp1_projetoFinal
                 {
                     if (trap.FallenInto(board.player))
                     {
-                        board.player.HealthChange(-trap.DamageLevel);
+                        board.player.HealthChange(-rnd.Next(trap.DamageLevel, trap.MaxDamage));
                         key = 'D';
                         trap.Active = false;
                     }

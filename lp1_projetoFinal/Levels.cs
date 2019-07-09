@@ -43,7 +43,8 @@ namespace lp1_projetoFinal
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
-                Trap trap = new Trap((new Position(row, col)), Chars.trap, "this trap takes 2hp", rnd.Next(RowSize), rnd.Next(RowSize));
+              
+                Trap trap = new Trap((new Position(row, col)), Chars.trap, $"this is a trap! watch out!", rnd.Next(100));
 
                 traps.Add(trap);
                 items.Add(trap);  
