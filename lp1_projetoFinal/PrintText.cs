@@ -175,8 +175,18 @@ namespace lp1_projetoFinal
         /// this menu shows the player the information pertraining their direct
         /// surroundings in a moore view
         /// </summary>
-        public void LookAroundText()
+        public void LookAroundText(List<CurrentMapObjects> list)
         {
+        
+       
+                foreach (CurrentMapObjects objects in list)
+                {
+                    Console.WriteLine(objects.Direction + objects.Name + objects.Info);
+                }
+                
+
+            
+            /*
             Console.WriteLine("--------------------------");
             Console.WriteLine("HERE:");
             Console.WriteLine("<- W:");
@@ -188,9 +198,11 @@ namespace lp1_projetoFinal
             Console.WriteLine("<- S:");
             Console.WriteLine("<- SW:");
             Console.WriteLine("--------------------------");
+            */
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();
+            
 
         }
 

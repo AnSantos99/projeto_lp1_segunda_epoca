@@ -36,9 +36,14 @@ namespace lp1_projetoFinal
 
             // Add scores to scorelist
             scoreList.Add(score);
+<<<<<<< HEAD
             
             // For every score  wirte the name and the score
             foreach (GameScore scoreo in scoreList)
+=======
+
+            foreach(GameScore scoreo in scoreList)
+>>>>>>> upstream/master
             {
                 fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");   
             }

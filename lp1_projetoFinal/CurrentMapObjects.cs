@@ -5,6 +5,7 @@ namespace lp1_projetoFinal
         internal Position Position { set; get; }
         internal Chars Name { set; get; }
         internal string Info { set; get; }
+        internal string Direction { get; set; }
        
         /// <summary>
         /// this constructor serves the mere purpose of storing an object present
@@ -19,6 +20,21 @@ namespace lp1_projetoFinal
             Position = position;
             Name = name;
             Info = info;
+        }
+
+        internal CurrentMapObjects(Position position, Chars name, string info, string direction)
+        {
+            Position = position;
+            Name = name;
+            Info = info;
+            Direction = direction;
+        }
+
+        internal bool FallenInto(Player player)
+        {
+            if (player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
+                return true;
+            return false;
         }
     }
 }
