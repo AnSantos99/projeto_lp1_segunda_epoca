@@ -28,6 +28,7 @@ namespace lp1_projetoFinal
         /// </summary>
         public void SaveScoreOnFile(GameScore score)
         {
+            int counter = 0;
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
@@ -36,17 +37,16 @@ namespace lp1_projetoFinal
 
             // Add scores to scorelist
             scoreList.Add(score);
-<<<<<<< HEAD
             
+      
             // For every score  wirte the name and the score
             foreach (GameScore scoreo in scoreList)
-=======
-
-            foreach(GameScore scoreo in scoreList)
->>>>>>> upstream/master
             {
-                fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");   
+                fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");
+                counter++;
             }
+
+
             
             fileContent.Close();
         }
@@ -65,10 +65,9 @@ namespace lp1_projetoFinal
                 string reader;
                 while ((reader = file.ReadLine()) != null)
                 {
-                    //File.AppendAllTextAsync(FILENAME, reader);
-                    // Check if file exists and read every line of it
                     Console.WriteLine(reader);
                 }
+
                 file.Close();
             }
         }

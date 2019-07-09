@@ -1,0 +1,9 @@
+daddada = 2.6
+Number1 = 2.6
+Number2 = 2.6
+Number3 = 2.6
+NUmber4 = 2.6
+NUmber5 = 2.6
+NUmber7 = 2.6
+NUmber8 = 2.6
+Ana = 2.6
