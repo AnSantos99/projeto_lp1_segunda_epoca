@@ -81,6 +81,11 @@ namespace lp1_projetoFinal
             }
         }
 
+        public static void CheckScoreList(List<GameScore> scoreChecker)
+        {
+
+        }
+
 
         /*
         /// <summary>
