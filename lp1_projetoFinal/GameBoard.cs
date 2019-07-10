@@ -5,27 +5,40 @@ namespace lp1_projetoFinal
 {
     internal class GameBoard
     {
-
+        // Instanciate a list of type CurrentMapObjects to store items
         internal List<CurrentMapObjects> itemList = new List<CurrentMapObjects>();
 
+        // Instanciate class inventory
         internal Inventory inventory = new Inventory();
 
+        // Player start health is currentHealth
         internal int currentHealth = 100;
     
+        // Static variables of Row and columns for gameboard
         internal static int RowSize;
         internal static int ColSize;
 
+        // Variables of type CurrentMapObjects
         internal CurrentMapObjects exit, map;
 
+        // Variable of type player
         internal Player player;
 
+        // Instance of List of type Trap to store traps
         internal List<Trap> traps =  new List<Trap>();
 
+        // Instanciate a list of type Items 
         internal List<Items> pickItems = new List<Items>();
 
+        // Instanciate a list of type Enemy
+        internal List<Enemy> enemies = new List<Enemy>();
+
+        // Instanciate class Random
         internal Random rnd  = new Random();
 
+        // Variable of type Boardcells array to create Board
         internal BoardCells[,] cells;
+
 
         public void DefineBoard(Levels lvl)
         {
@@ -37,7 +50,8 @@ namespace lp1_projetoFinal
 
             cells = new BoardCells[RowSize, ColSize];
 
-            lvl.Setup(player, exit, map, itemList, traps, pickItems, RowSize, ColSize, cells);
+            lvl.Setup(player, exit, map, itemList, traps, pickItems, enemies, RowSize, ColSize, cells);
+
         }
 
         public void RenderBoard(Levels lvl)

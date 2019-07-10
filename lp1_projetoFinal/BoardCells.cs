@@ -7,12 +7,21 @@ namespace lp1_projetoFinal
         char name;
         bool visited;
 
+        /// <summary>
+        /// Constructor to get acess to name and visited boardcells 
+        /// </summary>
+        /// <param name="name"> Get the name of 
+        /// </param>
+        /// <param name="visited"></param>
         internal BoardCells(char name, bool visited)
         {
             this.name = name;
             this.visited = visited;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         internal virtual void Render()
         {
             if(visited)
@@ -37,7 +46,7 @@ namespace lp1_projetoFinal
             }
 
             else if (name == (char)Chars.map)
-            {
+            { 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(name);
                 Console.ResetColor();

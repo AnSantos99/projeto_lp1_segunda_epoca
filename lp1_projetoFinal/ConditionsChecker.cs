@@ -6,11 +6,12 @@ namespace lp1_projetoFinal
 {
     internal class ConditionsChecker
     {
-        
-        public static void ArgsCheck(string argKey1, int argVal1, string argKey2, int argVal2 )
+        /*
+        public static void ArgsCheck(Dictionary<string, int> argsDic, string[] args)
         {
+            new argsDic
             
-        }
+        }*/
 
         /// <summary>
         /// Function to check for invalid user input

@@ -14,9 +14,18 @@ namespace lp1_projetoFinal
 
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
+        int count = 0;
 
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
         public GameScore(){}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="score"></param>
         public GameScore(string name, double score)
         {
             Name = name;
@@ -52,6 +61,7 @@ namespace lp1_projetoFinal
                       
             fileContent.Close();
         }
+
 
         /// <summary>
         /// Function to read file created with specific game dimensions name
