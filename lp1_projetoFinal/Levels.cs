@@ -13,6 +13,8 @@ namespace lp1_projetoFinal
 
         internal List<Trap> traps = new List<Trap>();
 
+        internal List<Enemy> enemies = new List<Enemy>();
+
         internal double score;
 
 
@@ -23,27 +25,31 @@ namespace lp1_projetoFinal
         }
 
 
-        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, List<Items> grabItems, int RowSize, int ColSize, BoardCells[,] cells)
+        internal void Setup(Player player, CurrentMapObjects exit, 
+            CurrentMapObjects map, List<CurrentMapObjects> items, 
+            List<Trap> traps, List<Items> grabItems, List<Enemy> enemies, 
+            int RowSize, int ColSize, BoardCells[,] cells)
         {
-            
+            // Max size of objects in Levels
             int maxTrapsInLvl = Linear(Current, Diff, 2);
             int maxItemsInLvl = Linear(Current, Diff, 2);
-
-
+            int maxEnemiesInLvl = Linear(Current, Diff, 2);
+            
+            //Add objects to item list
             items.Add(exit);
             items.Add(map);
 
+            // 
             int numberOfTraps = rnd.Next(maxTrapsInLvl);
-
             int numberOfItems = rnd.Next(maxItemsInLvl);
+            int numberOfEnemies = rnd.Next(maxEnemiesInLvl);
 
+            // Set random Traps around on map
             for (int i = 0; i < numberOfTraps; i++)
             {
-
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
-              
                 Trap trap = new Trap((new Position(row, col)), Chars.trap, $"this is a trap! watch out!", rnd.Next(100));
 
                 traps.Add(trap);
@@ -51,17 +57,30 @@ namespace lp1_projetoFinal
 
             }
 
+            // Set random Items around the map
             for (int i = 0; i < numberOfItems; i++)
             {
 
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
-                Items item = new Items((new Position(row, col)), Chars.food, "an apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
+                Items item = new Items((new Position(row, col)), Chars.food, " An apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
                 
                 items.Add(item);
                 grabItems.Add(item);
 
+            }
+
+            // Set random enemies around the map
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                int row = rnd.Next(RowSize);
+                int col = rnd.Next(ColSize);
+
+                Enemy enemy = new Enemy((new Position(row, col)), Chars.enemy, " A wild enemy has appeared!", rnd.Next(100));
+
+                enemies.Add(enemy);
+                items.Add(enemy);
             }
 
             foreach (CurrentMapObjects item in items)

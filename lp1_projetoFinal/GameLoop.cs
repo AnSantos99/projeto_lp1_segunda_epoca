@@ -36,6 +36,7 @@ namespace lp1_projetoFinal
             
 
             newLevel = new Levels(lvlCount, chosenDiff*lvlCount);
+
             // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
 

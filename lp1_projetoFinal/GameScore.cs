@@ -14,9 +14,16 @@ namespace lp1_projetoFinal
         internal List<GameScore> scoreList = new List<GameScore>();
         int count = 0;
 
-        
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
         public GameScore(){}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="score"></param>
         public GameScore(string name, double score)
         {
             Name = name;
@@ -45,10 +52,6 @@ namespace lp1_projetoFinal
                 fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");
             }
             fileContent.Close();
-               
-            
-            
-
         }
 
 

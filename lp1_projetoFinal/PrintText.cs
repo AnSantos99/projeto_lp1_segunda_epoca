@@ -10,7 +10,7 @@ namespace lp1_projetoFinal
     /// different texts that will be printed for each menu within the game 
     /// it returns nothing
     /// </summary>
-    class PrintText
+    internal class PrintText
     {
         internal static Stack<string> actions = new Stack<string>();
 
@@ -20,7 +20,6 @@ namespace lp1_projetoFinal
         /// </summary>
         public void MenuText()
         {
-
             Console.WriteLine("--------------------------");
             Console.WriteLine("Welcome to the game!");
             Console.WriteLine();
@@ -29,7 +28,6 @@ namespace lp1_projetoFinal
             Console.WriteLine("B. High Scores");
             Console.WriteLine("C. Credits");
             Console.WriteLine("D. Quit");
-   
         }
   
         /// <summary>
@@ -40,8 +38,6 @@ namespace lp1_projetoFinal
         public void GameText(Levels level, Player player, Inventory inventory, char key)
         {
             Console.OutputEncoding = Encoding.UTF8;
-
-            
 
             if (key == 'W') actions.Push("Moved to the North");
             if (key == 'S') actions.Push("Moved to the South");
