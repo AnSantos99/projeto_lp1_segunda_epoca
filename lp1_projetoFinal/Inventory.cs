@@ -18,37 +18,132 @@ namespace lp1_projetoFinal
 
             }
 
-            else 
+            else
             {
                 // print message abt not having space
             }
         }
 
-        internal void WriteInfo(Player player, char choice)
+        private int currentRow;
+        private int currentCol;
+
+        internal void WriteInfo(GameBoard board, Player player, string choice)
         {
 
-            foreach (Items item in itemsInInventory)
+            
+
+            Console.WriteLine($"Which item do you wish to {choice}?");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("(ESC) Go back");
+            
+            if (choice == "pickup")
             {
-                Console.WriteLine(item.Info + $"{item.Effect}     {item.Index}");
+                foreach (Items item in board.pickItems)
+                {
+                    if (item.FallenInto(board.player))
+                    {
+                        Console.WriteLine(item.Info + $"{item.Effect}     ");
+                    }
+                }
+
+                string answer = Console.ReadLine();
+
+               
+                Items testo = board.pickItems[Convert.ToInt32(answer)];
+                   
+                board.inventory.AddToInventory(new Items((testo.Position), testo.Name, testo.Info, testo.Weight, testo.Effect));
+
+                board.pickItems.Remove(testo);
+                board.itemList.Remove(testo);
+            
+            }
+            
+
+            if (choice == "drop")
+            {
+                foreach (Items item in itemsInInventory)
+                {
+                    Console.WriteLine(item.Info + $"{item.Effect}     ");
+                }
+
+                string answer = Console.ReadLine();
+
+                if (answer == "c")
+                {
+                    Console.Clear();
+                }
+
+                Items testo = itemsInInventory[Convert.ToInt32(answer)];
+
+                currentRow = player.Position.Row;
+                currentCol = player.Position.Col;
+
+                board.pickItems.Add(new Items(new Position(currentRow, currentCol), testo.Name, testo.Info, testo.Weight, testo.Effect));
+
+                board.itemList.Add(new Items(new Position(currentRow, currentCol), testo.Name, testo.Info, testo.Weight, testo.Effect));
+
+                board.cells[currentRow, currentCol] = new BoardCells((char)testo.Name, true);
+
+                itemsInInventory.Remove(testo);
+
+                Console.Clear();
+
             }
 
-            Console.WriteLine("Which item do you wish to use?");
-            string answer = Console.ReadLine();
-
-            if (Convert.ToInt32(answer) == itemsInInventory[Convert.ToInt32(answer)].Index)
+            if (choice == "use")
             {
-                player.HealthChange(+itemsInInventory[Convert.ToInt32(answer)].Effect);
-                itemsInInventory.RemoveAt(Convert.ToInt32(answer));
-                
+                foreach (Items item in itemsInInventory)
+                {
+                    Console.WriteLine(item.Info + $"{item.Effect}     ");
+                }
+
+                string answer = Console.ReadLine();
+
+                if (answer == "c")
+                {
+                    Console.Clear();
+                }
+
+                Items testo = itemsInInventory[Convert.ToInt32(answer)];
+
+                player.HealthChange(testo.Effect);
+
+                itemsInInventory.Remove(testo);
+
+                Console.Clear();
+
             }
 
-          
+            if (choice == "drop")
+            {
+                string answer = Console.ReadLine();
+
+                if (answer == "c")
+                {
+                    Console.Clear();
+                }
+
+               Items testo = itemsInInventory[Convert.ToInt32(answer)];
+
+                currentRow = player.Position.Row;
+                currentCol = player.Position.Col;
+
+                board.pickItems.Add(new Items(new Position(currentRow, currentCol), testo.Name, testo.Info, testo.Weight, testo.Effect));
+
+                board.itemList.Add(new Items(new Position(currentRow, currentCol), testo.Name, testo.Info, testo.Weight, testo.Effect));
+
+                board.cells[currentRow, currentCol] = new BoardCells((char)testo.Name, true);
+
+                itemsInInventory.Remove(testo);
+
+                Console.Clear();
+
+            }
+
+
         }
 
-    internal void DropItem(Items item)
-        {
-            itemsInInventory.Remove(item);
-            currentWeight -= item.Weight;
-        }
     }
 }
+
+          

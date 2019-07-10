@@ -25,5 +25,12 @@
             Effect = effect;
             Index = index;
         }
+
+        internal bool FallenInto(Player player)
+        {
+            if (player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
+                return true;
+            return false;
+        }
     }
 }

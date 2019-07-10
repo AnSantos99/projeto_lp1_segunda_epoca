@@ -10,10 +10,11 @@ namespace lp1_projetoFinal
         public double Score { get; set; }
         public string Name { get; set; }
 
+        internal double maxScore;
+
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
 
-        
         public GameScore(){}
 
         public GameScore(string name, double score)
@@ -22,12 +23,14 @@ namespace lp1_projetoFinal
             Score = score;
         }
 
-
         /// <summary>
         /// Function to save scores current file by adding scores from list
         /// </summary>
         public void SaveScoreOnFile(GameScore score)
         {
+
+            //scoreList.Capacity = 4;            
+
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
@@ -35,15 +38,18 @@ namespace lp1_projetoFinal
             StreamWriter fileContent = File.AppendText(FILENAME);
 
             // Add scores to scorelist
-            scoreList.Add(score);
-
-
-            foreach(GameScore scoreo in scoreList)
-
-            {
-                fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");   
-            }
             
+                scoreList.Add(score);
+          
+
+            //scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
+
+            foreach (GameScore scoreo in scoreList)
+                {
+                    fileContent.WriteLine($"{scoreo.Name} = {scoreo.Score}");
+                }
+
+                      
             fileContent.Close();
         }
 
@@ -57,13 +63,18 @@ namespace lp1_projetoFinal
             GameBoard.RowSize, GameBoard.ColSize);
 
             using (StreamReader file = new StreamReader(FILENAME, true))
-            { 
+            {
+                
                 string reader;
-                while ((reader = file.ReadLine()) != null)
+                int counter = 0;
+                while ((reader = file.ReadLine()) != null && counter < 8)
                 {
                     //File.AppendAllTextAsync(FILENAME, reader);
                     // Check if file exists and read every line of it
-                    Console.WriteLine(reader);
+                    
+                        Console.WriteLine(reader);
+                    counter++;
+                    
                 }
                 file.Close();
             }

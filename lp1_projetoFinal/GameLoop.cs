@@ -17,6 +17,8 @@ namespace lp1_projetoFinal
 
         internal GameScore score;
 
+        internal static List<GameScore> scoreList = new List<GameScore>();
+
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
 
@@ -35,7 +37,7 @@ namespace lp1_projetoFinal
         {
             
 
-            newLevel = new Levels(lvlCount, chosenDiff*lvlCount);
+            newLevel = new Levels(lvlCount, (chosenDiff*lvlCount));
             // initialise the PrintText class so different texts can be printed
             PrintText gameInfo = new PrintText();
 
@@ -73,9 +75,11 @@ namespace lp1_projetoFinal
                 // check the answer given by the player
                 // BELOW ALL PLACEHOLDER MAYBE NOT USE IF
 
-             
 
-                if (answer == ConsoleKey.D5)
+                if (answer == ConsoleKey.I)
+                    board.player.Health = 0;
+
+                    if (answer == ConsoleKey.D5)
                 {
                     List<CurrentMapObjects> lookAroundItems = new List<CurrentMapObjects>();
 
@@ -170,37 +174,45 @@ namespace lp1_projetoFinal
                 {
                     key = 'P';
 
-                    int index = 0;
-
                     if (board.map.FallenInto(board.player))
                     {
+                        key = 'M';
+
                         board.itemList.Remove(board.map);
                         foreach (CurrentMapObjects items in board.itemList)
                             board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name, false);
                     }
 
-                    foreach (Items item in board.pickItems)
-                    {
-                        if (item.FallenInto(board.player))
-                        {
-                            board.inventory.AddToInventory(new Items(item.Position, item.Name, item.Info, item.Weight, item.Effect, index));
-                            index++;
-                            key = 'D';
-
-                        }
-                    }
-                   
+                    else board.inventory.WriteInfo(board, board.player, "pickup");
+                  
                 }
                
 
                 if (answer == ConsoleKey.D3)
                  {
-                    board.inventory.WriteInfo(board.player, 'p');
+                    key = 'D';
+                    if (board.inventory.itemsInInventory.Count > 0)
+                        board.inventory.WriteInfo(board, board.player, "use");
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("your inventory is empty!!");
+                        
+                        Console.ReadKey();
+                    }
                  }
 
                 if (answer == ConsoleKey.D4)
                 {
-                    board.inventory.WriteInfo(board.player, 'd');
+                    if (board.inventory.itemsInInventory.Count > 0)
+                        board.inventory.WriteInfo(board, board.player, "drop");
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("your inventory is empty!!");
+
+                        Console.ReadKey();
+                    }
                 }
 
                 if (answer == ConsoleKey.D1)

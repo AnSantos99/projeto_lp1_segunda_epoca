@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace lp1_projetoFinal
 {
@@ -26,11 +27,22 @@ namespace lp1_projetoFinal
 
                 case ConsoleKey.B:
                     Console.WriteLine();
-                    menuInfo.ScoreText();
-                    score.LoadScoreFromFile(loop.score);
-                    Console.WriteLine();
-                    Console.WriteLine("Press any key to return");
-                    Console.ReadKey();
+                    if (File.Exists(($"Highscores_{GameBoard.RowSize}x{GameBoard.ColSize}.txt")) == false)
+                    {
+                        Console.WriteLine("No highscores for this board yet!");
+                        Console.WriteLine();
+                        Console.WriteLine("Press any key to return");
+                        Console.ReadKey();
+                    }
+
+                    else
+                    {
+                        menuInfo.ScoreText();
+                        score.LoadScoreFromFile(loop.score);
+                        Console.WriteLine();
+                        Console.WriteLine("Press any key to return");
+                        Console.ReadKey();
+                    }
                     Menu();
                     break;
 

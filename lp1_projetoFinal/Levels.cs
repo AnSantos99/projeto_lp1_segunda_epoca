@@ -15,13 +15,11 @@ namespace lp1_projetoFinal
 
         internal double score;
 
-
         internal Levels(int current, int diff)
         {
             Current = current;
             Diff = diff; 
         }
-
 
         internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, List<Items> grabItems, int RowSize, int ColSize, BoardCells[,] cells)
         {

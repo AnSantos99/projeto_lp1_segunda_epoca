@@ -53,6 +53,8 @@ namespace lp1_projetoFinal
             if (key == 'Z') actions.Push("Moved to the SouthWest");
             if (key == 'X') actions.Push("Moved to the SouthEast");
 
+            if (key == 'M') actions.Push("Picked up map!");
+
             if (key == 'T') actions.Push("Fallen into a trap!!");
 
             if (key == 'P') actions.Push("Picked up item");
