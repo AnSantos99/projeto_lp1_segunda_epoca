@@ -1,11 +1,16 @@
 using System;
+using System.Collections.Generic;
+
 
 namespace lp1_projetoFinal
 {
     internal class BoardCells
     {
-        char name;
-        bool visited;
+        internal char name;
+        internal bool visited;
+
+        internal Position position;
+
 
         /// <summary>
         /// Constructor to get acess to name and visited boardcells 
@@ -13,10 +18,11 @@ namespace lp1_projetoFinal
         /// <param name="name"> Get the name of 
         /// </param>
         /// <param name="visited"></param>
-        internal BoardCells(char name, bool visited)
+        internal BoardCells(char name, bool visited, Position position)
         {
             this.name = name;
             this.visited = visited;
+            this.position = position;
         }
 
         /// <summary>
@@ -24,37 +30,56 @@ namespace lp1_projetoFinal
         /// </summary>
         internal virtual void Render()
         {
-            if(visited)
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write(name);
-                Console.ResetColor();
-            }
+      
+                if (visited)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write(name);
+                    Console.ResetColor();
+                }
 
-            else if (name == (char)Chars.player)
-            { 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(name);
-                Console.ResetColor();
-            }
+                else if (name == (char)Chars.trap)
+                {
 
-            else if (name == (char)Chars.exit)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(name);
-                Console.ResetColor();
-            }
+                    Console.Write(name);
 
-            else if (name == (char)Chars.map)
-            { 
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(name);
-                Console.ResetColor();
-            }
 
-           
-            else Console.Write(name);
-        }
+                }
+
+                else if (name == (char)Chars.enemy)
+                {
+
+                    Console.Write(name);
+
+
+                }
+
+                else if (name == (char)Chars.player)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(name);
+                    Console.ResetColor();
+
+                }
+
+                else if (name == (char)Chars.exit)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(name);
+                    Console.ResetColor();
+                }
+
+                else if (name == (char)Chars.map)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(name);
+                    Console.ResetColor();
+                }
+
+
+                else Console.Write(name);
+            }
+  
 
        
     }
