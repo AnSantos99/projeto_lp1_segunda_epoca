@@ -21,8 +21,8 @@ namespace lp1_projetoFinal
 
 
         internal void Setup(Player player, CurrentMapObjects exit, 
-            CurrentMapObjects map, List<CurrentMapObjects> items, 
-            List<Trap> traps, List<Items> grabItems, List<Enemy> enemies, 
+            CurrentMapObjects map, List<CurrentMapObjects> items, List<Items> grabItems,
+            List<Trap> traps, List<Food> foods, List<Weapons> weapons, List<Enemy> enemies, 
             int RowSize, int ColSize, BoardCells[,] cells)
         {
             // Max size of objects in Levels
@@ -33,6 +33,7 @@ namespace lp1_projetoFinal
             //Add objects to item list
             items.Add(exit);
             items.Add(map);
+ 
 
             // 
             int numberOfTraps = rnd.Next(maxTrapsInLvl);
@@ -58,19 +59,20 @@ namespace lp1_projetoFinal
 
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
-
                 
 
-                Items item1 = new Food((new Position(row, col)), Chars.food, " An apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
+                Food food = new Food((new Position(row, col)), Chars.food, " An apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
 
-                Items item2 = new Weapons((new Position(row, col)), Chars.weapon, "dagger", rnd.Next(10), rnd.Next(100), rnd.Next(10));
+                Weapons weapon = new Weapons((new Position(row, col)), Chars.weapon, "dagger", rnd.Next(10), rnd.Next(100), rnd.Next(10));
 
 
-                items.Add(item1);
-                grabItems.Add(item1);
+                items.Add(food);
+                grabItems.Add(food);
+                foods.Add(food);
 
-                items.Add(item2);
-                grabItems.Add(item2);
+                items.Add(weapon);
+                grabItems.Add(weapon);
+                weapons.Add(weapon);
             }
 
             // Set random enemies around the map
@@ -96,7 +98,7 @@ namespace lp1_projetoFinal
             }
 
 
-            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name,false, new Position (player.Position.Row, player.Position.Col));
+            cells[player.Position.Row, player.Position.Col] = new BoardCells(player.name,false, new Position (player.Position.Row, player.Position.Col));
 
         }
 

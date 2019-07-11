@@ -54,7 +54,7 @@ namespace lp1_projetoFinal
 
                 }
 
-                else if (name == (char)Chars.player)
+                else if (name == (char)Chars.player || name == (char)Chars.exit)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(name);
@@ -62,12 +62,6 @@ namespace lp1_projetoFinal
 
                 }
 
-                else if (name == (char)Chars.exit)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write(name);
-                    Console.ResetColor();
-                }
 
                 else if (name == (char)Chars.map)
                 {

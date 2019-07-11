@@ -1,0 +1,12 @@
+uno	1.8
+	1.8
+due	1.8
+tre	1.8
+cinq	1.8
+sei	1.8
+sete	1.8
+ocho	1.8
+worj	4.2
+	2.6
+0asdfa	3.4
+	2.6
