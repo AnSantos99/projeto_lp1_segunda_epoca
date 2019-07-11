@@ -19,8 +19,6 @@ namespace lp1_projetoFinal
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
         
-
-
         /// <summary>
         /// Empty constructor
         /// </summary>
@@ -50,29 +48,12 @@ namespace lp1_projetoFinal
             StreamWriter fileContent = File.AppendText(FILENAME);
             
             // Add scores to scorelist
-            scoreList.Add(score);
-                
-            //scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
-
-            //for (int i = 0; i < scoreList.Count; i++)
-            //
+            scoreList.Add(score);        
     
                 fileContent.WriteLine(score.Name + SEPARATOR + score.Score);
-            //}
-
-            /*
-            foreach (GameScore scoreo in scoreList)
-            {
-                fileContent.WriteLine(scoreo.Name + SEPARATOR + scoreo.Score);
-            }*/
-
+        
             fileContent.Close(); 
         }
-
-
-
-
-
 
         //StreamWriter fileContent = new StreamWriter(FILENAME);
         /// <summary>
@@ -115,18 +96,6 @@ namespace lp1_projetoFinal
 
                 scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
 
-
-
-
-
-
-
-
-                //Console.WriteLine($"Player {name} has a score of {scores}");
-
-                //counter++;
-               // scoreList.Clear();
-  
             }
             file.Close();
             foreach (GameScore scorerr in scoreList)
@@ -134,11 +103,5 @@ namespace lp1_projetoFinal
             scoreList.Clear();
         }
 
-
-        public void HighScores(GameScore score)
-        {
-            SaveScoreOnFile(score);
-            LoadScoreFromFile(score);
-        }
     }
 }
