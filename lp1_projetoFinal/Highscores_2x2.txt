@@ -1,0 +1,6 @@
+one	5.8
+two	1.8
+three	1.8
+four	1.8
+five	1.8
+six´	1.8

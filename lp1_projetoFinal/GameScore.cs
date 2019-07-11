@@ -8,7 +8,7 @@ namespace lp1_projetoFinal
     {
         // Variables
         const char SEPARATOR = '\t';
-        int counter = 0;
+        //int counter = 0;
 
         // Name and score properties
         public double Score { get; set; }
@@ -19,6 +19,7 @@ namespace lp1_projetoFinal
         // List of type gamescore to store scores
         internal List<GameScore> scoreList = new List<GameScore>();
         
+
 
         /// <summary>
         /// Empty constructor
@@ -44,21 +45,20 @@ namespace lp1_projetoFinal
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-
-
             // Append text to the file content
-            StreamWriter fileContent = new StreamWriter(FILENAME);
-            //StreamWriter fileContent = File.CreateText(FILENAME);
+          //  StreamWriter fileContent = new StreamWriter(FILENAME);
+            StreamWriter fileContent = File.AppendText(FILENAME);
             
             // Add scores to scorelist
             scoreList.Add(score);
                 
-            scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
+            //scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
 
-            for (int i = 0; i < scoreList.Count; i++)
-            {
+            //for (int i = 0; i < scoreList.Count; i++)
+            //
+    
                 fileContent.WriteLine(score.Name + SEPARATOR + score.Score);
-            }
+            //}
 
             /*
             foreach (GameScore scoreo in scoreList)
@@ -70,6 +70,11 @@ namespace lp1_projetoFinal
         }
 
 
+
+
+
+
+        //StreamWriter fileContent = new StreamWriter(FILENAME);
         /// <summary>
         /// Function to read file created with specific game dimensions name
         /// and print out its content.
@@ -79,24 +84,54 @@ namespace lp1_projetoFinal
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-
             StreamReader file = new StreamReader(FILENAME);
-            
-            string reader = null;
-            
 
-            while ((reader = file.ReadLine()) != null && counter < 8)
+            string reader = null;
+
+            while ((reader = file.ReadLine()) != null)
             {
                 string[] nameAndScore = reader.Split(SEPARATOR);
                 string name = nameAndScore[0];
                 double scores = Convert.ToSingle(nameAndScore[1]);
 
-                
-                Console.WriteLine($"Player {name} has a score of {scores}");
-                counter++;
+                GameScore newScore = new GameScore(name,scores);
+                scoreList.Capacity = 8;
+
+                scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
+
+                if(scoreList.Count < scoreList.Capacity)
+                    scoreList.Add(newScore);
+
+                else 
+                {
+                    if (newScore.Score > scoreList[0].Score)
+                    {
+                        scoreList.RemoveAt(0);
+                        scoreList.Add(newScore);
+                    }
+                    
+                }
+
+
+                scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
+
+
+
+
+
+
+
+
+                //Console.WriteLine($"Player {name} has a score of {scores}");
+
+                //counter++;
+               // scoreList.Clear();
+  
             }
             file.Close();
-            
+            foreach (GameScore scorerr in scoreList)
+                Console.WriteLine($"Player {scorerr.Name} has a score of {scorerr.Score}");
+            scoreList.Clear();
         }
 
 

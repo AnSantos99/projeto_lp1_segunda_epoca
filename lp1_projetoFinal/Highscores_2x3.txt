@@ -1,0 +1,11 @@
+one	1.8
+two	1.8
+three	1.8
+four	1.8
+five	1.8
+six	1.8
+seven	1.8
+eight	1.8
+nine	1.8
+ten	1.8
+please	4.2
