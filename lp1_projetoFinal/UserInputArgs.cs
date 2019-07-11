@@ -6,18 +6,50 @@ namespace lp1_projetoFinal
 {
     internal class UserInputArgs
     {
-        //Dictionary<string, int> argPairs = new Dictionary<string, int>();
+        internal static int levelDiff;
 
-
-        /// <summary>
-        /// Set Dictionary to defualt value to choose after in args
-        /// </summary>
-        /// <param name="myDictionary"></param>
-        public static void ArgsDicReader(Dictionary<string, int> myDictionary)
+        public static void UserArgs(Dictionary<string, int> argsAccepter,string[] args, int levelDiff)
         {
-            myDictionary.Add("-r", default(int));
-            myDictionary.Add("-c", default(int));
-            myDictionary.Add("-d", default(int));
+            UserInputArgs.levelDiff = 0;
+            
+            switch (args[0])
+            {
+                case "-d":
+                    argsAccepter["-d"] = UserInputArgs.levelDiff = int.Parse(args[1]);
+                    break;
+                case "-c":
+                    argsAccepter["-c"] = GameBoard.ColSize = int.Parse(args[1]);
+                    break;
+                case "-r":
+                    argsAccepter["-r"] = GameBoard.RowSize = int.Parse(args[1]);
+                    break;
+            }
+
+            switch (args[2])
+            {
+                case "-d":
+                    argsAccepter["-d"] = UserInputArgs.levelDiff = int.Parse(args[3]);
+                    break;
+                case "-c":
+                    argsAccepter["-c"] = GameBoard.ColSize = int.Parse(args[3]);
+                    break;
+                case "-r":
+                    argsAccepter["-r"] = GameBoard.RowSize = int.Parse(args[3]);
+                    break;
+            }
+
+            switch (args[4])
+            {
+                case "-d":
+                    argsAccepter["-d"] = UserInputArgs.levelDiff = int.Parse(args[5]);
+                    break;
+                case "-c":
+                    argsAccepter["-c"] = GameBoard.ColSize = int.Parse(args[5]);
+                    break;
+                case "-r":
+                    argsAccepter["-r"] = GameBoard.RowSize = int.Parse(args[5]);
+                    break;
+            }
         }
     }
 }

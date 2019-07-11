@@ -44,7 +44,7 @@ namespace lp1_projetoFinal
             string FILENAME = string.Format("Highscores_{0}x{1}.txt",
             GameBoard.RowSize, GameBoard.ColSize);
 
-
+          
 
             // Append text to the file content
             StreamWriter fileContent = new StreamWriter(FILENAME);
