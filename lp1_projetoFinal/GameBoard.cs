@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace lp1_projetoFinal
 {
@@ -13,6 +14,8 @@ namespace lp1_projetoFinal
 
         // Player start health is currentHealth
         internal int currentHealth = 100;
+
+        internal List<Position> mapPositions = new List<Position>();
     
         // Static variables of Row and columns for gameboard
         internal static int RowSize;
@@ -56,6 +59,8 @@ namespace lp1_projetoFinal
 
         public void RenderBoard(Levels lvl)
         {
+            foreach(BoardCells item in cells)
+                Console.Write(item.ToString());
             if (player.Health > player.maxHealth)
                 player.Health = player.maxHealth;
 
@@ -68,10 +73,10 @@ namespace lp1_projetoFinal
             Console.WriteLine();
 
             // begin cycle to set all the rows right
-            for (uint y = 0; y < RowSize; y++)
+            for (int y = 0; y < RowSize; y++)
             {
                 Console.Write("  |");
-                for (uint x = 0; x < ColSize; x++)
+                for (int x = 0; x < ColSize; x++)
                 {    
                     Console.Write("     |");
                 }
@@ -80,11 +85,15 @@ namespace lp1_projetoFinal
                 Console.Write($"[{y}] ");
 
                 // check if there are pieces and place them
-                for (uint x = 0; x < ColSize; x++)
+                for (int x = 0; x < ColSize; x++)
                 {
-                    Console.Write("  ");
-                    cells[y,x].Render();
-                    Console.Write(" | ");
+                    List<char> charsInCell = new List<char> { cells[y, x].name, cells[y, x].name, cells[y, x].name, cells[y, x].name, cells[y, x].name };
+
+                    Console.Write(" ");
+
+                    cells[y, x].Render();
+
+                    Console.Write("  | ");
                 }
 
                 // new line to render bottom of row

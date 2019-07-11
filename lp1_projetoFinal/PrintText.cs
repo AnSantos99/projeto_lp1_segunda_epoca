@@ -54,6 +54,8 @@ namespace lp1_projetoFinal
             if (key == 'T') actions.Push("Fallen into a trap!!");
 
             if (key == 'P') actions.Push("Picked up item");
+
+            if (key == 'M') actions.Push("Enemy attack!");
             /*
             if (key == 'O') Console.WriteLine("Picked Up xxx");
 
@@ -232,10 +234,11 @@ namespace lp1_projetoFinal
             Console.WriteLine("Weapon (Name)");
             Console.WriteLine("Food (Name)");
 
+            /*
             foreach (Items item in inventory)
             {
                 Console.WriteLine(item.Info + "              " + item.Effect);
-            }
+            }*/
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();

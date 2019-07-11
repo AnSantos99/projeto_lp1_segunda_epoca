@@ -22,12 +22,13 @@
             MaxDamage = maxDamage;
         }
 
-        /*
+       
         internal bool FallenInto(Player player)
         {
             if (Active && player.Position.Row == this.Position.Row && player.Position.Col == this.Position.Col)
                 return true;
             return false;
-        }*/
+        }
+        
     }
 }

@@ -11,6 +11,10 @@ namespace lp1_projetoFinal
 
         internal Random rnd = new Random();
 
+        internal List<Trap> traps = new List<Trap>();
+
+        internal List<Enemy> enemies = new List<Enemy>();
+
         internal double score;
 
         internal Levels(int current, int diff)
@@ -19,11 +23,15 @@ namespace lp1_projetoFinal
             Diff = diff; 
         }
 
+<<<<<<< HEAD
+        internal void Setup(Player player, CurrentMapObjects exit, CurrentMapObjects map, List<CurrentMapObjects> items, List<Trap> traps, List<Items> grabItems, int RowSize, int ColSize, BoardCells[,] cells)
+=======
 
         internal void Setup(Player player, CurrentMapObjects exit, 
             CurrentMapObjects map, List<CurrentMapObjects> items, 
             List<Trap> traps, List<Items> grabItems, List<Enemy> enemies, 
             int RowSize, int ColSize, BoardCells[,] cells)
+>>>>>>> 34ed7bc9776459ab04411267fb8b649ee80026ff
         {
             // Max size of objects in Levels
             int maxTrapsInLvl = Linear(Current, Diff, 2);
@@ -59,18 +67,11 @@ namespace lp1_projetoFinal
                 int row = rnd.Next(RowSize);
                 int col = rnd.Next(ColSize);
 
+                Items item = new Items((new Position(row, col)), Chars.food, " An apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
                 
+                items.Add(item);
+                grabItems.Add(item);
 
-                Items item1 = new Food((new Position(row, col)), Chars.food, " An apple a day keeps god astray", rnd.Next(10), rnd.Next(100));
-
-                Items item2 = new Weapons((new Position(row, col)), Chars.weapon, "dagger", rnd.Next(10), rnd.Next(100), rnd.Next(10));
-
-
-                items.Add(item1);
-                grabItems.Add(item1);
-
-                items.Add(item2);
-                grabItems.Add(item2);
             }
 
             // Set random enemies around the map
@@ -85,18 +86,24 @@ namespace lp1_projetoFinal
                 items.Add(enemy);
             }
 
+            foreach (CurrentMapObjects item in items)
+            {
+                int row = rnd.Next(RowSize);
+                int col = rnd.Next(ColSize);
+
+                cells[item.Position.Row, item.Position.Col] = new BoardCells((char)item.Name,false);
+            }
+
 
             for (int i = 0; i < RowSize; i++)
             {
                 for (int j = 0; j < ColSize; j++)
                 {
-                    
-                    cells[i, j] = new BoardCells((char)Chars.empty, false, new Position(i, j));
+                    cells[i, j] = new BoardCells((char)Chars.empty,false);
                 }
             }
 
-
-            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name,false, new Position (player.Position.Row, player.Position.Col));
+            cells[player.Position.Row, player.Position.Col] = new BoardCells((char)player.name,false);
 
         }
 
