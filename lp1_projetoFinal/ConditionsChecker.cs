@@ -1,115 +1,134 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace lp1_projetoFinal
 {
+    /// <summary>
+    /// A class that checks if specific arguments in specific given array 
+    /// indexes are valid or not.
+    /// </summary>
     internal class ConditionsChecker
     {
         /// <summary>
-        /// Function to check for invalid user input
+        /// Function to check for invalid strings inputs by the user in each 
+        /// specific array index.
         /// </summary>
-        /// <param name="row"> check the row KEY input</param>
-        /// <param name="col"> check the col KEY input</param>
-        public static void CheckUserINvalidArgs(string row, string col)
+        /// <param name="args"> Get Main method args from class Program</param>
+        internal static void CheckUserINvalidArgs(string [] args)
         {
-            
-            // If user input is not equal to the wished arguments
-            if (row != "-r")
-            {
-                Console.WriteLine("Invalid input. Please write: '-r (number)' ");
+           // Check if the input in the specific array index is not equal to
+           // the valid accepting arguments
+            if (args[0] != "-r" && args[0] != "-c" && args[0] != "-d")
+            { 
+                Console.WriteLine("The first input is invalid. " +
+                    "Please use valid arguments: '-c', '-r' or '-d'");
 
+                // End the program
                 Environment.Exit(0);
             }
 
-            // Check if user input is diferent than wished argument
-            if (col != "-c")
+            // Check if the input in the specific array index is not equal to
+            // the valid accepting arguments
+            if (args[2] != "-r" && args[2] != "-c" && args[2] != "-d")
             {
-                Console.WriteLine("Invalid input. Please write: '-c (number)' ");
+                Console.WriteLine("The second input is invalid. " +
+                    "Please use valid arguments: '-c', '-r' or '-d'");
 
+                // End the program
                 Environment.Exit(0);
-            }    
+            }
+
+            // Check if the input in the specific array index is not equal to
+            // the valid accepting arguments
+            if (args[4] != "-r" && args[4] != "-c" && args[4] != "-d")
+            {
+                Console.WriteLine("The third input is invalid. " +
+                    "Please use valid arguments: '-c', '-r' or '-d'");
+
+                // End the program
+                Environment.Exit(0);
+            }   
         }
 
         /// <summary>
-        /// Check user Invalid number arguments
+        /// Function to check for invalid value inputs by the user in each 
+        /// specific array index.
         /// </summary>
-        /// <param name="row"> Get number from args in position[1]/[3]/[5]</param>
-        /// <param name="col"> Get number from args in position[3]/[1]/[5]</param>
-        public static void CheckUserInvalidArgNumbs(int row, int col)
+        /// <param name="args"> Get Main method args from class Program</param>
+        internal static void CheckUserInvalidArgNumbs(string[] args)
         {
             // Check if user input is under 6 in column and row
-            if (row < 6 && col < 6)
+            if (int.Parse(args[1]) < 6 || int.Parse(args[3]) < 6 || 
+                int.Parse(args[5]) < 6)
             {
-                Console.WriteLine();
                 Console.WriteLine("Invalid input. Please choose number for " +
                     "row and column equal or above 6 for a better " +
                     "game experience.");
 
+                // End the program
                 Environment.Exit(0);
             }
 
             // Check if user input is above 10 in column and row
-            else if (row > 10 && col > 10)
+            else if (int.Parse(args[1]) > 10 || int.Parse(args[3]) > 10 || 
+                int.Parse(args[5]) > 10)
             {
-                Console.WriteLine("Size out of range. Please choose number " +
-                    "between 6 and 10 for row and col.");
+                Console.WriteLine("Invalid input. Please choose number for " +
+                    "row and column under 10 for a better game experience.");
 
+                // End the program
                 Environment.Exit(0);
             }     
         }
 
-        /// <summary>
-        /// functin to check invalid difficulty number
-        /// </summary>
-        /// <param name="diff"> Get number from args position [1]/[3]/[5] </param>
-        public static void CheckDifficultyLevel(int diff)
-        {
-            if (diff == 0 || diff > 10)
-            {
-                Console.WriteLine("Please choose a difficulty number between " +
-                    "1 and 10");
 
-                Environment.Exit(0);
+        /// <summary>
+        /// Function to check for invalid value inputs for difficulty level 
+        /// by the user in each specific array index.
+        /// </summary>
+        /// <param name="args"> Get Main method args from class Program</param>
+        internal static void CheckDifficultyLevel(string[] args)
+        {
+            // Check the arguments on array index 0 if input -d
+            switch (args[0])
+            {
+                case "-d":
+                    if(int.Parse(args[1]) <  1 || int.Parse(args[1]) > 10)
+                        Console.WriteLine("Please choose a difficulty number "+
+                        "between 1 and 10");
+                    break;
+            }
+
+            // Check the arguments on array index 2 if input -d
+            switch (args[2])
+            {
+                case "-d":
+                    if (int.Parse(args[3]) < 1 || int.Parse(args[3]) > 10)
+                        Console.WriteLine("Please choose a difficulty number "+
+                        "between 1 and 10");
+                    break;
+            }
+
+            // Check the arguments on array index 4 if input -d
+            switch (args[4])
+            {
+                case "-d":
+                    if (int.Parse(args[5]) < 1 || int.Parse(args[3]) > 10)
+                        Console.WriteLine("Please choose a difficulty number "+
+                        "between 1 and 10");
+                    break;
             }
         }
 
-        public static void CheckScoreList(List<GameScore> scoreChecker)
-        {
-
-        }
-
-
-        /*
         /// <summary>
-        /// 
+        /// Function that contains other functions to check valid arguments
+        /// given by the user on the console
         /// </summary>
-        /// <param name="input1"></param>
-        /// <param name="input2"></param>
-        /// <param name="input3"></param>
-        /// <param name="a1"></param>
-        /// <param name="a2"></param>
-        /// <param name="a3"></param>
-        /// <returns></returns>
-        public static int CheckValidUserArgs(string input1, string input2, string input3, int a1, int a2, int a3 )
+        /// <param name="args"> Get Main method args from class Program</param>
+        internal static void Conditions(string[] args)
         {
-            if (input1 == "-r" || input2 == "-r" || input3 == "-r")
-            {
-                return GameBoard.RowSize = Convert.ToInt32(a1);
-            }
-
-            if (input1 == "-c" || input2 == "-c" || input3 == "-c")
-            {
-                return GameBoard.ColSize = Convert.ToInt32(a2);
-            }
-
-
-            if (input1 == "-d" || input2 == "-d" || input3 == "-d")
-            {
-                return a3;
-            }
-
-            return 0;
-        }*/
+            CheckDifficultyLevel(args);
+            CheckUserINvalidArgs(args);
+            CheckUserInvalidArgNumbs(args);
+        }
     }
 }

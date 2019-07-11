@@ -59,8 +59,6 @@ namespace lp1_projetoFinal
 
         public void RenderBoard(Levels lvl)
         {
-            foreach(BoardCells item in cells)
-                Console.Write(item.ToString());
             if (player.Health > player.maxHealth)
                 player.Health = player.maxHealth;
 
