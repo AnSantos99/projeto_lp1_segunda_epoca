@@ -14,16 +14,19 @@ namespace lp1_projetoFinal
 
         internal int maxHealth = 100;
 
+        internal Weapons SelectedWeapon;
+
+        internal int Weight;
+
+        internal int MaxWeight;
+
         // define player's health so we can manipulate it
         internal int Health;
 
         internal Position Position;
 
-       // internal Weapon selectedWeapon;
-
         internal Inventory Inventory;
-        
-        //internal Position position;
+       
 
         /// <summary>
         /// this constructor's purpose is to allow us to set the player's name
@@ -47,23 +50,6 @@ namespace lp1_projetoFinal
         public int Score { get; set; }
 
         /// <summary>
-        /// this method works to obtain the player's current position and know
-        /// what coordinate they can be found in at any needed time
-        /// </summary>
-        /// <param name="board">obtain current board player is in</param>
-        /// <returns>the target coordinate to place player on</returns>
-        /*internal static Position GetPosition(GameBoard board)
-        {
-            string position = Console.ReadLine();
-
-            position = position.ToLower();
-
-            Position targetCoordinate = PositionForNumber(position);
-
-            return targetCoordinate;
-        }*/
-
-        /// <summary>
         /// this method receives the player's health and lowers it after each
         /// movement
         /// </summary>
@@ -76,11 +62,7 @@ namespace lp1_projetoFinal
             return Health;
         }
 
-        public void Weight()
-        {
-            throw new NotImplementedException();
-        }
-
+      
         // Map surroundings 
         internal void Surroundings(List<CurrentMapObjects> nearObjects, CurrentMapObjects item, GameBoard board)
         {

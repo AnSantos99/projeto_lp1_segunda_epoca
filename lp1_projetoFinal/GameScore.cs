@@ -95,11 +95,12 @@ namespace lp1_projetoFinal
 
 
                 scoreList.Sort((x, y) => x.Score.CompareTo(y.Score));
+                scoreList.Reverse();
 
             }
             file.Close();
             foreach (GameScore scorerr in scoreList)
-                Console.WriteLine($"Player {scorerr.Name} has a score of {scorerr.Score}");
+                Console.WriteLine($"Player {scorerr.Name} has a score of {Math.Round(scorerr.Score*100)/100}");
             scoreList.Clear();
         }
 

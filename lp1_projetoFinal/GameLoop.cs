@@ -17,8 +17,6 @@ namespace lp1_projetoFinal
 
         internal GameScore score;
 
-        internal static List<GameScore> scoreList = new List<GameScore>();
-
         // initiate the main menu class
         internal MainMenu menu = new MainMenu();
 
@@ -79,8 +77,8 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.I)
                     board.player.Health = 0;
 
-                    if (answer == ConsoleKey.D5)
-                {
+                if (answer == ConsoleKey.D5)
+                    {
                     List<CurrentMapObjects> lookAroundItems = new List<CurrentMapObjects>();
 
                     foreach (CurrentMapObjects item in board.itemList)
@@ -99,7 +97,7 @@ namespace lp1_projetoFinal
                     board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.W && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -108,7 +106,7 @@ namespace lp1_projetoFinal
                     board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.A && Position.IsValidPosition((new Position((board.player.Position.Row), (board.player.Position.Col - 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -118,7 +116,7 @@ namespace lp1_projetoFinal
                     board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.D && Position.IsValidPosition((new Position((board.player.Position.Row), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -127,7 +125,7 @@ namespace lp1_projetoFinal
                     board.player.HealthChange(-1);
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.Q && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col -1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -137,7 +135,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col--;
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.E && Position.IsValidPosition((new Position((board.player.Position.Row - 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -147,7 +145,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col++;
                     board.player.Position.Row--;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.Z && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col - 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -157,7 +155,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col--;
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                 if (answer == ConsoleKey.X && Position.IsValidPosition((new Position((board.player.Position.Row + 1), (board.player.Position.Col + 1))), (GameBoard.RowSize - 1), (GameBoard.ColSize - 1)))
@@ -167,7 +165,7 @@ namespace lp1_projetoFinal
                     board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)Chars.path,true, new Position(board.player.Position.Row, board.player.Position.Col));
                     board.player.Position.Col++;
                     board.player.Position.Row++;
-                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells((char)board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
+                    board.cells[board.player.Position.Row, board.player.Position.Col] = new BoardCells(board.player.name,false, new Position(board.player.Position.Row, board.player.Position.Col));
                 }
 
                
@@ -185,8 +183,34 @@ namespace lp1_projetoFinal
                             board.cells[items.Position.Row, items.Position.Col] = new BoardCells((char)items.Name, false, new Position(items.Position.Row, items.Position.Col));
                     }
 
-                    else board.inventory.WriteInfo(board, board.player, "pickup");
-                  
+                    else
+
+                    {
+                        
+                        foreach (Food foode in board.food)
+                        {
+                            if (foode.FallenInto(board.player))
+                            {
+
+                                board.inventory.foodInCell.Add(new Food(foode.Position, foode.Name, foode.Info, foode.Weight, foode.HPIncrease));
+
+                            }
+                        }
+
+                        foreach (Weapons weaponss in board.weapons)
+                        {
+                            if (weaponss.FallenInto(board.player))
+                            {
+
+                                board.inventory.weaponsInCell.Add(new Weapons(weaponss.Position, weaponss.Name, weaponss.Info, weaponss.Weight, weaponss.AttackPower, weaponss.Durability));
+
+                            }
+                        }
+                        board.inventory.WriteInfo(board, board.player, "pickup");
+
+
+                    }
+
                 }
                
 
@@ -220,7 +244,7 @@ namespace lp1_projetoFinal
                 if (answer == ConsoleKey.D1)
                     gameInfo.EnemyAttackText();
                 if (answer == ConsoleKey.D6)
-                    gameInfo.HelpText(board.traps, board.inventory, board.player);
+                    gameInfo.HelpText(board.food, board.weapons, board.traps, board.inventory, board.player);
 
                 if (answer == ConsoleKey.D8)
                 {

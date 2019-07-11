@@ -12,7 +12,7 @@ namespace lp1_projetoFinal
     /// </summary>
     internal class PrintText
     {
-        internal static Stack<string> actions = new Stack<string>();
+        protected static Stack<string> actions = new Stack<string>();
 
         /// <summary>
         /// this method's purpose is to store the initial game menu text, where
@@ -56,14 +56,7 @@ namespace lp1_projetoFinal
             if (key == 'P') actions.Push("Picked up item");
 
             if (key == 'M') actions.Push("Enemy attack!");
-            /*
-            if (key == 'O') Console.WriteLine("Picked Up xxx");
-
-            if (key == ' ') Console.WriteLine("You defeated enemy and won");
-
-            if (key == ' ') Console.WriteLine("Picked Up xxx");
-            */
-
+      
             Console.Write("last actions:");
             
             Console.WriteLine("------------------------------------------------");
@@ -83,7 +76,8 @@ namespace lp1_projetoFinal
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine($"Current Level:{level.Current}");
             Console.WriteLine($"HP: {player.Health}");
-            Console.WriteLine($"Selected Weapon:");
+            if(player.SelectedWeapon != null)
+            Console.WriteLine($"Selected Weapon: {player.SelectedWeapon.Name}");
             Console.WriteLine($"Inventory occupation: {inventory.currentWeight}");
 
             Console.WriteLine("Caption:");
@@ -153,20 +147,23 @@ namespace lp1_projetoFinal
         /// to the one they have on the main screen, depending on the items
         /// they have found, weapons and their effects
         /// </summary>
-        public void HelpText(List<Trap> traps, Inventory inventory, Player player)
+        public void HelpText(List<Food> food, List<Weapons> weapons, List<Trap> traps, Inventory inventory, Player player)
         {
             
 
             Console.WriteLine("--------------------------");
             Console.WriteLine("Food          HPIncrease        Weight");
             Console.WriteLine("----------------------------------------");
-           // inventory.WriteInfo(player, 'd');
+            foreach(Food foodz in food)
+                Console.WriteLine(foodz.Name + "                 " + foodz.HPIncrease);
 
             Console.WriteLine();
 
             Console.WriteLine("Weapon          AttackPower        Weight       Durability");
             Console.WriteLine("-------------------------------------------------------------");
-            Console.WriteLine("Name              10.0              3.0             0.90");
+            foreach (Weapons weapon in weapons)
+                Console.WriteLine(weapon.Name + "      " + weapon.AttackPower + "     " + weapon.Weight + "      " + weapon.Durability);
+
 
 
             Console.WriteLine();
@@ -223,29 +220,7 @@ namespace lp1_projetoFinal
         /// this menu shows what the player currently owns and offers the 
         /// options of picking, dropping and using items
         /// </summary>
-        public void InventoryText(List<Items> inventory)
-        {
-            Console.WriteLine("Food          HPIncrease        Weight");
-            Console.WriteLine("----------------------------------------");
-
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Select item to XXXX");
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Weapon (Name)");
-            Console.WriteLine("Food (Name)");
-
-            /*
-            foreach (Items item in inventory)
-            {
-                Console.WriteLine(item.Info + "              " + item.Effect);
-            }*/
-
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
-            Console.Clear();
-
-        }
-
+       
         public void ScoreText()
         {
             Console.WriteLine("<-------------------------->");

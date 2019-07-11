@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace lp1_projetoFinal
 {
@@ -33,6 +32,10 @@ namespace lp1_projetoFinal
         // Instanciate a list of type Items 
         internal List<Items> pickItems = new List<Items>();
 
+        internal List<Food> food = new List<Food>();
+
+        internal List<Weapons> weapons = new List<Weapons>();
+
         // Instanciate a list of type Enemy
         internal List<Enemy> enemies = new List<Enemy>();
 
@@ -53,14 +56,14 @@ namespace lp1_projetoFinal
 
             cells = new BoardCells[RowSize, ColSize];
 
-            lvl.Setup(player, exit, map, itemList, traps, pickItems, enemies, RowSize, ColSize, cells);
+            lvl.Setup(player, exit, map, itemList, pickItems, traps, food, weapons, enemies, RowSize, ColSize, cells);
 
         }
 
         public void RenderBoard(Levels lvl)
         {
-            foreach(BoardCells item in cells)
-                Console.Write(item.ToString());
+    
+
             if (player.Health > player.maxHealth)
                 player.Health = player.maxHealth;
 
@@ -87,7 +90,6 @@ namespace lp1_projetoFinal
                 // check if there are pieces and place them
                 for (int x = 0; x < ColSize; x++)
                 {
-                    List<char> charsInCell = new List<char> { cells[y, x].name, cells[y, x].name, cells[y, x].name, cells[y, x].name, cells[y, x].name };
 
                     Console.Write(" ");
 
